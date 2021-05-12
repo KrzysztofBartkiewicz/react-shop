@@ -1,5 +1,6 @@
 import React from 'react';
 import Button from '../components/atoms/Button';
+import Input from '../components/atoms/Input';
 import GlobalStylesTemplate from '../templates/GlobalStylesTemplate';
 
 const Root = () => {
@@ -9,6 +10,8 @@ const Root = () => {
       <Button onClickFn={() => console.log('OPINIE')} secondary>
         Reviews (2)
       </Button>
+      <Button icon></Button>
+      <Input placeholder="Email" />
     </GlobalStylesTemplate>
   );
 };
