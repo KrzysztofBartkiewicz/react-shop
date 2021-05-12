@@ -5,5 +5,5 @@ export const StyledInput = styled.input`
   border: 1px solid ${({ theme }) => theme.colors.secondary};
   border-radius: 4rem;
   font-size: ${({ theme }) => theme.fontSizes.xxl};
-  color: ${({ theme }) => theme.colors.tertiary};
+  color: ${({ theme }) => theme.colors.teriary};
 `;

@@ -1,5 +1,4 @@
 import styled, { css } from 'styled-components';
-import heartIcon from '../../../assets/icons/heart.svg';
 
 export const StyledButton = styled.button`
   border: ${({ theme, secondary }) =>
@@ -22,9 +21,8 @@ export const StyledButton = styled.button`
       padding: 0;
       border: 1px solid ${({ theme }) => theme.colors.secondary};
       border-radius: 50%;
-      background-image: url(${heartIcon});
+      background-image: url(${icon});
       background-position: center;
       background-repeat: no-repeat;
-      background-color: ${({ theme }) => theme.colors.buttons.secondaryBg};
     `}
 `;
