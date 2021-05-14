@@ -1,6 +1,7 @@
 export const mainTheme = {
   colors: {
-    primary: '#000000',
+    primaryBlack: '#000000',
+    primaryWhite: '#fff',
     secondary: '#D8D8D8',
     tertiary: '#808080',
 
@@ -16,6 +17,7 @@ export const mainTheme = {
     l: '1rem',
     xl: '1.2rem',
     xxl: '1.4rem',
+    big: '1.9rem',
   },
 
   fontWeights: {

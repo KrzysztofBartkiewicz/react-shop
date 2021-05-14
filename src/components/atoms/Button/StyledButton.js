@@ -4,7 +4,7 @@ export const StyledButton = styled.button`
   border: ${({ theme, secondary }) =>
     secondary ? `1px solid ${theme.colors.buttons.primaryBg}` : 'none'};
   outline: none;
-  color: ${({ theme }) => theme.colors.primary};
+  color: ${({ theme }) => theme.colors.primaryBlack};
   background-color: ${({ theme, secondary }) =>
     secondary
       ? theme.colors.buttons.secondaryBg

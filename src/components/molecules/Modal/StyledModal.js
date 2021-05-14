@@ -8,5 +8,10 @@ export const StyledModal = styled(Modal)`
 `;
 
 export const StyledPaper = styled.div`
-  background-color: ${({ theme }) => theme.colors.primary};
+  background-color: ${({ theme }) => theme.colors.primaryWhite};
+  width: 40vw;
+  height: 85vh;
+  outline: none;
+  border-radius: 2.5rem;
+  overflow-y: auto;
 `;

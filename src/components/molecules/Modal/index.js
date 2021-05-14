@@ -3,10 +3,12 @@ import { StyledModal, StyledPaper } from './StyledModal';
 import Backdrop from '@material-ui/core/Backdrop';
 import Fade from '@material-ui/core/Fade';
 import RootContext from '../../../context/RootContext';
+import List from '../List';
+import { listTypes } from '../../../helpers/listTypes';
 
 const Modal = () => {
   const context = useContext(RootContext);
-  const { cartModalOpen, handleCartModalClose } = context;
+  const { cartModalOpen, handleCartModalClose, cart } = context;
 
   return (
     <StyledModal
@@ -23,6 +25,7 @@ const Modal = () => {
       <Fade in={cartModalOpen}>
         <StyledPaper>
           <h2>Your cart</h2>
+          <List array={cart} listType={listTypes.cartList} />
         </StyledPaper>
       </Fade>
     </StyledModal>
