@@ -1,8 +1,8 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { StyledNavigationLink } from './StyledNavigationLink';
 
 const NavigationLink = ({ children, to }) => {
-  return <Link to={to}>{children}</Link>;
+  return <StyledNavigationLink to={to}>{children}</StyledNavigationLink>;
 };
 
 export default NavigationLink;
