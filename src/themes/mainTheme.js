@@ -28,6 +28,21 @@ export const mainTheme = {
     extraBold: 700,
   },
 
+  margins: {
+    bottom: {
+      s: '1rem',
+      l: '2rem',
+      xl: '3rem',
+      xxl: '4rem',
+    },
+    top: {
+      s: '1rem',
+      l: '2rem',
+      xl: '3rem',
+      xxl: '4rem',
+    },
+  },
+
   devices: {
     mobileXs: '320px',
     moblie: '420px',

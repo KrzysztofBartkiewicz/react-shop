@@ -2,10 +2,11 @@ import React from 'react';
 import { listTypes } from '../../../helpers/listTypes';
 import CartProduct from '../CartProduct';
 import Product from '../Product';
+import { StyledList } from './StyledList';
 
 const List = ({ array, listType }) => {
   return (
-    <ul>
+    <StyledList>
       {array.map((item) => (
         <li key={item.id}>
           {listType === listTypes.productsList ? (
@@ -15,7 +16,7 @@ const List = ({ array, listType }) => {
           )}
         </li>
       ))}
-    </ul>
+    </StyledList>
   );
 };
 
