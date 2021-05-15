@@ -5,7 +5,12 @@ import { routes } from '../../../helpers/routes';
 import Button from '../../atoms/Button';
 import Logo from '../../atoms/Logo';
 import NavigationLink from '../../atoms/NavigationLink';
-import { StyledNavbar, StyledNavItem, StyledNavList } from './StyledNavbar';
+import {
+  StyledNavbar,
+  StyledNavButtons,
+  StyledNavListItem,
+  StyledNavList,
+} from './StyledNavbar';
 
 const Navbar = () => {
   const context = useContext(RootContext);
@@ -14,21 +19,25 @@ const Navbar = () => {
     <StyledNavbar>
       <Logo />
       <StyledNavList>
-        <StyledNavItem>
+        <StyledNavListItem>
           <NavigationLink to={routes.home}>Home</NavigationLink>
-        </StyledNavItem>
-        <StyledNavItem>
+        </StyledNavListItem>
+        <StyledNavListItem>
           <NavigationLink to={routes.products}>Products</NavigationLink>
-        </StyledNavItem>
-        <StyledNavItem>
+        </StyledNavListItem>
+        <StyledNavListItem>
           <NavigationLink to={routes.products}>Products2</NavigationLink>
-        </StyledNavItem>
+        </StyledNavListItem>
       </StyledNavList>
-      <Button
-        nav
-        icon={iconsTypes.cart}
-        onClickFn={context.handleCartModalOpen}
-      />
+      <StyledNavButtons>
+        <Button nav icon={iconsTypes.search} />
+        <Button
+          nav
+          icon={iconsTypes.cart}
+          onClickFn={context.handleCartModalOpen}
+        />
+        <Button nav icon={iconsTypes.avatar} />
+      </StyledNavButtons>
     </StyledNavbar>
   );
 };

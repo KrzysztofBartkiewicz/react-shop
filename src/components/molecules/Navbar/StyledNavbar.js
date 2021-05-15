@@ -11,8 +11,12 @@ export const StyledNavList = styled.ul`
   display: flex;
 `;
 
-export const StyledNavItem = styled.li`
+export const StyledNavListItem = styled.li`
   &:not(:last-child) {
     margin-right: 7.2rem;
   }
+`;
+
+export const StyledNavButtons = styled.div`
+  display: flex;
 `;
