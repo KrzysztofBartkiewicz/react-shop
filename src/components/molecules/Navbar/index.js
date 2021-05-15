@@ -3,6 +3,7 @@ import RootContext from '../../../context/RootContext';
 import { iconsTypes } from '../../../helpers/iconsTypes';
 import { routes } from '../../../helpers/routes';
 import Button from '../../atoms/Button';
+import Logo from '../../atoms/Logo';
 import NavigationLink from '../../atoms/NavigationLink';
 import { StyledNavbar } from './StyledNavbar';
 
@@ -11,6 +12,7 @@ const Navbar = () => {
 
   return (
     <StyledNavbar>
+      <Logo />
       <ul>
         <li>
           <NavigationLink to={routes.home}>Home</NavigationLink>

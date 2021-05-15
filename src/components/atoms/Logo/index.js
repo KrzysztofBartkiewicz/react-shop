@@ -1,13 +1,15 @@
 import React from 'react';
 import { iconsTypes } from '../../../helpers/iconsTypes';
+import Heading from '../Heading';
+import { StyledLogo } from './StyledLogo';
 
 const Logo = () => {
   return (
     <StyledLogo>
       <img src={iconsTypes.logo} alt="logo" />
-      <h1>
+      <Heading headingType="h1">
         <span>E-</span>Shop
-      </h1>
+      </Heading>
     </StyledLogo>
   );
 };
