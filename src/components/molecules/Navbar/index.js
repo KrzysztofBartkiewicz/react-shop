@@ -25,8 +25,8 @@ const Navbar = () => {
         </StyledNavItem>
       </StyledNavList>
       <Button
+        nav
         icon={iconsTypes.cart}
-        secondary
         onClickFn={context.handleCartModalOpen}
       />
     </StyledNavbar>
