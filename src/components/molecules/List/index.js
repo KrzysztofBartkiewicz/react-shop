@@ -6,7 +6,7 @@ import { StyledList, StyledListItem } from './StyledList';
 
 const List = ({ array, listType }) => {
   return (
-    <StyledList>
+    <StyledList listType={listType}>
       {array.map((item) => (
         <StyledListItem key={item.id}>
           {listType === listTypes.productsList ? (

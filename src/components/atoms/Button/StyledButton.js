@@ -31,7 +31,18 @@ export const StyledButton = styled.button`
       width: 2.2rem;
       height: 2.2rem;
       background-color: transparent;
+      background-size: 2rem 2rem;
       border-radius: 0;
+    `}
+
+  ${({ menu }) =>
+    menu &&
+    css`
+      width: 1.8rem;
+      height: 1.8rem;
+      background-color: transparent;
+      border-radius: 0;
+      background-size: 1.5rem 1.5rem;
     `}
 
   ${({ icon }) =>

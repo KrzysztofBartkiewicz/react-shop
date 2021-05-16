@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { StyledModal, StyledPaper } from './StyledModal';
+import { StyledModal, StyledPaper, StyledHeading } from './StyledModal';
 import Backdrop from '@material-ui/core/Backdrop';
 import Fade from '@material-ui/core/Fade';
 import RootContext from '../../../context/RootContext';
@@ -24,7 +24,7 @@ const Modal = () => {
     >
       <Fade in={cartModalOpen}>
         <StyledPaper>
-          <h2>Your cart</h2>
+          <StyledHeading headingType="h1">Shopping Cart</StyledHeading>
           <List array={cart} listType={listTypes.cartList} />
         </StyledPaper>
       </Fade>

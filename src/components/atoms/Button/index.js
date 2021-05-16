@@ -7,6 +7,7 @@ const Button = ({
   secondary,
   round,
   nav,
+  menu,
   icon,
   className,
 }) => {
@@ -17,6 +18,7 @@ const Button = ({
       secondary={secondary}
       round={round}
       nav={nav}
+      menu={menu}
       icon={icon}
     >
       {children}
