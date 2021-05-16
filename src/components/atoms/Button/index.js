@@ -1,9 +1,18 @@
 import React from 'react';
 import { StyledButton } from './StyledButton';
 
-const Button = ({ children, onClickFn, secondary, round, nav, icon }) => {
+const Button = ({
+  children,
+  onClickFn,
+  secondary,
+  round,
+  nav,
+  icon,
+  className,
+}) => {
   return (
     <StyledButton
+      className={className}
       onClick={onClickFn}
       secondary={secondary}
       round={round}

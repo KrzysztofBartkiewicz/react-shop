@@ -2,19 +2,19 @@ import React from 'react';
 import { listTypes } from '../../../helpers/listTypes';
 import CartProduct from '../CartProduct';
 import Product from '../Product';
-import { StyledList } from './StyledList';
+import { StyledList, StyledListItem } from './StyledList';
 
 const List = ({ array, listType }) => {
   return (
     <StyledList>
       {array.map((item) => (
-        <li key={item.id}>
+        <StyledListItem key={item.id}>
           {listType === listTypes.productsList ? (
             <Product {...item} />
           ) : (
             <CartProduct {...item} />
           )}
-        </li>
+        </StyledListItem>
       ))}
     </StyledList>
   );
