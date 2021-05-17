@@ -6,14 +6,14 @@ export const StyledButton = styled.button`
   padding: 1.5rem 3rem;
   border-radius: 2.5rem;
   color: ${({ theme }) => theme.colors.primaryBlack};
-  background-color: ${({ theme }) => theme.colors.buttons.primaryBg};
+  background-color: ${({ theme }) => theme.colors.primaryYellow};
   font-weight: ${({ theme }) => theme.fontWeights.bold};
 
   ${({ theme, secondary }) =>
     secondary &&
     css`
       border: 1px solid ${theme.colors.secondary};
-      background-color: ${theme.colors.buttons.secondaryBg};
+      background-color: ${theme.colors.primaryWhite};
     `}
 
   ${({ round }) =>

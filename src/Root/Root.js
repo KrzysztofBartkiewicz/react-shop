@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import RootContext from '../context/RootContext';
 import { productsDataArray } from '../localData/productsDataArray';
 import Router from '../routing/Router';
@@ -8,6 +8,11 @@ const Root = () => {
   const [products, setProducts] = useState([...productsDataArray]);
   const [cartModalOpen, setCartModalOpen] = useState(false);
   const [cart, setCart] = useState([]);
+  const [cartProductsQuantity, setCartProductsQuantity] = useState(0);
+
+  useEffect(() => {
+    changeCartProductsQuantity();
+  }, [cart]);
 
   const handleCartModalOpen = () => {
     setCartModalOpen(true);
@@ -19,22 +24,39 @@ const Root = () => {
 
   const addProductToCart = (productId) => {
     const product = products.find((el) => el.id === productId);
-    product.inCartQuantity = 1;
     setCart((prev) => [...new Set([...prev, product])]);
   };
 
   const deleteProductFromCart = (productId) => {
-    const newCart = cart.filter((el) => el.id !== productId);
+    const newCart = cart.filter((el) => {
+      if (el.id === productId) {
+        el.inCartQuantity = 1;
+      }
+      return el.id !== productId;
+    });
+
     setCart([...newCart]);
   };
 
   const changeCartQuantity = (productId, value) => {
-    if (value === 0) {
-      return;
+    const mappedCart = cart.map((product) => {
+      return product.id === productId
+        ? {
+            ...product,
+            inCartQuantity: value,
+          }
+        : product;
+    });
+
+    setCart([...new Set(mappedCart)]);
+  };
+
+  const changeCartProductsQuantity = () => {
+    let quantity = 0;
+    if (cart.length !== 0) {
+      quantity = cart.reduce((acc, product) => acc + product.inCartQuantity, 0);
     }
-    const newCart = cart;
-    newCart.find((el) => el.id === productId).inCartQuantity = value;
-    setCart([...newCart]);
+    setCartProductsQuantity(quantity);
   };
 
   return (
@@ -43,6 +65,7 @@ const Root = () => {
         products,
         cartModalOpen,
         cart,
+        cartProductsQuantity,
         addProductToCart,
         deleteProductFromCart,
         handleCartModalOpen,

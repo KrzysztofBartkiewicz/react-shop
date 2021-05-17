@@ -10,10 +10,13 @@ import {
   StyledNavButtons,
   StyledNavListItem,
   StyledNavList,
+  StyledButtonWrapper,
+  StyledAmountInfo,
 } from './StyledNavbar';
 
 const Navbar = () => {
   const context = useContext(RootContext);
+  const { cartProductsQuantity } = context;
 
   return (
     <StyledNavbar>
@@ -31,11 +34,18 @@ const Navbar = () => {
       </StyledNavList>
       <StyledNavButtons>
         <Button nav icon={iconsTypes.search} />
-        <Button
-          nav
-          icon={iconsTypes.cart}
-          onClickFn={context.handleCartModalOpen}
-        />
+        <StyledButtonWrapper>
+          <Button
+            nav
+            icon={iconsTypes.cart}
+            onClickFn={context.handleCartModalOpen}
+          />
+          <StyledAmountInfo
+            isVisible={cartProductsQuantity !== 0 && true}
+            value={cartProductsQuantity}
+          />
+        </StyledButtonWrapper>
+
         <Button nav icon={iconsTypes.avatar} />
       </StyledNavButtons>
     </StyledNavbar>

@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import AmountInfo from '../../atoms/AmountInfo';
 
 export const StyledNavbar = styled.nav`
   display: flex;
@@ -19,4 +20,15 @@ export const StyledNavListItem = styled.li`
 
 export const StyledNavButtons = styled.div`
   display: flex;
+`;
+
+export const StyledButtonWrapper = styled.div`
+  position: relative;
+`;
+
+export const StyledAmountInfo = styled(AmountInfo)`
+  position: absolute;
+  right: 1.2rem;
+  bottom: 0;
+  pointer-events: none;
 `;

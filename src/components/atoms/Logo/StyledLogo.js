@@ -9,6 +9,6 @@ export const StyledLogo = styled.div`
   }
 
   span {
-    color: ${({ theme }) => theme.colors.buttons.primaryBg};
+    color: ${({ theme }) => theme.colors.primaryYellow};
   }
 `;

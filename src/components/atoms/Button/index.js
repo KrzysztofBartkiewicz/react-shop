@@ -10,6 +10,7 @@ const Button = ({
   menu,
   icon,
   className,
+  isDisabled = false,
 }) => {
   return (
     <StyledButton
@@ -20,6 +21,7 @@ const Button = ({
       nav={nav}
       menu={menu}
       icon={icon}
+      disabled={isDisabled}
     >
       {children}
     </StyledButton>

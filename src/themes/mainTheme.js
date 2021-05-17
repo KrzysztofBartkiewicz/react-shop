@@ -2,13 +2,9 @@ export const mainTheme = {
   colors: {
     primaryBlack: '#000000',
     primaryWhite: '#fff',
+    primaryYellow: '#FBB03B',
     secondary: '#D8D8D8',
     tertiary: '#808080',
-
-    buttons: {
-      primaryBg: '#FBB03B',
-      secondaryBg: 'white',
-    },
   },
 
   fontSizes: {

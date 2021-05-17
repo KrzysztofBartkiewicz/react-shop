@@ -20,7 +20,7 @@ export const productsDataArray = [
     image: productImg1,
     category: 'pocket',
     // productQuantity: 30,
-    inCartQuantity: 0,
+    inCartQuantity: 1,
     description:
       'Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum, eveniet nesciunt! Maxime error unde corporis laudantium? Nihil, a est! Explicabo?',
   },
@@ -31,7 +31,7 @@ export const productsDataArray = [
     image: productImg2,
     category: 'pocket',
     // productQuantity: 30,
-    inCartQuantity: 0,
+    inCartQuantity: 1,
     description:
       'Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum, eveniet nesciunt! Maxime error unde corporis laudantium? Nihil, a est! Explicabo?',
   },
@@ -42,7 +42,7 @@ export const productsDataArray = [
     image: productImg3,
     category: 'pocket',
     // productQuantity: 30,
-    inCartQuantity: 0,
+    inCartQuantity: 1,
     description:
       'Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum, eveniet nesciunt! Maxime error unde corporis laudantium? Nihil, a est! Explicabo?',
   },
@@ -53,7 +53,7 @@ export const productsDataArray = [
     image: productImg4,
     category: 'pocket',
     // productQuantity: 30,
-    inCartQuantity: 0,
+    inCartQuantity: 1,
     description:
       'Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum, eveniet nesciunt! Maxime error unde corporis laudantium? Nihil, a est! Explicabo?',
   },
@@ -64,7 +64,7 @@ export const productsDataArray = [
     image: productImg5,
     category: 'pocket',
     // productQuantity: 30,
-    inCartQuantity: 0,
+    inCartQuantity: 1,
     description:
       'Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum, eveniet nesciunt! Maxime error unde corporis laudantium? Nihil, a est! Explicabo?',
   },
@@ -75,7 +75,7 @@ export const productsDataArray = [
     image: productImg6,
     category: 'pocket',
     // productQuantity: 30,
-    inCartQuantity: 0,
+    inCartQuantity: 1,
     description:
       'Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum, eveniet nesciunt! Maxime error unde corporis laudantium? Nihil, a est! Explicabo?',
   },
@@ -86,7 +86,7 @@ export const productsDataArray = [
     image: productImg7,
     category: 'pocket',
     // productQuantity: 30,
-    inCartQuantity: 0,
+    inCartQuantity: 1,
     description:
       'Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum, eveniet nesciunt! Maxime error unde corporis laudantium? Nihil, a est! Explicabo?',
   },
@@ -97,7 +97,7 @@ export const productsDataArray = [
     image: productImg8,
     category: 'pocket',
     // productQuantity: 30,
-    inCartQuantity: 0,
+    inCartQuantity: 1,
     description:
       'Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum, eveniet nesciunt! Maxime error unde corporis laudantium? Nihil, a est! Explicabo?',
   },
@@ -108,7 +108,7 @@ export const productsDataArray = [
     image: productImg9,
     category: 'pocket',
     // productQuantity: 30,
-    inCartQuantity: 0,
+    inCartQuantity: 1,
     description:
       'Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum, eveniet nesciunt! Maxime error unde corporis laudantium? Nihil, a est! Explicabo?',
   },
@@ -119,7 +119,7 @@ export const productsDataArray = [
     image: productImg10,
     category: 'pocket',
     // productQuantity: 30,
-    inCartQuantity: 0,
+    inCartQuantity: 1,
     description:
       'Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum, eveniet nesciunt! Maxime error unde corporis laudantium? Nihil, a est! Explicabo?',
   },
@@ -130,7 +130,7 @@ export const productsDataArray = [
     image: productImg11,
     category: 'pocket',
     // productQuantity: 30,
-    inCartQuantity: 0,
+    inCartQuantity: 1,
     description:
       'Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum, eveniet nesciunt! Maxime error unde corporis laudantium? Nihil, a est! Explicabo?',
   },
@@ -141,7 +141,7 @@ export const productsDataArray = [
     image: productImg12,
     category: 'pocket',
     // productQuantity: 30,
-    inCartQuantity: 0,
+    inCartQuantity: 1,
     description:
       'Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum, eveniet nesciunt! Maxime error unde corporis laudantium? Nihil, a est! Explicabo?',
   },
@@ -152,7 +152,7 @@ export const productsDataArray = [
     image: productImg13,
     category: 'pocket',
     // productQuantity: 30,
-    inCartQuantity: 0,
+    inCartQuantity: 1,
     description:
       'Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum, eveniet nesciunt! Maxime error unde corporis laudantium? Nihil, a est! Explicabo?',
   },
