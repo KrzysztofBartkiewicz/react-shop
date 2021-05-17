@@ -13,12 +13,13 @@ const CartProduct = ({ id, name, price, image, inCartQuantity }) => {
   return (
     <StyledCartProduct>
       <StyledImage src={image} alt={name} />
-      <Heading>{name}</Heading>
+      <Heading headingType="h1">{name}</Heading>
       <AmountSelector
         onAddFn={() => changeCartQuantity(id, inCartQuantity + 1)}
         onLessFn={() => changeCartQuantity(id, inCartQuantity - 1)}
         value={inCartQuantity}
       />
+      <Heading headingType="h1">{`${price}$`}</Heading>
       <Button
         onClickFn={() => deleteProductFromCart(id)}
         nav

@@ -38,8 +38,9 @@ export const StyledButton = styled.button`
   ${({ menu }) =>
     menu &&
     css`
-      width: 1.8rem;
-      height: 1.8rem;
+      width: 1rem;
+      height: 1rem;
+      padding: 1rem;
       background-color: transparent;
       border-radius: 0;
       background-size: 1.5rem 1.5rem;

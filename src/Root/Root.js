@@ -30,7 +30,6 @@ const Root = () => {
 
   const changeCartQuantity = (productId, value) => {
     if (value === 0) {
-      deleteProductFromCart(productId);
       return;
     }
     const newCart = cart;
