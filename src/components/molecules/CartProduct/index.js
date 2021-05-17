@@ -3,26 +3,22 @@ import RootContext from '../../../context/RootContext';
 import { iconsTypes } from '../../../helpers/iconsTypes';
 import Button from '../../atoms/Button';
 import Heading from '../../atoms/Heading';
-import Paragraph from '../../atoms/Paragraph';
 import AmountSelector from '../AmountSelector';
-import {
-  StyledCartProduct,
-  StyledImage,
-  StyledImgWrapper,
-} from './StyledCartProduct';
+import { StyledCartProduct, StyledImage } from './StyledCartProduct';
 
 const CartProduct = ({ id, name, price, image, inCartQuantity }) => {
   const context = useContext(RootContext);
-  const { deleteProductFromCart } = context;
+  const { deleteProductFromCart, changeCartQuantity } = context;
 
   return (
     <StyledCartProduct>
-      <StyledImgWrapper>
-        <StyledImage src={image} alt={name} />
-      </StyledImgWrapper>
+      <StyledImage src={image} alt={name} />
       <Heading>{name}</Heading>
-      <AmountSelector value={inCartQuantity} />
-      <Paragraph>{price}</Paragraph>
+      <AmountSelector
+        onAddFn={() => changeCartQuantity(id, inCartQuantity + 1)}
+        onLessFn={() => changeCartQuantity(id, inCartQuantity - 1)}
+        value={inCartQuantity}
+      />
       <Button
         onClickFn={() => deleteProductFromCart(id)}
         nav

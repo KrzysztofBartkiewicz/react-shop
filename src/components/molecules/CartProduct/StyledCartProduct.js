@@ -6,16 +6,12 @@ export const StyledCartProduct = styled.div`
   justify-content: space-between;
   align-items: center;
   width: 100%;
-`;
-
-export const StyledImgWrapper = styled.div`
-  width: 7rem;
-  height: 7rem;
-  border-radius: 50%;
-  overflow: hidden;
+  margin-bottom: 1rem;
 `;
 
 export const StyledImage = styled(Image)`
-  width: 100%;
-  height: auto;
+  width: 7rem;
+  height: 7rem;
+  border-radius: 50%;
+  object-fit: cover;
 `;
