@@ -11,7 +11,7 @@ export const StyledModal = styled(Modal)`
 export const StyledPaper = styled.div`
   padding: 1rem;
   background-color: ${({ theme }) => theme.colors.primaryWhite};
-  width: 40vw;
+  width: 70vw;
   height: 85vh;
   outline: none;
   overflow-y: auto;

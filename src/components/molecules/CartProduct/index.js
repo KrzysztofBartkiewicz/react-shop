@@ -20,7 +20,9 @@ const CartProduct = ({ id, name, price, image, inCartQuantity }) => {
         onLessFn={() => changeCartQuantity(id, inCartQuantity - 1)}
         value={inCartQuantity}
       />
-      <Heading headingType="h1">{`${price * inCartQuantity}$`}</Heading>
+      <Heading headingType="h1">{`${(price * inCartQuantity).toFixed(
+        2
+      )}$`}</Heading>
       <Button
         onClickFn={() => deleteProductFromCart(id)}
         nav

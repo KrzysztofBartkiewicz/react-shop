@@ -11,8 +11,37 @@ const Root = () => {
   const [cartProductsQuantity, setCartProductsQuantity] = useState(0);
 
   useEffect(() => {
-    changeCartProductsQuantity();
+    setCartProductsQuantity(cart.length);
   }, [cart]);
+
+  //-------------------------API-----------------------------------------
+
+  useEffect(() => {
+    fetch('https://fakestoreapi.com/products')
+      .then((res) => res.json())
+      .then((data) => processData(data));
+  }, []);
+
+  const processData = (data) => {
+    const processed = data.map(
+      ({ category, description, id, image, price, title }) => {
+        return {
+          id,
+          price,
+          image,
+          category,
+          description,
+          name: title,
+          productQuantity: 30,
+          inCartQuantity: 1,
+        };
+      }
+    );
+
+    setProducts([...processed]);
+  };
+
+  //--------------------------------------------------------------------------
 
   const handleCartModalOpen = () => {
     setCartModalOpen(true);
@@ -51,13 +80,13 @@ const Root = () => {
     setCart([...new Set(mappedCart)]);
   };
 
-  const changeCartProductsQuantity = () => {
-    let quantity = 0;
-    if (cart.length !== 0) {
-      quantity = cart.reduce((acc, product) => acc + product.inCartQuantity, 0);
-    }
-    setCartProductsQuantity(quantity);
-  };
+  // const changeCartProductsQuantity = () => {
+  //   let quantity = 0;
+  //   if (cart.length !== 0) {
+  //     quantity = cart.reduce((acc, product) => acc + product.inCartQuantity, 0);
+  //   }
+  //   setCartProductsQuantity(quantity);
+  // };
 
   return (
     <RootContext.Provider
