@@ -1,6 +1,5 @@
 import React from 'react';
 import Button from '../../atoms/Button';
-import Paragraph from '../../atoms/Paragraph';
 import { iconsTypes } from '../../../helpers/iconsTypes';
 import { StyledAmountSelector, StyledParagraph } from './StyledAmountSelector';
 

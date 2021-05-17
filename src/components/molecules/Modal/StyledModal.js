@@ -15,6 +15,15 @@ export const StyledPaper = styled.div`
   height: 85vh;
   outline: none;
   overflow-y: auto;
+  &::-webkit-scrollbar {
+    width: 1.5rem;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: lightgray;
+    border-radius: 1rem;
+    border: 0.3rem solid transparent;
+    background-clip: content-box;
+  }
 `;
 
 export const StyledHeading = styled(Heading)`
