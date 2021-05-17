@@ -8,11 +8,5 @@ export const StyledAmountInfo = styled.div`
   border-radius: 50%;
   background-color: ${({ theme }) => theme.colors.primaryYellow};
   text-align: center;
-  display: none;
-
-  ${({ isVisible }) =>
-    isVisible &&
-    css`
-      display: block;
-    `}
+  display: ${({ isVisible }) => (isVisible ? 'block' : 'none')};
 `;

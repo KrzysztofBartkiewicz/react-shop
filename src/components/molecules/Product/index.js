@@ -7,14 +7,19 @@ import { StyledButton, StyledImgWrapper, StyledProduct } from './StyledProduct';
 
 const Product = ({ id, name, image, price }) => {
   const context = useContext(RootContext);
-  const { addProductToCart } = context;
+  const { addProductToCart, deleteProductFromCart, cart } = context;
+
+  const isInCart = cart.some((product) => product.id === id);
+
   return (
     <StyledProduct>
       <StyledImgWrapper>
         <Image src={image} alt={name} />
         <StyledButton
-          onClickFn={() => addProductToCart(id)}
-          secondary
+          onClickFn={() =>
+            isInCart ? deleteProductFromCart(id) : addProductToCart(id)
+          }
+          secondary={!isInCart}
           round
           icon={iconsTypes.cart}
         />
