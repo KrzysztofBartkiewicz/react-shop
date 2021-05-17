@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import AmountInfo from '../../atoms/AmountInfo';
+import NotificationCount from '../../atoms/NotificationCount';
 
 export const StyledNavbar = styled.nav`
   display: flex;
@@ -26,7 +26,7 @@ export const StyledButtonWrapper = styled.div`
   position: relative;
 `;
 
-export const StyledAmountInfo = styled(AmountInfo)`
+export const StyledNotificationCount = styled(NotificationCount)`
   position: absolute;
   right: 1.2rem;
   bottom: 0;

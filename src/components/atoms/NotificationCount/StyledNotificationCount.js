@@ -1,6 +1,6 @@
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 
-export const StyledAmountInfo = styled.div`
+export const StyledNotificationCount = styled.div`
   width: 1.8rem;
   height: 1.8rem;
   padding-top: 0.2rem;

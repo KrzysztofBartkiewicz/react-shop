@@ -11,7 +11,7 @@ import {
   StyledNavListItem,
   StyledNavList,
   StyledButtonWrapper,
-  StyledAmountInfo,
+  StyledNotificationCount,
 } from './StyledNavbar';
 
 const Navbar = () => {
@@ -40,7 +40,7 @@ const Navbar = () => {
             icon={iconsTypes.cart}
             onClickFn={context.handleCartModalOpen}
           />
-          <StyledAmountInfo
+          <StyledNotificationCount
             isVisible={cartProductsQuantity !== 0 && true}
             value={cartProductsQuantity}
           />
