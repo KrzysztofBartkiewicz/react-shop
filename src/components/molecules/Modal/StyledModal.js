@@ -29,3 +29,15 @@ export const StyledPaper = styled.div`
 export const StyledHeading = styled(Heading)`
   margin-bottom: 3rem;
 `;
+
+export const StyledCartHead = styled.div`
+  display: grid;
+  grid-template-columns: 3fr 1fr 2fr 1fr 1fr;
+  align-items: center;
+  justify-items: center;
+  margin-bottom: 2rem;
+  & > *:first-child {
+    justify-self: start;
+    margin-left: 6rem;
+  }
+`;
