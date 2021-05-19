@@ -12,11 +12,28 @@ const Root = () => {
   const [cartModalOpen, setCartModalOpen] = useState(false);
   const [cart, setCart] = useState(getCartFromLS());
   const [cartProductsQuantity, setCartProductsQuantity] = useState(0);
+  const [cartTotalPrice, setCartTotalPrice] = useState(0);
+
+  //filters states:
+  const [productCategory, setProductCategory] = useState('all');
+
+  const handleProductCategoryChange = (e) => {
+    setProductCategory(e.target.value);
+  };
 
   useEffect(() => {
     setCartProductsQuantity(cart.length);
     saveCartInLS();
+    countTotalPrice();
   }, [cart]);
+
+  const countTotalPrice = () => {
+    const total = cart.reduce(
+      (sum, product) => sum + product.price * product.inCartQuantity,
+      0
+    );
+    setCartTotalPrice(total);
+  };
 
   //-------------------------API-----------------------------------------
 
@@ -84,13 +101,13 @@ const Root = () => {
     setCart([...new Set(mappedCart)]);
   };
 
-  const changeCartProductsQuantity = () => {
-    let quantity = 0;
-    if (cart.length !== 0) {
-      quantity = cart.reduce((acc, product) => acc + product.inCartQuantity, 0);
-    }
-    setCartProductsQuantity(quantity);
-  };
+  // const changeCartProductsQuantity = () => {
+  //   let quantity = 0;
+  //   if (cart.length !== 0) {
+  //     quantity = cart.reduce((acc, product) => acc + product.inCartQuantity, 0);
+  //   }
+  //   setCartProductsQuantity(quantity);
+  // };
 
   return (
     <RootContext.Provider
@@ -99,6 +116,9 @@ const Root = () => {
         cartModalOpen,
         cart,
         cartProductsQuantity,
+        cartTotalPrice,
+        productCategory,
+        handleProductCategoryChange,
         addProductToCart,
         deleteProductFromCart,
         handleCartModalOpen,

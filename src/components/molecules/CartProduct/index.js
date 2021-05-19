@@ -11,7 +11,7 @@ const CartProduct = ({ id, name, price, image, inCartQuantity, category }) => {
   const context = useContext(RootContext);
   const { deleteProductFromCart, changeCartQuantity } = context;
 
-  const totalPrice = (price * inCartQuantity).toFixed(2);
+  const totalProductPrice = (price * inCartQuantity).toFixed(2);
 
   return (
     <StyledCartProduct>
@@ -23,7 +23,7 @@ const CartProduct = ({ id, name, price, image, inCartQuantity, category }) => {
         onLessFn={() => changeCartQuantity(id, inCartQuantity - 1)}
         value={inCartQuantity}
       />
-      <Heading headingType="h2">{totalPrice}</Heading>
+      <Heading headingType="h2">{totalProductPrice}</Heading>
       <Button
         onClickFn={() => deleteProductFromCart(id)}
         nav

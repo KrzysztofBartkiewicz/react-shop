@@ -14,7 +14,7 @@ import Heading from '../../atoms/Heading';
 
 const Modal = () => {
   const context = useContext(RootContext);
-  const { cartModalOpen, handleCartModalClose, cart } = context;
+  const { cartModalOpen, handleCartModalClose, cart, cartTotalPrice } = context;
 
   return (
     <StyledModal
@@ -46,6 +46,9 @@ const Modal = () => {
             </Heading>
           </StyledCartHead>
           <List array={cart} listType={listTypes.cartList} />
+          {cartTotalPrice !== 0 ? (
+            <Heading headingType="h1">{cartTotalPrice}</Heading>
+          ) : null}
         </StyledPaper>
       </Fade>
     </StyledModal>

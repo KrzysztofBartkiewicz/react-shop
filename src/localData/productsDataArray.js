@@ -95,7 +95,7 @@ export const productsDataArray = [
     name: 'Eighth',
     price: 11500,
     image: productImg8,
-    category: 'pocket',
+    category: 'hand',
     // productQuantity: 30,
     inCartQuantity: 1,
     description:
@@ -106,7 +106,7 @@ export const productsDataArray = [
     name: 'Ninth',
     price: 600,
     image: productImg9,
-    category: 'pocket',
+    category: 'hand',
     // productQuantity: 30,
     inCartQuantity: 1,
     description:
@@ -117,7 +117,7 @@ export const productsDataArray = [
     name: 'Tenth',
     price: 1220,
     image: productImg10,
-    category: 'pocket',
+    category: 'hand',
     // productQuantity: 30,
     inCartQuantity: 1,
     description:
