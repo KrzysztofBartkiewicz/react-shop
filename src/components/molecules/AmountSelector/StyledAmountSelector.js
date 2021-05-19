@@ -12,6 +12,6 @@ export const StyledAmountSelector = styled.div`
 `;
 
 export const StyledParagraph = styled(Paragraph)`
-  width: 2rem;
+  flex-basis: 2rem;
   text-align: center;
 `;
