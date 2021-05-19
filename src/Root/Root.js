@@ -5,13 +5,17 @@ import Router from '../routing/Router';
 import GlobalStylesTemplate from '../templates/GlobalStylesTemplate';
 
 const Root = () => {
+  const saveCartInLS = () => localStorage.setItem('cart', JSON.stringify(cart));
+  const getCartFromLS = () => JSON.parse(localStorage.getItem('cart'));
+
   const [products, setProducts] = useState([...productsDataArray]);
   const [cartModalOpen, setCartModalOpen] = useState(false);
-  const [cart, setCart] = useState([]);
+  const [cart, setCart] = useState(getCartFromLS());
   const [cartProductsQuantity, setCartProductsQuantity] = useState(0);
 
   useEffect(() => {
     setCartProductsQuantity(cart.length);
+    saveCartInLS();
   }, [cart]);
 
   //-------------------------API-----------------------------------------
