@@ -5,13 +5,20 @@ import Select from '../../molecules/Select';
 
 const FIlterMenu = () => {
   const context = useContext(RootContext);
+  const { productCategory, handleProductCategoryChange } = context;
+
   const productCategories = [
     'all',
     ...new Set(productsDataArray.map((product) => product.category)),
   ];
+
   return (
     <>
-      <Select optionArray={productCategories} />
+      <Select
+        optionArray={productCategories}
+        onChangeFn={handleProductCategoryChange}
+        selectValue={productCategory}
+      />
     </>
   );
 };

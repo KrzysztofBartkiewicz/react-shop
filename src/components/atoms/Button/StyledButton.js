@@ -3,8 +3,8 @@ import styled, { css } from 'styled-components';
 export const StyledButton = styled.button`
   border: none;
   outline: none;
-  padding: 1.5rem 3rem;
-  border-radius: 2.5rem;
+  padding: ${({ theme }) => theme.paddings.primary};
+  border-radius: ${({ theme }) => theme.borderRadiuses.primary};
   color: ${({ theme }) => theme.colors.primaryBlack};
   background-color: ${({ theme }) => theme.colors.primaryYellow};
   font-weight: ${({ theme }) => theme.fontWeights.bold};

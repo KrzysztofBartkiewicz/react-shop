@@ -27,6 +27,21 @@ const Root = () => {
     countTotalPrice();
   }, [cart]);
 
+  useEffect(() => {
+    filterProductsByCategory();
+  }, [productCategory]);
+
+  const filterProductsByCategory = () => {
+    if (productCategory === 'all') {
+      setProducts([...productsDataArray]);
+      return;
+    }
+    const filteredProducts = productsDataArray.filter(
+      (product) => product.category === productCategory
+    );
+    setProducts([...filteredProducts]);
+  };
+
   const countTotalPrice = () => {
     const total = cart.reduce(
       (sum, product) => sum + product.price * product.inCartQuantity,

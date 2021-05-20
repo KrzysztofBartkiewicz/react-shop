@@ -6,6 +6,7 @@ import avataricon from '../assets/icons/avatar.svg';
 import plusIcon from '../assets/icons/plus.svg';
 import minusIcon from '../assets/icons/remove.svg';
 import cancelIcon from '../assets/icons/cancel.svg';
+import arrowDownIcon from '../assets/icons/arrow-down.svg';
 
 export const iconsTypes = {
   heart: heartIcon,
@@ -16,4 +17,5 @@ export const iconsTypes = {
   plus: plusIcon,
   minus: minusIcon,
   cancel: cancelIcon,
+  arrowDown: arrowDownIcon,
 };

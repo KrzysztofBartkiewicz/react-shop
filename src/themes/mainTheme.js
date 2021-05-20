@@ -1,3 +1,5 @@
+import { css } from 'styled-components';
+
 export const mainTheme = {
   colors: {
     primaryBlack: '#000000',
@@ -24,23 +26,24 @@ export const mainTheme = {
     extraBold: 700,
   },
 
-  margins: {
-    bottom: {
-      s: '1rem',
-      l: '2rem',
-      xl: '3rem',
-      xxl: '4rem',
-    },
-    top: {
-      s: '1rem',
-      l: '2rem',
-      xl: '3rem',
-      xxl: '4rem',
-    },
+  borderRadiuses: {
+    primary: '2.5rem',
+  },
+
+  paddings: {
+    primary: '1.5rem 2.5rem',
   },
 
   devices: {
     mobileXs: '320px',
     moblie: '420px',
   },
+};
+
+export const mixins = {
+  baseShape: css`
+    border: 1px solid ${mainTheme.colors.secondary};
+    border-radius: 2.5rem;
+    padding: 1.5rem 3rem;
+  `,
 };
