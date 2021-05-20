@@ -1,10 +1,10 @@
 import React from 'react';
 import { StyledInput } from './StyledInput';
 
-const Input = ({ onChangeFn, value, placeholder }) => {
+const Input = ({ type = 'text', onChangeFn, value, placeholder }) => {
   return (
     <StyledInput
-      type="text"
+      type={type}
       onChange={onChangeFn}
       value={value}
       placeholder={placeholder}

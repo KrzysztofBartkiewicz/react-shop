@@ -16,6 +16,13 @@ const Modal = () => {
   const context = useContext(RootContext);
   const { cartModalOpen, handleCartModalClose, cart, cartTotalPrice } = context;
 
+  const renderTotalPrice = () => (
+    <Heading headingType="h1">
+      <span style={{ fontWeight: '400' }}>Total cost: </span>
+      {cartTotalPrice}$
+    </Heading>
+  );
+
   return (
     <StyledModal
       aria-labelledby="transition-MaterialModal-title"
@@ -46,9 +53,7 @@ const Modal = () => {
             </Heading>
           </StyledCartHead>
           <List array={cart} listType={listTypes.cartList} />
-          {cartTotalPrice !== 0 ? (
-            <Heading headingType="h1">{cartTotalPrice}</Heading>
-          ) : null}
+          {cartTotalPrice !== 0 ? renderTotalPrice() : null}
         </StyledPaper>
       </Fade>
     </StyledModal>

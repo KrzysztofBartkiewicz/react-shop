@@ -25,6 +25,7 @@ const Product = ({ id, name, image, price }) => {
         />
       </StyledImgWrapper>
       <Heading headingType="h2">{name}</Heading>
+      <Heading headingType="h3">{price}$</Heading>
     </StyledProduct>
   );
 };

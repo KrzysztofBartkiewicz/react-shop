@@ -16,9 +16,14 @@ const Root = () => {
 
   //filters states:
   const [productCategory, setProductCategory] = useState('all');
+  const [productNameInput, setProductNameInput] = useState('');
 
   const handleProductCategoryChange = (e) => {
     setProductCategory(e.target.value);
+  };
+
+  const handleProductNameInputChange = (e) => {
+    setProductNameInput(e.target.value);
   };
 
   useEffect(() => {
@@ -27,20 +32,62 @@ const Root = () => {
     countTotalPrice();
   }, [cart]);
 
-  useEffect(() => {
-    filterProductsByCategory();
-  }, [productCategory]);
+  // useEffect(() => {
+  //   filterProductsByCategory();
+  // }, [productCategory]);
 
-  const filterProductsByCategory = () => {
-    if (productCategory === 'all') {
-      setProducts([...productsDataArray]);
-      return;
+  // useEffect(() => {
+  //   filterProductsbyName();
+  // }, [productNameInput]);
+
+  useEffect(() => {
+    filterProducts();
+  }, [productCategory, productNameInput]);
+
+  const filterProducts = () => {
+    let tempProducts = [...productsDataArray];
+
+    if (productNameInput.length !== 0) {
+      tempProducts = tempProducts.filter(
+        (product) =>
+          product.name.toLowerCase().slice(0, productNameInput.length) ===
+          productNameInput.toLowerCase()
+      );
     }
-    const filteredProducts = productsDataArray.filter(
-      (product) => product.category === productCategory
-    );
-    setProducts([...filteredProducts]);
+
+    if (productCategory !== 'all') {
+      tempProducts = tempProducts.filter(
+        (product) => product.category === productCategory
+      );
+    }
+
+    setProducts([...tempProducts]);
   };
+
+  // const filterProductsByCategory = () => {
+  //   if (productCategory === 'all') {
+  //     setProducts([...productsDataArray]);
+  //     return;
+  //   }
+  //   const filteredProducts = productsDataArray.filter(
+  //     (product) => product.category === productCategory
+  //   );
+  //   setProducts([...filteredProducts]);
+  // };
+
+  // const filterProductsbyName = () => {
+  //   if (productNameInput.length !== 0) {
+  //     const filtered = productsDataArray.filter(
+  //       (product) =>
+  //         product.name.toLowerCase().slice(0, productNameInput.length) ===
+  //         productNameInput.toLowerCase()
+  //     );
+
+  //     setProducts([...filtered]);
+  //   } else {
+  //     setProducts([...productsDataArray]);
+  //   }
+  // };
 
   const countTotalPrice = () => {
     const total = cart.reduce(
@@ -133,7 +180,9 @@ const Root = () => {
         cartProductsQuantity,
         cartTotalPrice,
         productCategory,
+        productNameInput,
         handleProductCategoryChange,
+        handleProductNameInputChange,
         addProductToCart,
         deleteProductFromCart,
         handleCartModalOpen,

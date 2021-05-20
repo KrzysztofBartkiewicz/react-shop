@@ -4,9 +4,9 @@ import CartProduct from '../CartProduct';
 import Product from '../Product';
 import { StyledList, StyledListItem } from './StyledList';
 
-const List = ({ array, listType }) => {
+const List = ({ array, listType, className }) => {
   return (
-    <StyledList listType={listType}>
+    <StyledList className={className} listType={listType}>
       {array.map((item) => (
         <StyledListItem key={item.id}>
           {listType === listTypes.productsList ? (
