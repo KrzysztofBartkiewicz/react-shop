@@ -7,13 +7,18 @@ export const StyledList = styled.ul`
   ${({ listType }) =>
     listType === listTypes.productsList &&
     css`
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      grid-column-gap: 2rem;
-      grid-row-gap: 4rem;
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
     `}
 `;
 
 export const StyledListItem = styled.li`
-  align-self: end;
+  ${({ listType }) =>
+    listType === listTypes.productsList &&
+    css`
+      padding: 0.5rem;
+      display: flex;
+      align-items: flex-end;
+    `}
 `;

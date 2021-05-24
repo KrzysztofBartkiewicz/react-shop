@@ -8,7 +8,7 @@ const List = ({ array, listType, className }) => {
   return (
     <StyledList className={className} listType={listType}>
       {array.map((item) => (
-        <StyledListItem key={item.id}>
+        <StyledListItem key={item.id} listType={listType}>
           {listType === listTypes.productsList ? (
             <Product {...item} />
           ) : (

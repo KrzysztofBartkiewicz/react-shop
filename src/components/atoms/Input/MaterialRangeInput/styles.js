@@ -5,6 +5,7 @@ import { mainTheme } from '../../../../themes/mainTheme';
 export const useStyles = makeStyles((theme) => ({
   root: {
     width: 200 + theme.spacing(3) * 2,
+    margin: '0 auto',
   },
   margin: {
     height: theme.spacing(3),
@@ -17,11 +18,11 @@ export const PrettoSlider = withStyles({
     height: 8,
   },
   thumb: {
-    height: 24,
-    width: 24,
+    height: 15,
+    width: 15,
     backgroundColor: '#fff',
     border: '2px solid currentColor',
-    marginTop: -8,
+    marginTop: -6,
     marginLeft: -12,
     '&:focus, &:hover, &$active': {
       boxShadow: 'inherit',
@@ -29,15 +30,14 @@ export const PrettoSlider = withStyles({
   },
   active: {},
   valueLabel: {
-    left: 'calc(-50% + 4px)',
-    fontSize: '12px',
+    fontSize: '10px',
   },
   track: {
-    height: 8,
+    height: 4,
     borderRadius: 4,
   },
   rail: {
-    height: 8,
+    height: 4,
     borderRadius: 4,
   },
 })(Slider);

@@ -7,20 +7,22 @@ export const StyledProducts = styled.div`
   width: 80%;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  justify-content: center;
+  grid-template-columns: repeat(auto-fill, 10rem);
+  grid-template-rows: min-content minmax(30rem, auto) min-content;
 `;
 
 export const StyledProductsHeading = styled(Heading)`
-  grid-column: 1 / span 5;
-  margin-bottom: 2rem;
   text-align: center;
+  grid-column: 1 / -1;
+  grid-row: 1;
 `;
 
 export const StyledFilterMenu = styled(FIlterMenu)`
-  grid-column: 1 / span 1;
+  grid-column: 1 / span 3;
+  grid-row: 2;
 `;
 
 export const StyledList = styled(List)`
-  grid-column: 2 / span 4;
+  grid-column: 4 / -1;
+  grid-row: 2 / -1;
 `;
