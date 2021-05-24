@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import RootContext from '../../../context/RootContext';
 import { productsDataArray } from '../../../localData/productsDataArray';
-import Input from '../../atoms/Input';
+import Input from '../../atoms/Input/CustomInput';
 import MaterialRangeInput from '../../atoms/Input/MaterialRangeInput';
 import Select from '../../molecules/Select';
 
@@ -13,12 +13,20 @@ const FIlterMenu = ({ className }) => {
     productNameInput,
     handleProductCategoryChange,
     handleProductNameInputChange,
+    handleProductPriceChange,
   } = context;
 
   const productCategories = [
     'all',
     ...new Set(productsDataArray.map((product) => product.category)),
   ];
+
+  const minPrice = Math.min(
+    ...productsDataArray.map((product) => product.price)
+  );
+  const maxPrice = Math.max(
+    ...productsDataArray.map((product) => product.price)
+  );
 
   return (
     <div className={className}>
@@ -34,7 +42,11 @@ const FIlterMenu = ({ className }) => {
         selectValue={productCategory}
       />
 
-      <MaterialRangeInput />
+      <MaterialRangeInput
+        min={minPrice}
+        max={maxPrice}
+        onChangeCommittedFn={handleProductPriceChange}
+      />
     </div>
   );
 };

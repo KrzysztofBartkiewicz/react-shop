@@ -28,7 +28,7 @@ export const StyledButtonWrapper = styled.div`
 
 export const StyledNotificationCount = styled(NotificationCount)`
   position: absolute;
-  right: 1.2rem;
-  bottom: 0;
+  right: 0.8rem;
+  bottom: 1rem;
   pointer-events: none;
 `;

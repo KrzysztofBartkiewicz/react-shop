@@ -1,11 +1,8 @@
-import React from 'react';
-import PropTypes from 'prop-types';
 import { withStyles, makeStyles } from '@material-ui/core/styles';
 import Slider from '@material-ui/core/Slider';
-import Tooltip from '@material-ui/core/Tooltip';
-import Typography from '@material-ui/core/Typography';
+import { mainTheme } from '../../../../themes/mainTheme';
 
-const useStyles = makeStyles((theme) => ({
+export const useStyles = makeStyles((theme) => ({
   root: {
     width: 200 + theme.spacing(3) * 2,
   },
@@ -14,9 +11,9 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const PrettoSlider = withStyles({
+export const PrettoSlider = withStyles({
   root: {
-    color: 'black',
+    color: mainTheme.colors.tertiary,
     height: 8,
   },
   thumb: {
@@ -44,19 +41,3 @@ const PrettoSlider = withStyles({
     borderRadius: 4,
   },
 })(Slider);
-
-const MaterialRangeInput = () => {
-  const classes = useStyles();
-
-  return (
-    <div className={classes.root}>
-      <PrettoSlider
-        valueLabelDisplay="auto"
-        aria-label="pretto slider"
-        defaultValue={20}
-      />
-    </div>
-  );
-};
-
-export default MaterialRangeInput;

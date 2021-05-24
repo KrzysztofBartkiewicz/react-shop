@@ -16,7 +16,7 @@ export const productsDataArray = [
   {
     id: 1,
     name: 'First',
-    price: 1200,
+    price: 120,
     image: productImg1,
     category: 'pocket',
     // productQuantity: 30,
@@ -27,7 +27,7 @@ export const productsDataArray = [
   {
     id: 2,
     name: 'Second',
-    price: 1200,
+    price: 200,
     image: productImg2,
     category: 'pocket',
     // productQuantity: 30,
@@ -38,7 +38,7 @@ export const productsDataArray = [
   {
     id: 3,
     name: 'Third',
-    price: 1400,
+    price: 500,
     image: productImg3,
     category: 'pocket',
     // productQuantity: 30,
@@ -60,7 +60,7 @@ export const productsDataArray = [
   {
     id: 5,
     name: 'Fifth',
-    price: 1300,
+    price: 900,
     image: productImg5,
     category: 'pocket',
     // productQuantity: 30,
@@ -93,7 +93,7 @@ export const productsDataArray = [
   {
     id: 8,
     name: 'Eighth',
-    price: 11500,
+    price: 1200,
     image: productImg8,
     category: 'hand',
     // productQuantity: 30,
@@ -104,7 +104,7 @@ export const productsDataArray = [
   {
     id: 9,
     name: 'Ninth',
-    price: 600,
+    price: 2000,
     image: productImg9,
     category: 'hand',
     // productQuantity: 30,
@@ -115,7 +115,7 @@ export const productsDataArray = [
   {
     id: 10,
     name: 'Tenth',
-    price: 1220,
+    price: 2200,
     image: productImg10,
     category: 'hand',
     // productQuantity: 30,
@@ -126,7 +126,7 @@ export const productsDataArray = [
   {
     id: 11,
     name: 'Eleventh',
-    price: 1600,
+    price: 2200,
     image: productImg11,
     category: 'pocket',
     // productQuantity: 30,
@@ -137,7 +137,7 @@ export const productsDataArray = [
   {
     id: 12,
     name: 'Twelfth',
-    price: 1990,
+    price: 2350,
     image: productImg12,
     category: 'pocket',
     // productQuantity: 30,
@@ -148,7 +148,7 @@ export const productsDataArray = [
   {
     id: 13,
     name: 'Thirteenth',
-    price: 1250,
+    price: 3000,
     image: productImg13,
     category: 'pocket',
     // productQuantity: 30,

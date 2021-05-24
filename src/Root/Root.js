@@ -17,6 +17,7 @@ const Root = () => {
   //filters states:
   const [productCategory, setProductCategory] = useState('all');
   const [productNameInput, setProductNameInput] = useState('');
+  const [productPrice, setProductPrice] = useState(0);
 
   const handleProductCategoryChange = (e) => {
     setProductCategory(e.target.value);
@@ -24,6 +25,10 @@ const Root = () => {
 
   const handleProductNameInputChange = (e) => {
     setProductNameInput(e.target.value);
+  };
+
+  const handleProductPriceChange = (undefined, value) => {
+    setProductPrice(value);
   };
 
   useEffect(() => {
@@ -42,7 +47,7 @@ const Root = () => {
 
   useEffect(() => {
     filterProducts();
-  }, [productCategory, productNameInput]);
+  }, [productCategory, productNameInput, productPrice]);
 
   const filterProducts = () => {
     let tempProducts = [...productsDataArray];
@@ -58,6 +63,12 @@ const Root = () => {
     if (productCategory !== 'all') {
       tempProducts = tempProducts.filter(
         (product) => product.category === productCategory
+      );
+    }
+
+    if (productPrice !== 0) {
+      tempProducts = tempProducts.filter(
+        (product) => product.price >= productPrice
       );
     }
 
@@ -183,6 +194,7 @@ const Root = () => {
         productNameInput,
         handleProductCategoryChange,
         handleProductNameInputChange,
+        handleProductPriceChange,
         addProductToCart,
         deleteProductFromCart,
         handleCartModalOpen,

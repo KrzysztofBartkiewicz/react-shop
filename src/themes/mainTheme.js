@@ -31,7 +31,7 @@ export const mainTheme = {
   },
 
   paddings: {
-    primary: '1.5rem 2.5rem',
+    primary: '1.2rem 2.5rem',
   },
 
   devices: {
