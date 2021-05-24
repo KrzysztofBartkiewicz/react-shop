@@ -1,19 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import RootContext from '../context/RootContext';
+import useLocalStorage from '../hooks/useLocalStorage';
 import useMinMaxPrice from '../hooks/useMinMaxPrice';
 import { productsDataArray } from '../localData/productsDataArray';
 import Router from '../routing/Router';
 import GlobalStylesTemplate from '../templates/GlobalStylesTemplate';
 
 const Root = () => {
-  const saveCartInLS = () => localStorage.setItem('cart', JSON.stringify(cart));
-  const getCartFromLS = () => JSON.parse(localStorage.getItem('cart'));
-
+  const [localStorageCart, saveLocalStorageCart] = useLocalStorage();
   const [min, max] = useMinMaxPrice();
 
   const [products, setProducts] = useState([...productsDataArray]);
   const [cartModalOpen, setCartModalOpen] = useState(false);
-  const [cart, setCart] = useState(getCartFromLS());
+  const [cart, setCart] = useState(localStorageCart);
   const [cartProductsQuantity, setCartProductsQuantity] = useState(0);
   const [cartTotalPrice, setCartTotalPrice] = useState(0);
 
@@ -24,7 +23,7 @@ const Root = () => {
 
   useEffect(() => {
     setCartProductsQuantity(cart.length);
-    saveCartInLS();
+    saveLocalStorageCart(cart);
     countTotalPrice();
   }, [cart]);
 
