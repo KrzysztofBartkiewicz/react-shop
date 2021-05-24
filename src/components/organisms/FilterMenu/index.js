@@ -4,6 +4,7 @@ import { productsDataArray } from '../../../localData/productsDataArray';
 import Input from '../../atoms/Input/CustomInput';
 import MaterialRangeInput from '../../atoms/Input/MaterialRangeInput';
 import Select from '../../molecules/Select';
+import useMinMaxPrice from '../../../hooks/useMinMaxPrice';
 
 const FIlterMenu = ({ className }) => {
   const context = useContext(RootContext);
@@ -21,12 +22,7 @@ const FIlterMenu = ({ className }) => {
     ...new Set(productsDataArray.map((product) => product.category)),
   ];
 
-  const minPrice = Math.min(
-    ...productsDataArray.map((product) => product.price)
-  );
-  const maxPrice = Math.max(
-    ...productsDataArray.map((product) => product.price)
-  );
+  const [min, max] = useMinMaxPrice();
 
   return (
     <div className={className}>
@@ -43,8 +39,8 @@ const FIlterMenu = ({ className }) => {
       />
 
       <MaterialRangeInput
-        min={minPrice}
-        max={maxPrice}
+        min={min}
+        max={max}
         onChangeCommittedFn={handleProductPriceChange}
       />
     </div>

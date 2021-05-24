@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import RootContext from '../context/RootContext';
+import useMinMaxPrice from '../hooks/useMinMaxPrice';
 import { productsDataArray } from '../localData/productsDataArray';
 import Router from '../routing/Router';
 import GlobalStylesTemplate from '../templates/GlobalStylesTemplate';
@@ -7,6 +8,8 @@ import GlobalStylesTemplate from '../templates/GlobalStylesTemplate';
 const Root = () => {
   const saveCartInLS = () => localStorage.setItem('cart', JSON.stringify(cart));
   const getCartFromLS = () => JSON.parse(localStorage.getItem('cart'));
+
+  const [min, max] = useMinMaxPrice();
 
   const [products, setProducts] = useState([...productsDataArray]);
   const [cartModalOpen, setCartModalOpen] = useState(false);
@@ -17,7 +20,17 @@ const Root = () => {
   //filters states:
   const [productCategory, setProductCategory] = useState('all');
   const [productNameInput, setProductNameInput] = useState('');
-  const [productPrice, setProductPrice] = useState(0);
+  const [productPriceRange, setProductPriceRange] = useState([min, max]);
+
+  useEffect(() => {
+    setCartProductsQuantity(cart.length);
+    saveCartInLS();
+    countTotalPrice();
+  }, [cart]);
+
+  useEffect(() => {
+    filterProducts();
+  }, [productCategory, productNameInput, productPriceRange]);
 
   const handleProductCategoryChange = (e) => {
     setProductCategory(e.target.value);
@@ -27,27 +40,9 @@ const Root = () => {
     setProductNameInput(e.target.value);
   };
 
-  const handleProductPriceChange = (undefined, value) => {
-    setProductPrice(value);
+  const handleProductPriceChange = (value) => {
+    setProductPriceRange(value);
   };
-
-  useEffect(() => {
-    setCartProductsQuantity(cart.length);
-    saveCartInLS();
-    countTotalPrice();
-  }, [cart]);
-
-  // useEffect(() => {
-  //   filterProductsByCategory();
-  // }, [productCategory]);
-
-  // useEffect(() => {
-  //   filterProductsbyName();
-  // }, [productNameInput]);
-
-  useEffect(() => {
-    filterProducts();
-  }, [productCategory, productNameInput, productPrice]);
 
   const filterProducts = () => {
     let tempProducts = [...productsDataArray];
@@ -66,39 +61,14 @@ const Root = () => {
       );
     }
 
-    if (productPrice !== 0) {
-      tempProducts = tempProducts.filter(
-        (product) => product.price >= productPrice
-      );
-    }
+    tempProducts = tempProducts.filter(
+      (product) =>
+        product.price >= productPriceRange[0] &&
+        product.price <= productPriceRange[1]
+    );
 
     setProducts([...tempProducts]);
   };
-
-  // const filterProductsByCategory = () => {
-  //   if (productCategory === 'all') {
-  //     setProducts([...productsDataArray]);
-  //     return;
-  //   }
-  //   const filteredProducts = productsDataArray.filter(
-  //     (product) => product.category === productCategory
-  //   );
-  //   setProducts([...filteredProducts]);
-  // };
-
-  // const filterProductsbyName = () => {
-  //   if (productNameInput.length !== 0) {
-  //     const filtered = productsDataArray.filter(
-  //       (product) =>
-  //         product.name.toLowerCase().slice(0, productNameInput.length) ===
-  //         productNameInput.toLowerCase()
-  //     );
-
-  //     setProducts([...filtered]);
-  //   } else {
-  //     setProducts([...productsDataArray]);
-  //   }
-  // };
 
   const countTotalPrice = () => {
     const total = cart.reduce(
@@ -107,35 +77,6 @@ const Root = () => {
     );
     setCartTotalPrice(total);
   };
-
-  //-------------------------API-----------------------------------------
-
-  // useEffect(() => {
-  //   fetch('https://fakestoreapi.com/products')
-  //     .then((res) => res.json())
-  //     .then((data) => processData(data));
-  // }, []);
-
-  // const processData = (data) => {
-  //   const processed = data.map(
-  //     ({ category, description, id, image, price, title }) => {
-  //       return {
-  //         id,
-  //         price,
-  //         image,
-  //         category,
-  //         description,
-  //         name: title,
-  //         productQuantity: 30,
-  //         inCartQuantity: 1,
-  //       };
-  //     }
-  //   );
-
-  //   setProducts([...processed]);
-  // };
-
-  //--------------------------------------------------------------------------
 
   const handleCartModalOpen = () => {
     setCartModalOpen(true);
@@ -174,14 +115,6 @@ const Root = () => {
     setCart([...new Set(mappedCart)]);
   };
 
-  // const changeCartProductsQuantity = () => {
-  //   let quantity = 0;
-  //   if (cart.length !== 0) {
-  //     quantity = cart.reduce((acc, product) => acc + product.inCartQuantity, 0);
-  //   }
-  //   setCartProductsQuantity(quantity);
-  // };
-
   return (
     <RootContext.Provider
       value={{
@@ -210,3 +143,32 @@ const Root = () => {
 };
 
 export default Root;
+
+//-------------------------API-----------------------------------------
+
+// useEffect(() => {
+//   fetch('https://fakestoreapi.com/products')
+//     .then((res) => res.json())
+//     .then((data) => processData(data));
+// }, []);
+
+// const processData = (data) => {
+//   const processed = data.map(
+//     ({ category, description, id, image, price, title }) => {
+//       return {
+//         id,
+//         price,
+//         image,
+//         category,
+//         description,
+//         name: title,
+//         productQuantity: 30,
+//         inCartQuantity: 1,
+//       };
+//     }
+//   );
+
+//   setProducts([...processed]);
+// };
+
+//--------------------------------------------------------------------------
