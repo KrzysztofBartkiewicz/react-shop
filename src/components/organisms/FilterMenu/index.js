@@ -19,7 +19,6 @@ const FIlterMenu = ({ className }) => {
     productNameInput,
     handleProductCategoryChange,
     handleProductNameInputChange,
-    handleProductPriceChange,
   } = context;
 
   const productCategories = [
@@ -55,11 +54,7 @@ const FIlterMenu = ({ className }) => {
         <StyledParagraph weight="bold" size="xxs">
           Price
         </StyledParagraph>
-        <MaterialRangeInput
-          min={min}
-          max={max}
-          onChangeCommittedFn={handleProductPriceChange}
-        />
+        <MaterialRangeInput min={min} max={max} />
       </StyledFilterWrapper>
     </StyledFilterMenu>
   );

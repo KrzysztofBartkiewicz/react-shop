@@ -5,10 +5,10 @@ import useMinMaxPrice from '../hooks/useMinMaxPrice';
 import { productsDataArray } from '../localData/productsDataArray';
 import Router from '../routing/Router';
 import GlobalStylesTemplate from '../templates/GlobalStylesTemplate';
+import swal from '@sweetalert/with-react';
 
 const Root = () => {
   const [localStorageCart, saveLocalStorageCart] = useLocalStorage();
-  const [min, max] = useMinMaxPrice();
 
   const [products, setProducts] = useState([...productsDataArray]);
   const [cartModalOpen, setCartModalOpen] = useState(false);
@@ -19,7 +19,7 @@ const Root = () => {
   //filters states:
   const [productCategory, setProductCategory] = useState('all');
   const [productNameInput, setProductNameInput] = useState('');
-  const [productPriceRange, setProductPriceRange] = useState([min, max]);
+  const [productPriceRange, setProductPriceRange] = useState(useMinMaxPrice());
 
   useEffect(() => {
     setCartProductsQuantity(cart.length);
@@ -88,6 +88,7 @@ const Root = () => {
   const addProductToCart = (productId) => {
     const product = products.find((el) => el.id === productId);
     setCart((prev) => [...new Set([...prev, product])]);
+    swal('Cart', 'Product added!', 'success');
   };
 
   const deleteProductFromCart = (productId) => {
@@ -124,6 +125,7 @@ const Root = () => {
         cartTotalPrice,
         productCategory,
         productNameInput,
+        productPriceRange,
         handleProductCategoryChange,
         handleProductNameInputChange,
         handleProductPriceChange,
