@@ -27,7 +27,8 @@ export const StyledPaper = styled.div`
 `;
 
 export const StyledHeading = styled(Heading)`
-  margin-bottom: 3rem;
+  padding-left: 2rem;
+  margin: 3rem 0;
 `;
 
 export const StyledCartHead = styled.div`
@@ -40,4 +41,10 @@ export const StyledCartHead = styled.div`
     justify-self: start;
     margin-left: 6rem;
   }
+`;
+
+export const StyledSummaryWrapper = styled.div`
+  padding: 2rem 8rem;
+  display: flex;
+  justify-content: flex-end;
 `;

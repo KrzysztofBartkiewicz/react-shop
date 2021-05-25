@@ -4,6 +4,7 @@ import {
   StyledPaper,
   StyledHeading,
   StyledCartHead,
+  StyledSummaryWrapper,
 } from './StyledModal';
 import Backdrop from '@material-ui/core/Backdrop';
 import Fade from '@material-ui/core/Fade';
@@ -53,7 +54,9 @@ const Modal = () => {
             </Paragraph>
           </StyledCartHead>
           <List array={cart} listType={listTypes.cartList} />
-          {cartTotalPrice !== 0 ? renderTotalPrice() : null}
+          <StyledSummaryWrapper>
+            {cartTotalPrice !== 0 ? renderTotalPrice() : null}
+          </StyledSummaryWrapper>
         </StyledPaper>
       </Fade>
     </StyledModal>
