@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import Heading from '../../atoms/Heading';
+import Paragraph from '../../atoms/Paragraph';
 
 export const StyledCartProduct = styled.div`
   display: grid;
@@ -10,7 +10,7 @@ export const StyledCartProduct = styled.div`
   margin-bottom: 1rem;
 `;
 
-export const StyledProductName = styled(Heading)`
+export const StyledParagraph = styled(Paragraph)`
   justify-self: start;
   margin-left: 1rem;
 `;

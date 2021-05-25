@@ -3,6 +3,9 @@ import {
   StyledHeadingH1,
   StyledHeadingH2,
   StyledHeadingH3,
+  StyledHeadingH4,
+  StyledHeadingH5,
+  StyledHeadingH6,
 } from './StyledHeading';
 
 const Heading = ({ headingType, children, className, secondary }) => {
@@ -19,6 +22,24 @@ const Heading = ({ headingType, children, className, secondary }) => {
           <StyledHeadingH2 className={className} secondary={secondary}>
             {children}
           </StyledHeadingH2>
+        );
+      case 'h4':
+        return (
+          <StyledHeadingH4 className={className} secondary={secondary}>
+            {children}
+          </StyledHeadingH4>
+        );
+      case 'h5':
+        return (
+          <StyledHeadingH5 className={className} secondary={secondary}>
+            {children}
+          </StyledHeadingH5>
+        );
+      case 'h6':
+        return (
+          <StyledHeadingH6 className={className} secondary={secondary}>
+            {children}
+          </StyledHeadingH6>
         );
 
       default:

@@ -2,10 +2,10 @@ import React, { useContext } from 'react';
 import RootContext from '../../../context/RootContext';
 import { iconsTypes } from '../../../helpers/iconsTypes';
 import Button from '../../atoms/Button';
-import Heading from '../../atoms/Heading';
 import Image from '../../atoms/Image';
+import Paragraph from '../../atoms/Paragraph';
 import AmountSelector from '../AmountSelector';
-import { StyledCartProduct, StyledProductName } from './StyledCartProduct';
+import { StyledCartProduct, StyledParagraph } from './StyledCartProduct';
 
 const CartProduct = ({ id, name, price, image, inCartQuantity, category }) => {
   const context = useContext(RootContext);
@@ -16,14 +16,14 @@ const CartProduct = ({ id, name, price, image, inCartQuantity, category }) => {
   return (
     <StyledCartProduct>
       <Image src={image} alt={name} cartImg />
-      <StyledProductName headingType="h2">{name}</StyledProductName>
-      <Heading>{category}</Heading>
+      <StyledParagraph weight="bold">{name}</StyledParagraph>
+      <Paragraph>{category}</Paragraph>
       <AmountSelector
         onAddFn={() => changeCartQuantity(id, inCartQuantity + 1)}
         onLessFn={() => changeCartQuantity(id, inCartQuantity - 1)}
         value={inCartQuantity}
       />
-      <Heading headingType="h2">{totalProductPrice}</Heading>
+      <Paragraph>{totalProductPrice}</Paragraph>
       <Button
         onClickFn={() => deleteProductFromCart(id)}
         nav

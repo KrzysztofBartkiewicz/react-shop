@@ -13,7 +13,7 @@ const Products = () => {
 
   return (
     <StyledProducts>
-      <StyledProductsHeading headingType="h1">Products</StyledProductsHeading>
+      <StyledProductsHeading headingType="h5">Products</StyledProductsHeading>
       <StyledFilterMenu />
       <StyledList array={context.products} listType={listTypes.productsList} />
     </StyledProducts>

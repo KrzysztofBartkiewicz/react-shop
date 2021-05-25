@@ -7,8 +7,8 @@ import Input from '../../atoms/Input/CustomInput';
 import useMinMaxPrice from '../../../hooks/useMinMaxPrice';
 import {
   StyledFilterMenu,
-  StyledHeading,
-  StyledMenuHeading,
+  StyledFilterWrapper,
+  StyledParagraph,
 } from './StyledFilterMenu';
 
 const FIlterMenu = ({ className }) => {
@@ -31,25 +31,36 @@ const FIlterMenu = ({ className }) => {
 
   return (
     <StyledFilterMenu className={className}>
-      <StyledMenuHeading headingType="h2">Filter by:</StyledMenuHeading>
-      <StyledHeading>Name</StyledHeading>
-      <Input
-        placeholder="search products..."
-        value={productNameInput}
-        onChangeFn={handleProductNameInputChange}
-      />
-      <StyledHeading>Category</StyledHeading>
-      <Select
-        optionArray={productCategories}
-        onChangeFn={handleProductCategoryChange}
-        selectValue={productCategory}
-      />
-      <StyledHeading>Price</StyledHeading>
-      <MaterialRangeInput
-        min={min}
-        max={max}
-        onChangeCommittedFn={handleProductPriceChange}
-      />
+      <StyledFilterWrapper>
+        <StyledParagraph weight="bold" size="xxs">
+          Name
+        </StyledParagraph>
+        <Input
+          placeholder="search products..."
+          value={productNameInput}
+          onChangeFn={handleProductNameInputChange}
+        />
+      </StyledFilterWrapper>
+      <StyledFilterWrapper>
+        <StyledParagraph weight="bold" size="xxs">
+          Category
+        </StyledParagraph>
+        <Select
+          optionArray={productCategories}
+          onChangeFn={handleProductCategoryChange}
+          selectValue={productCategory}
+        />
+      </StyledFilterWrapper>
+      <StyledFilterWrapper>
+        <StyledParagraph weight="bold" size="xxs">
+          Price
+        </StyledParagraph>
+        <MaterialRangeInput
+          min={min}
+          max={max}
+          onChangeCommittedFn={handleProductPriceChange}
+        />
+      </StyledFilterWrapper>
     </StyledFilterMenu>
   );
 };

@@ -1,8 +1,8 @@
 import React, { useContext } from 'react';
 import RootContext from '../../../context/RootContext';
 import { iconsTypes } from '../../../helpers/iconsTypes';
-import Heading from '../../atoms/Heading';
 import Image from '../../atoms/Image';
+import Paragraph from '../../atoms/Paragraph';
 import { StyledButton, StyledImgWrapper, StyledProduct } from './StyledProduct';
 
 const Product = ({ id, name, image, price }) => {
@@ -24,8 +24,10 @@ const Product = ({ id, name, image, price }) => {
           icon={iconsTypes.cart}
         />
       </StyledImgWrapper>
-      <Heading headingType="h2">{name}</Heading>
-      <Heading headingType="h3">{price}$</Heading>
+      <Paragraph size="xxs">{name}</Paragraph>
+      <Paragraph size="xs" weight="bold">
+        {price}$
+      </Paragraph>
     </StyledProduct>
   );
 };

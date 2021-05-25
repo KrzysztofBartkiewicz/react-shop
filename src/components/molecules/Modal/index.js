@@ -10,17 +10,17 @@ import Fade from '@material-ui/core/Fade';
 import RootContext from '../../../context/RootContext';
 import List from '../List';
 import { listTypes } from '../../../helpers/listTypes';
-import Heading from '../../atoms/Heading';
+import Paragraph from '../../atoms/Paragraph';
 
 const Modal = () => {
   const context = useContext(RootContext);
   const { cartModalOpen, handleCartModalClose, cart, cartTotalPrice } = context;
 
   const renderTotalPrice = () => (
-    <Heading headingType="h1">
-      <span style={{ fontWeight: '400' }}>Total cost: </span>
+    <Paragraph weight="bold">
+      <span style={{ fontWeight: '300' }}>Total cost: </span>
       {cartTotalPrice}$
-    </Heading>
+    </Paragraph>
   );
 
   return (
@@ -37,20 +37,20 @@ const Modal = () => {
     >
       <Fade in={cartModalOpen}>
         <StyledPaper>
-          <StyledHeading headingType="h1">Shopping Cart</StyledHeading>
+          <StyledHeading headingType="h6">Shopping Cart</StyledHeading>
           <StyledCartHead>
-            <Heading secondary headingType="h2">
+            <Paragraph secondary size="xs">
               Product
-            </Heading>
-            <Heading secondary headingType="h2">
+            </Paragraph>
+            <Paragraph secondary size="xs">
               Category
-            </Heading>
-            <Heading secondary headingType="h2">
+            </Paragraph>
+            <Paragraph secondary size="xs">
               Amount
-            </Heading>
-            <Heading secondary headingType="h2">
+            </Paragraph>
+            <Paragraph secondary size="xs">
               Price
-            </Heading>
+            </Paragraph>
           </StyledCartHead>
           <List array={cart} listType={listTypes.cartList} />
           {cartTotalPrice !== 0 ? renderTotalPrice() : null}

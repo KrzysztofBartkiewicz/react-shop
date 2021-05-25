@@ -10,12 +10,15 @@ export const mainTheme = {
   },
 
   fontSizes: {
-    xs: '0.8rem',
-    s: '1rem',
-    l: '1.2rem',
-    xl: '1.4rem',
-    xxl: '1.6rem',
-    big: '1.9rem',
+    xxs: '1.2rem',
+    xs: '1.4rem',
+    s: '1.6rem',
+    l: '2rem',
+    xl: '2.4rem',
+    xxl: '3.4rem',
+    xl2: '2.5rem',
+    xl3: '3rem',
+    xl4: '6.6rem',
   },
 
   fontWeights: {

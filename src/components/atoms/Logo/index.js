@@ -7,7 +7,7 @@ const Logo = () => {
   return (
     <StyledLogo>
       <img src={iconsTypes.logo} alt="logo" />
-      <Heading headingType="h1">
+      <Heading headingType="h6">
         <span>E-</span>Shop
       </Heading>
     </StyledLogo>
