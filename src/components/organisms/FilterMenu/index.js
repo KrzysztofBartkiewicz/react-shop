@@ -5,11 +5,8 @@ import MaterialRangeInput from '../../atoms/Input/MaterialRangeInput';
 import Select from '../../molecules/Select';
 import Input from '../../atoms/Input/CustomInput';
 import useMinMaxPrice from '../../../hooks/useMinMaxPrice';
-import {
-  StyledFilterMenu,
-  StyledFilterWrapper,
-  StyledParagraph,
-} from './StyledFilterMenu';
+import FilterBlock from '../../molecules/FilterBlock';
+import { StyledFilterMenu } from './StyledFilterMenu';
 
 const FIlterMenu = ({ className }) => {
   const context = useContext(RootContext);
@@ -30,32 +27,23 @@ const FIlterMenu = ({ className }) => {
 
   return (
     <StyledFilterMenu className={className}>
-      <StyledFilterWrapper>
-        <StyledParagraph weight="bold" size="xxs">
-          Name
-        </StyledParagraph>
+      <FilterBlock headingText="Name">
         <Input
           placeholder="search products..."
           value={productNameInput}
           onChangeFn={handleProductNameInputChange}
         />
-      </StyledFilterWrapper>
-      <StyledFilterWrapper>
-        <StyledParagraph weight="bold" size="xxs">
-          Category
-        </StyledParagraph>
+      </FilterBlock>
+      <FilterBlock headingText="Category">
         <Select
           optionArray={productCategories}
           onChangeFn={handleProductCategoryChange}
           selectValue={productCategory}
         />
-      </StyledFilterWrapper>
-      <StyledFilterWrapper>
-        <StyledParagraph weight="bold" size="xxs">
-          Price
-        </StyledParagraph>
+      </FilterBlock>
+      <FilterBlock headingText="Price">
         <MaterialRangeInput min={min} max={max} />
-      </StyledFilterWrapper>
+      </FilterBlock>
     </StyledFilterMenu>
   );
 };
