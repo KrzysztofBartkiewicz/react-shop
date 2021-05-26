@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import { routes } from '../helpers/routes';
 import NavigationTemplate from '../templates/NavigationTemplate';
+import Contact from '../views/Contact';
 import Home from '../views/Home';
 import Products from '../views/Products';
 
@@ -12,6 +13,7 @@ const Router = () => {
         <Switch>
           <Route exact path={routes.home} component={Home} />
           <Route path={routes.products} component={Products} />
+          <Route path={routes.contact} component={Contact} />
         </Switch>
       </NavigationTemplate>
     </BrowserRouter>

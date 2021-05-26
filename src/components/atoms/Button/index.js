@@ -3,6 +3,7 @@ import { StyledButton } from './StyledButton';
 
 const Button = ({
   children,
+  type = 'button',
   onClickFn,
   secondary,
   round,
@@ -22,6 +23,7 @@ const Button = ({
       menu={menu}
       icon={icon}
       disabled={isDisabled}
+      type={type}
     >
       {children}
     </StyledButton>

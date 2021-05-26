@@ -29,7 +29,7 @@ const Navbar = () => {
           <NavigationLink to={routes.products}>Products</NavigationLink>
         </StyledNavListItem>
         <StyledNavListItem>
-          <NavigationLink to={routes.products}>Products2</NavigationLink>
+          <NavigationLink to={routes.contact}>Contact</NavigationLink>
         </StyledNavListItem>
       </StyledNavList>
       <StyledNavButtons>

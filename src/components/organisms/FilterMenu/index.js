@@ -3,20 +3,15 @@ import RootContext from '../../../context/RootContext';
 import { productsDataArray } from '../../../localData/productsDataArray';
 import MaterialRangeInput from '../../atoms/Input/MaterialRangeInput';
 import Select from '../../molecules/Select';
-import Input from '../../atoms/Input/CustomInput';
 import useMinMaxPrice from '../../../hooks/useMinMaxPrice';
 import FilterBlock from '../../molecules/FilterBlock';
 import { StyledFilterMenu } from './StyledFilterMenu';
+import FilterProductByName from '../../molecules/FilterProductByName';
 
 const FIlterMenu = ({ className }) => {
   const context = useContext(RootContext);
 
-  const {
-    productCategory,
-    productNameInput,
-    handleProductCategoryChange,
-    handleProductNameInputChange,
-  } = context;
+  const { productCategory, handleProductCategoryChange } = context;
 
   const productCategories = [
     'all',
@@ -27,13 +22,7 @@ const FIlterMenu = ({ className }) => {
 
   return (
     <StyledFilterMenu className={className}>
-      <FilterBlock headingText="Name">
-        <Input
-          placeholder="search products..."
-          value={productNameInput}
-          onChangeFn={handleProductNameInputChange}
-        />
-      </FilterBlock>
+      <FilterProductByName />
       <FilterBlock headingText="Category">
         <Select
           optionArray={productCategories}
