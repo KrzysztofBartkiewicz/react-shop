@@ -1,0 +1,20 @@
+.title {
+  font-size: 3rem;
+}
+
+.text {
+  padding: 0;
+  font-size: 1.5rem;
+}
+
+.confirmBtn {
+  width: 80%;
+  margin: 2rem 0;
+  padding: 1.2rem 2.5rem;
+  border-radius: 2.5rem;
+  border: none;
+  color: black;
+  background-color: #fbb03b;
+  outline: none;
+  font-weight: bold;
+}

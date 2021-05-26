@@ -5,7 +5,7 @@ import useMinMaxPrice from '../hooks/useMinMaxPrice';
 import { productsDataArray } from '../localData/productsDataArray';
 import Router from '../routing/Router';
 import GlobalStylesTemplate from '../templates/GlobalStylesTemplate';
-import swal from '@sweetalert/with-react';
+import swalAlert from '../utils/sweetalert2';
 
 const Root = () => {
   const [localStorageCart, saveLocalStorageCart] = useLocalStorage();
@@ -88,7 +88,7 @@ const Root = () => {
   const addProductToCart = (productId) => {
     const product = products.find((el) => el.id === productId);
     setCart((prev) => [...new Set([...prev, product])]);
-    swal('Cart', 'Product added!', 'success');
+    swalAlert();
   };
 
   const deleteProductFromCart = (productId) => {

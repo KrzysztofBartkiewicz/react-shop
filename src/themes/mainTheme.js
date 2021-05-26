@@ -1,5 +1,3 @@
-import { css } from 'styled-components';
-
 export const mainTheme = {
   colors: {
     primaryBlack: '#000000',
@@ -41,12 +39,4 @@ export const mainTheme = {
     mobileXs: '320px',
     moblie: '420px',
   },
-};
-
-export const mixins = {
-  baseShape: css`
-    border: 1px solid ${mainTheme.colors.secondary};
-    border-radius: 2.5rem;
-    padding: 1.5rem 3rem;
-  `,
 };

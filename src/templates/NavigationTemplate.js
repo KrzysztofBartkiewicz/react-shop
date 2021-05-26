@@ -1,6 +1,6 @@
 import React from 'react';
-import Modal from '../components/molecules/Modal';
 import Navbar from '../components/molecules/Navbar';
+import Modal from '../components/molecules/Modal';
 
 const NavigationTemplate = ({ children }) => {
   return (

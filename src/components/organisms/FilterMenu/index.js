@@ -63,8 +63,8 @@ const FIlterMenu = ({ className }) => {
 export default FIlterMenu;
 
 // Input types:
-{
-  /* <input type="text" />
+// {
+/* <input type="text" />
 <input type="search" />
 <input type="number" />
 <input type="password" />
@@ -75,4 +75,4 @@ export default FIlterMenu;
 <input type="file" />
 <input type="radio" />
 <input type="button" /> */
-}
+// }

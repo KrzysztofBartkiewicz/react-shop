@@ -13,7 +13,7 @@ const MaterialRangeInput = ({ min, max }) => {
         value={productPriceRange}
         min={min}
         max={max}
-        onChange={(undefined, value) => handleProductPriceChange(value)}
+        onChange={(event, value) => handleProductPriceChange(value)}
         valueLabelDisplay="auto"
         aria-label="pretto slider"
       />
