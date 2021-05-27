@@ -8,7 +8,8 @@ const Contact = () => {
   return (
     <StyledContact>
       <Heading headingType="h6">Contact</Heading>
-      <SignUpForm />
+      {/* <SignUpForm /> */}
+      <ContactForm />
     </StyledContact>
   );
 };

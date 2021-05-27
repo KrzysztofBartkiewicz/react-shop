@@ -5,6 +5,7 @@ import Input from '../../../atoms/Input/CustomInput';
 import Textarea from '../../../atoms/Textarea';
 import Paragraph from '../../../atoms/Paragraph';
 import Button from '../../../atoms/Button';
+import emailjs from 'emailjs-com';
 
 const contactValidSchema = Yup.object().shape({
   nameAndSurname: Yup.string()
@@ -28,6 +29,19 @@ const ContactForm = () => {
       }}
       validationSchema={contactValidSchema}
       onSubmit={(values, { resetForm }) => {
+        emailjs
+          .send(
+            process.env.REACT_APP_SERVICE_ID,
+            process.env.REACT_APP_TEMPLATE_ID,
+            values,
+            process.env.REACT_APP_USER_ID
+          )
+          .then((res) => {
+            console.log(res);
+            alert('EMAIL SENT');
+          })
+          .catch((err) => console.log(err));
+
         resetForm();
       }}
     >

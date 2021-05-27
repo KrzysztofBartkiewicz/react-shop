@@ -16,12 +16,7 @@ const FormInput = ({ label, name, type, value, onChangeFn, errorMsg }) => {
         value={value}
         onChangeFn={onChangeFn}
       />
-      <StyledLabel
-        className="mylabel"
-        type={type}
-        htmlFor={name}
-        secondary={type !== 'checkbox'}
-      >
+      <StyledLabel type={type} htmlFor={name} secondary={type !== 'checkbox'}>
         {label}
       </StyledLabel>
       {errorMsg ? (
