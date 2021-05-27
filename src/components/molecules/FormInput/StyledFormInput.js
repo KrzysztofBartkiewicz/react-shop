@@ -3,7 +3,7 @@ import Input from '../../atoms/Input/CustomInput';
 import Label from '../../atoms/Label';
 
 export const StyledFormInput = styled.div`
-  margin: 3rem 0;
+  margin: 2rem 0;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -39,7 +39,7 @@ export const StyledInput = styled(Input)`
     type !== 'checkbox' &&
     css`
       & ~ ${StyledLabel} {
-        transform: translate(-1rem, -3.3rem) scale(0.9);
+        transform: translate(-1rem, -3.1rem) scale(0.85);
       }
     `}
 
@@ -47,7 +47,7 @@ export const StyledInput = styled(Input)`
     type !== 'checkbox' &&
     css`
       &:focus ~ ${StyledLabel} {
-        transform: translate(-1rem, -3.3rem) scale(0.9);
+        transform: translate(-1rem, -3.1rem) scale(0.85);
       }
     `}
 
@@ -60,7 +60,6 @@ export const StyledInput = styled(Input)`
 `;
 
 export const StyledErrorMsg = styled.div`
-  height: 1.5rem;
   margin: 0.5rem 0 0 1rem;
   color: red;
   font-size: ${({ theme }) => theme.fontSizes.xxs};

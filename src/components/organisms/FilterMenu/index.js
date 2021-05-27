@@ -1,38 +1,15 @@
-import React, { useContext } from 'react';
-import RootContext from '../../../context/RootContext';
-import { productsDataArray } from '../../../localData/productsDataArray';
-import MaterialRangeInput from '../../atoms/Input/MaterialRangeInput';
-import Select from '../../molecules/Select';
-import useMinMaxPrice from '../../../hooks/useMinMaxPrice';
-import FilterBlock from '../../molecules/FilterBlock';
+import React from 'react';
+import FilterProductByCategory from '../../molecules/FilterBlocks/FilterProductByCategory';
 import { StyledFilterMenu } from './StyledFilterMenu';
-import FilterProductByName from '../../molecules/FilterProductByName';
+import FilterProductByName from '../../molecules/FilterBlocks/FilterProductByName';
+import FilterProductByPrice from '../../molecules/FilterBlocks/FilterProductByPrice';
 
 const FIlterMenu = ({ className }) => {
-  const context = useContext(RootContext);
-
-  const { productCategory, handleProductCategoryChange } = context;
-
-  const productCategories = [
-    'all',
-    ...new Set(productsDataArray.map((product) => product.category)),
-  ];
-
-  const [min, max] = useMinMaxPrice();
-
   return (
     <StyledFilterMenu className={className}>
       <FilterProductByName />
-      <FilterBlock headingText="Category">
-        <Select
-          optionArray={productCategories}
-          onChangeFn={handleProductCategoryChange}
-          selectValue={productCategory}
-        />
-      </FilterBlock>
-      <FilterBlock headingText="Price">
-        <MaterialRangeInput min={min} max={max} />
-      </FilterBlock>
+      <FilterProductByCategory />
+      <FilterProductByPrice />
     </StyledFilterMenu>
   );
 };

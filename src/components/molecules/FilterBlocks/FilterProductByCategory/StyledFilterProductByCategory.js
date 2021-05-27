@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import Paragraph from '../../atoms/Paragraph';
+import Paragraph from '../../../atoms/Paragraph';
 
 export const StyledFilterWrapper = styled.div`
   padding: 2.4rem 3.1rem;

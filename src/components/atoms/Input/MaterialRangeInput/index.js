@@ -1,19 +1,16 @@
-import React, { useContext } from 'react';
-import RootContext from '../../../../context/RootContext';
+import React from 'react';
 import { useStyles, PrettoSlider } from './styles';
 
-const MaterialRangeInput = ({ min, max }) => {
+const MaterialRangeInput = ({ min, max, value, onChangeFn }) => {
   const classes = useStyles();
-  const context = useContext(RootContext);
-  const { handleProductPriceChange, productPriceRange } = context;
 
   return (
     <div className={classes.root}>
       <PrettoSlider
-        value={productPriceRange}
+        value={value}
         min={min}
         max={max}
-        onChange={(event, value) => handleProductPriceChange(value)}
+        onChange={(event, value) => onChangeFn(value)}
         valueLabelDisplay="auto"
         aria-label="pretto slider"
       />
