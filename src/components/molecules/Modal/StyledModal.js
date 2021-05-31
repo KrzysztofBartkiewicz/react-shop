@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import Modal from '@material-ui/core/Modal';
 import Heading from '../../atoms/Heading';
+import Paragraph from '../../atoms/Paragraph';
 
 export const StyledModal = styled(Modal)`
   display: flex;
@@ -47,4 +48,12 @@ export const StyledSummaryWrapper = styled.div`
   padding: 2rem 8rem;
   display: flex;
   justify-content: flex-end;
+  align-items: center;
+`;
+
+export const StyledParagraph = styled(Paragraph)`
+  margin-right: 3rem;
+  & span {
+    font-weight: ${({ theme }) => theme.fontWeights.light};
+  }
 `;

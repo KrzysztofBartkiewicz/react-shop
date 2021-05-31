@@ -1,6 +1,5 @@
 import React, { useContext } from 'react';
 import RootContext from '../../../../context/RootContext';
-import { productsDataArray } from '../../../../localData/productsDataArray';
 import Select from '../../../molecules/Select';
 import {
   StyledFilterWrapper,
@@ -10,11 +9,12 @@ import {
 const FilterProductByCategory = () => {
   const context = useContext(RootContext);
 
-  const { productCategory, handleProductCategoryChange } = context;
+  const { initialProducts, productCategory, handleProductCategoryChange } =
+    context;
 
   const productCategories = [
     'all',
-    ...new Set(productsDataArray.map((product) => product.category)),
+    ...new Set(initialProducts.map((product) => product.category)),
   ];
 
   return (

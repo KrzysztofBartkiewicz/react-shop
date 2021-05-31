@@ -5,23 +5,28 @@ import {
   StyledHeading,
   StyledCartHead,
   StyledSummaryWrapper,
+  StyledParagraph,
 } from './StyledModal';
+import { listTypes } from '../../../helpers/listTypes';
 import Backdrop from '@material-ui/core/Backdrop';
 import Fade from '@material-ui/core/Fade';
 import RootContext from '../../../context/RootContext';
 import List from '../List';
-import { listTypes } from '../../../helpers/listTypes';
 import Paragraph from '../../atoms/Paragraph';
+import Button from '../../atoms/Button';
 
 const Modal = () => {
   const context = useContext(RootContext);
   const { cartModalOpen, handleCartModalClose, cart, cartTotalPrice } = context;
 
-  const renderTotalPrice = () => (
-    <Paragraph weight="bold">
-      <span style={{ fontWeight: '300' }}>Total cost: </span>
-      {cartTotalPrice}$
-    </Paragraph>
+  const renderCheckout = () => (
+    <>
+      <StyledParagraph weight="bold">
+        <span>Total cost: </span>
+        {cartTotalPrice}$
+      </StyledParagraph>
+      <Button>CHECKOUT</Button>
+    </>
   );
 
   return (
@@ -55,7 +60,7 @@ const Modal = () => {
           </StyledCartHead>
           <List array={cart} listType={listTypes.cartList} />
           <StyledSummaryWrapper>
-            {cartTotalPrice !== 0 ? renderTotalPrice() : null}
+            {cartTotalPrice !== 0 ? renderCheckout() : null}
           </StyledSummaryWrapper>
         </StyledPaper>
       </Fade>

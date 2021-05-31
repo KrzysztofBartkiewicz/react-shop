@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
+import { client } from '../contentful/client';
 import RootContext from '../context/RootContext';
 import useLocalStorage from '../hooks/useLocalStorage';
-import useMinMaxPrice from '../hooks/useMinMaxPrice';
-import { productsDataArray } from '../localData/productsDataArray';
 import Router from '../routing/Router';
 import GlobalStylesTemplate from '../templates/GlobalStylesTemplate';
 import swalAlert from '../utils/sweetalert2';
@@ -10,7 +9,8 @@ import swalAlert from '../utils/sweetalert2';
 const Root = () => {
   const [localStorageCart, saveLocalStorageCart] = useLocalStorage();
 
-  const [products, setProducts] = useState([...productsDataArray]);
+  const [products, setProducts] = useState([]);
+  const [initialProducts, setInitialProducts] = useState([]);
   const [cartModalOpen, setCartModalOpen] = useState(false);
   const [cart, setCart] = useState(localStorageCart);
   const [cartProductsQuantity, setCartProductsQuantity] = useState(0);
@@ -19,7 +19,36 @@ const Root = () => {
   //filters states:
   const [productCategory, setProductCategory] = useState('all');
   const [productNameInput, setProductNameInput] = useState('');
-  const [productPriceRange, setProductPriceRange] = useState(useMinMaxPrice());
+  const [productPriceRange, setProductPriceRange] = useState([0, 3000]);
+
+  const setContentfulData = (data) => {
+    const formatedData = data.map((item) => {
+      const id = item.sys.id;
+      const image = item.fields.image.fields.file.url;
+
+      return {
+        ...item.fields,
+        id,
+        image,
+      };
+    });
+
+    setInitialProducts([...formatedData]);
+    setProducts([...formatedData]);
+  };
+
+  const getContentfulData = () => {
+    client
+      .getEntries({
+        content_type: 'product',
+      })
+      .then((res) => setContentfulData(res.items))
+      .catch((err) => console.log(err));
+  };
+
+  useEffect(() => {
+    getContentfulData();
+  }, []);
 
   useEffect(() => {
     setCartProductsQuantity(cart.length);
@@ -44,7 +73,7 @@ const Root = () => {
   };
 
   const filterProducts = () => {
-    let tempProducts = [...productsDataArray];
+    let tempProducts = [...initialProducts];
 
     if (productNameInput.length !== 0) {
       tempProducts = tempProducts.filter(
@@ -119,6 +148,7 @@ const Root = () => {
     <RootContext.Provider
       value={{
         products,
+        initialProducts,
         cartModalOpen,
         cart,
         cartProductsQuantity,
