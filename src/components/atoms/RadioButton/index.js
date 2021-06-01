@@ -1,17 +1,19 @@
 import React from 'react';
 import { StyledLabel, StyledRadioInput } from './StyledRadioButton';
 
-const RadioButton = ({ id, name, value, isChecked, children }) => {
+const RadioButton = ({ name, value, icon, children, onChangeFn }) => {
   return (
     <div>
       <StyledRadioInput
         type="radio"
-        id={id}
+        id={value}
         name={name}
         value={value}
-        checked={isChecked}
+        onChange={onChangeFn}
       />
-      <StyledLabel for={id}>{children}</StyledLabel>
+      <StyledLabel children={children} icon={icon} htmlFor={value}>
+        {children}
+      </StyledLabel>
     </div>
   );
 };

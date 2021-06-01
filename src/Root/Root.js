@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { client } from '../contentful/client';
 import RootContext from '../context/RootContext';
 import useLocalStorage from '../hooks/useLocalStorage';
 import Router from '../routing/Router';
 import GlobalStylesTemplate from '../templates/GlobalStylesTemplate';
 import swalAlert from '../utils/sweetalert2';
+import { getContentfulData } from '../utils/contentful';
 
 const Root = () => {
   const [localStorageCart, saveLocalStorageCart] = useLocalStorage();
@@ -19,35 +19,13 @@ const Root = () => {
   //filters states:
   const [productCategory, setProductCategory] = useState('all');
   const [productNameInput, setProductNameInput] = useState('');
-  const [productPriceRange, setProductPriceRange] = useState([0, 3000]);
-
-  const setContentfulData = (data) => {
-    const formatedData = data.map((item) => {
-      const id = item.sys.id;
-      const image = item.fields.image.fields.file.url;
-
-      return {
-        ...item.fields,
-        id,
-        image,
-      };
-    });
-
-    setInitialProducts([...formatedData]);
-    setProducts([...formatedData]);
-  };
-
-  const getContentfulData = () => {
-    client
-      .getEntries({
-        content_type: 'product',
-      })
-      .then((res) => setContentfulData(res.items))
-      .catch((err) => console.log(err));
-  };
+  const [productPriceRange, setProductPriceRange] = useState([0, 0]);
 
   useEffect(() => {
-    getContentfulData();
+    getContentfulData().then((data) => {
+      setProducts(data);
+      setInitialProducts(data);
+    });
   }, []);
 
   useEffect(() => {

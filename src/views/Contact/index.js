@@ -8,9 +8,9 @@ import CheckoutForm from '../../components/molecules/Forms/CheckoutForm';
 const Contact = () => {
   return (
     <StyledContact>
-      {/* <SignUpForm /> */}
+      <SignUpForm />
       {/* <ContactForm /> */}
-      <CheckoutForm />
+      {/* <CheckoutForm /> */}
     </StyledContact>
   );
 };

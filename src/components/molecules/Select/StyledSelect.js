@@ -3,7 +3,8 @@ import { iconsTypes } from '../../../helpers/iconsTypes';
 
 export const StyledSelectWrapper = styled.div`
   position: relative;
-  width: 15rem;
+  width: 100%;
+  max-height: 4.4rem;
   border: 1px solid ${({ theme }) => theme.colors.secondary};
   border-radius: ${({ theme }) => theme.borderRadiuses.primary};
   &:after {

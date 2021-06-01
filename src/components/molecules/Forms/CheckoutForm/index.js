@@ -11,7 +11,10 @@ import {
   StyledCheckoutForm,
   StyledButtonsWrapper,
   StyledShippingInfoWrapper,
+  StyledPaymentWrapper,
 } from './StyledCheckoutForm';
+import RadioButton from '../../../atoms/RadioButton';
+import { iconsTypes } from '../../../../helpers/iconsTypes';
 
 const validationSchema = yup.object().shape({
   firstName: yup
@@ -23,6 +26,17 @@ const validationSchema = yup.object().shape({
     .required('Last name is a required field')
     .min(3, 'Last name must be at least 3 characters'),
   email: yup.string().email().required('Email is a required field'),
+  city: yup
+    .string()
+    .required('City is required field')
+    .min(3, 'City must be at least 3 characters'),
+  phoneNumber: yup
+    .string()
+    .required('Phone number is required field')
+    .matches(
+      /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/,
+      'Phone number is not valid'
+    ),
 });
 
 const CheckoutForm = () => {
@@ -53,8 +67,10 @@ const CheckoutForm = () => {
           postalCode: '',
           phoneNumber: '',
           country: 'Poland',
+          payment: '',
         }}
         validationSchema={validationSchema}
+        onSubmit={(values) => console.log(values)}
       >
         {({ values, handleChange }) => (
           <Form>
@@ -117,6 +133,22 @@ const CheckoutForm = () => {
                 onChangeFn={handleChange}
               />
             </StyledShippingInfoWrapper>
+            <StyledPaymentWrapper>
+              <RadioButton
+                name="payment"
+                value="paypal"
+                icon={iconsTypes.paypal}
+                onChangeFn={handleChange}
+              />
+              <RadioButton
+                name="payment"
+                value="visa"
+                icon={iconsTypes.visa}
+                onChangeFn={handleChange}
+              />
+            </StyledPaymentWrapper>
+
+            <Button type="submit">SEND</Button>
           </Form>
         )}
       </Formik>

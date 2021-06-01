@@ -8,6 +8,7 @@ import {
   StyledParagraph,
   StyledButton,
 } from './StyledSignUpForm';
+import { auth } from '../../../../firebase/firebaseConfig';
 
 const validationSchema = yup.object().shape({
   firstName: yup
@@ -19,13 +20,11 @@ const validationSchema = yup.object().shape({
     .required('Last name is a required field')
     .min(3, 'Last name must be at least 3 characters'),
   email: yup.string().email().required('Email is a required field'),
-  password: yup
-    .string()
-    .required('Please enter your password')
-    .matches(
-      /^.*(?=.{8,})((?=.*[!@#$%^&*()\-_=+{};:,<.>]){1})(?=.*\d)((?=.*[a-z]){1})((?=.*[A-Z]){1}).*$/,
-      'Password must contain at least 8 characters, one uppercase, one number and one special case character'
-    ),
+  password: yup.string().required('Please enter your password'),
+  // .matches(
+  //   /^.*(?=.{8,})((?=.*[!@#$%^&*()\-_=+{};:,<.>]){1})(?=.*\d)((?=.*[a-z]){1})((?=.*[A-Z]){1}).*$/,
+  //   'Password must contain at least 8 characters, one uppercase, one number and one special case character'
+  // ),
   confirmPassword: yup
     .string()
     .required('Please confirm your password')
@@ -58,7 +57,13 @@ const SignUpForm = () => {
           acceptTerms: false,
         }}
         onSubmit={(values, { resetForm }) => {
-          alert(JSON.stringify(values, null, 2));
+          // alert(JSON.stringify(values, null, 2));
+
+          auth
+            .createUserWithEmailAndPassword(values.email, values.password)
+            .then((res) => alert(res))
+            .catch((err) => alert(err));
+
           resetForm();
         }}
         validationSchema={validationSchema}
