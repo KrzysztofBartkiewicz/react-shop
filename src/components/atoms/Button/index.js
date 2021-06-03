@@ -9,6 +9,7 @@ const Button = ({
   round,
   nav,
   menu,
+  goBack,
   icon,
   className,
   isDisabled = false,
@@ -22,6 +23,7 @@ const Button = ({
       nav={nav}
       menu={menu}
       icon={icon}
+      goBack={goBack}
       disabled={isDisabled}
       type={type}
     >

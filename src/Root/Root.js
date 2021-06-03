@@ -12,7 +12,7 @@ const Root = () => {
   const [products, setProducts] = useState([]);
   const [initialProducts, setInitialProducts] = useState([]);
   const [cartModalOpen, setCartModalOpen] = useState(false);
-  const [cart, setCart] = useState(localStorageCart);
+  const [cart, setCart] = useState(localStorageCart || []);
   const [cartProductsQuantity, setCartProductsQuantity] = useState(0);
   const [cartTotalPrice, setCartTotalPrice] = useState(0);
 
@@ -21,11 +21,10 @@ const Root = () => {
   const [productNameInput, setProductNameInput] = useState('');
   const [productPriceRange, setProductPriceRange] = useState([0, 0]);
 
-  useEffect(() => {
-    getContentfulData().then((data) => {
-      setProducts(data);
-      setInitialProducts(data);
-    });
+  useEffect(async () => {
+    const contentfulData = await getContentfulData();
+    setInitialProducts(contentfulData);
+    setProducts(contentfulData);
   }, []);
 
   useEffect(() => {

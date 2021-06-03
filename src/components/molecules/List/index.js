@@ -1,18 +1,15 @@
 import React from 'react';
-import { listTypes } from '../../../helpers/listTypes';
-import CartProduct from '../CartProduct';
-import Product from '../Product';
 import { StyledList, StyledListItem } from './StyledList';
 
-const List = ({ array, listType, className }) => {
+const List = ({ array, listType, listComponent: ListComponent, className }) => {
   return (
     <StyledList className={className} listType={listType}>
       {array.map((item) => (
         <StyledListItem key={item.id} listType={listType}>
-          {listType === listTypes.productsList ? (
-            <Product {...item} />
+          {React.isValidElement(ListComponent) ? (
+            React.cloneElement(ListComponent, { ...item })
           ) : (
-            <CartProduct {...item} />
+            <ListComponent {...item} />
           )}
         </StyledListItem>
       ))}

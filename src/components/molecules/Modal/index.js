@@ -14,6 +14,7 @@ import RootContext from '../../../context/RootContext';
 import List from '../List';
 import Paragraph from '../../atoms/Paragraph';
 import Button from '../../atoms/Button';
+import CartProduct from '../CartProduct';
 
 const Modal = () => {
   const context = useContext(RootContext);
@@ -58,7 +59,11 @@ const Modal = () => {
               Price
             </Paragraph>
           </StyledCartHead>
-          <List array={cart} listType={listTypes.cartList} />
+          <List
+            array={cart}
+            listType={listTypes.cartList}
+            listComponent={CartProduct}
+          />
           <StyledSummaryWrapper>
             {cartTotalPrice !== 0 ? renderCheckout() : null}
           </StyledSummaryWrapper>

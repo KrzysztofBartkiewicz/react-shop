@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import RootContext from '../../context/RootContext';
 import { listTypes } from '../../helpers/listTypes';
+import Product from '../../components/molecules/Product';
 import {
   StyledProducts,
   StyledProductsHeading,
@@ -24,7 +25,11 @@ const Products = () => {
     <StyledProducts>
       <StyledProductsHeading headingType="h5">Products</StyledProductsHeading>
       <StyledFilterMenu />
-      <StyledList array={sortedProducts} listType={listTypes.productsList} />
+      <StyledList
+        array={sortedProducts}
+        listType={listTypes.productsList}
+        listComponent={Product}
+      />
     </StyledProducts>
   );
 };

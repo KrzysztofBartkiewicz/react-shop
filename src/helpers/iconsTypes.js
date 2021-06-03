@@ -7,8 +7,18 @@ import plusIcon from '../assets/icons/plus.svg';
 import minusIcon from '../assets/icons/remove.svg';
 import cancelIcon from '../assets/icons/cancel.svg';
 import arrowDownIcon from '../assets/icons/arrow-down.svg';
+import arrowLeftIcon from '../assets/icons/arrow-left.svg';
 import paypalIcon from '../assets/icons/payment-icons/029-paypal.svg';
 import visaIcon from '../assets/icons/payment-icons/040-visa.svg';
+import mastercardIcon from '../assets/icons/payment-icons/024-mastercard.svg';
+import westernunionIcon from '../assets/icons/payment-icons/042-western-union.svg';
+import discoverIcon from '../assets/icons/payment-icons/013-discover.svg';
+import idealIcon from '../assets/icons/payment-icons/021-ideal.svg';
+import dhlIcon from '../assets/icons/dhl.svg';
+import fedexIcon from '../assets/icons/fedex.svg';
+import inpostIcon from '../assets/icons/inpost.svg';
+import dpdIcon from '../assets/icons/dpd.svg';
+import carIcon from '../assets/icons/car.svg';
 
 export const iconsTypes = {
   heart: heartIcon,
@@ -20,6 +30,16 @@ export const iconsTypes = {
   minus: minusIcon,
   cancel: cancelIcon,
   arrowDown: arrowDownIcon,
+  arrowLeft: arrowLeftIcon,
   paypal: paypalIcon,
   visa: visaIcon,
+  mastercard: mastercardIcon,
+  westernunion: westernunionIcon,
+  discover: discoverIcon,
+  ideal: idealIcon,
+  fedex: fedexIcon,
+  dhl: dhlIcon,
+  inpost: inpostIcon,
+  dpd: dpdIcon,
+  car: carIcon,
 };

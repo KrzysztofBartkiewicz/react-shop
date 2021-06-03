@@ -2,9 +2,9 @@ import React from 'react';
 import SelectOption from '../../atoms/SelectOption';
 import { StyledSelect, StyledSelectWrapper } from './StyledSelect';
 
-const Select = ({ optionArray, onChangeFn, selectValue, name }) => {
+const Select = ({ optionArray, onChangeFn, selectValue, name, className }) => {
   return (
-    <StyledSelectWrapper>
+    <StyledSelectWrapper className={className}>
       <StyledSelect name={name} value={selectValue} onChange={onChangeFn}>
         {optionArray.map((option) => (
           <SelectOption optionValue={option}>{option}</SelectOption>

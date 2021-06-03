@@ -6,9 +6,17 @@ import {
   StyledLabel,
 } from './StyledFormInput';
 
-const FormInput = ({ label, name, type, value, onChangeFn, errorMsg }) => {
+const FormInput = ({
+  label,
+  name,
+  type,
+  value,
+  onChangeFn,
+  errorMsg,
+  className,
+}) => {
   return (
-    <StyledFormInput type={type}>
+    <StyledFormInput className={className} type={type}>
       <StyledInput
         id={name}
         name={name}

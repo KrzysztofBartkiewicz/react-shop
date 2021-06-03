@@ -3,9 +3,9 @@ import Button from '../../atoms/Button';
 import { iconsTypes } from '../../../helpers/iconsTypes';
 import { StyledAmountSelector, StyledParagraph } from './StyledAmountSelector';
 
-const AmountSelector = ({ onAddFn, onLessFn, value }) => {
+const AmountSelector = ({ onAddFn, onLessFn, value, className }) => {
   return (
-    <StyledAmountSelector>
+    <StyledAmountSelector className={className}>
       <Button
         onClickFn={onLessFn}
         menu

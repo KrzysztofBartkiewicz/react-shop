@@ -53,4 +53,12 @@ export const StyledButton = styled.button`
       background-position: center;
       background-repeat: no-repeat;
     `}
+
+  ${({ goBack, icon, theme }) =>
+    goBack &&
+    css`
+      padding: 0;
+      background: url(${icon}) left no-repeat;
+      padding: 1rem 3rem;
+    `}
 `;

@@ -1,16 +1,14 @@
 import React from 'react';
-import Heading from '../../components/atoms/Heading';
-import SignUpForm from '../../components/molecules/Forms/SignUpForm';
-import ContactForm from '../../components/molecules/Forms/ContactForm';
+
 import { StyledContact } from './StyledContact';
-import CheckoutForm from '../../components/molecules/Forms/CheckoutForm';
+import CheckoutForm from '../../components/organisms/Forms/CheckoutForm';
 
 const Contact = () => {
   return (
     <StyledContact>
-      <SignUpForm />
+      {/* <SignUpForm /> */}
       {/* <ContactForm /> */}
-      {/* <CheckoutForm /> */}
+      <CheckoutForm />
     </StyledContact>
   );
 };
