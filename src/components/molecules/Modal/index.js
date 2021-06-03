@@ -15,6 +15,8 @@ import List from '../List';
 import Paragraph from '../../atoms/Paragraph';
 import Button from '../../atoms/Button';
 import CartProduct from '../CartProduct';
+import { Link } from 'react-router-dom';
+import { routes } from '../../../helpers/routes';
 
 const Modal = () => {
   const context = useContext(RootContext);
@@ -26,7 +28,9 @@ const Modal = () => {
         <span>Total cost: </span>
         {cartTotalPrice}$
       </StyledParagraph>
-      <Button>CHECKOUT</Button>
+      <Link to={routes.checkout}>
+        <Button onClickFn={() => handleCartModalClose()}>CHECKOUT</Button>
+      </Link>
     </>
   );
 

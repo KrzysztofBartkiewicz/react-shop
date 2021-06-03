@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import { Link } from 'react-router-dom';
 import RootContext from '../../../context/RootContext';
 import { iconsTypes } from '../../../helpers/iconsTypes';
 import { routes } from '../../../helpers/routes';
@@ -45,8 +46,9 @@ const Navbar = () => {
             value={cartProductsQuantity}
           />
         </StyledButtonWrapper>
-
-        <Button nav icon={iconsTypes.avatar} />
+        <Link to={routes.login}>
+          <Button nav icon={iconsTypes.avatar} />
+        </Link>
       </StyledNavButtons>
     </StyledNavbar>
   );

@@ -19,7 +19,7 @@ export const StyledInnerWrapper = styled.div`
   margin-bottom: 2rem;
   display: flex;
   justify-content: space-between;
-  align-content: baseline;
+  align-items: center;
 `;
 
 export const StyledButtonsWrapper = styled.div`

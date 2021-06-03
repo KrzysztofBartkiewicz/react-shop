@@ -41,7 +41,8 @@ const validationSchema = yup.object().shape({
     ),
 });
 
-const CheckoutForm = () => {
+const CheckoutForm = (props) => {
+  console.log(props);
   return (
     <StyledFormWrapper>
       <StyledHeading>Shipping and Payment</StyledHeading>
