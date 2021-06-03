@@ -5,6 +5,8 @@ export const mainTheme = {
     primaryYellow: '#FBB03B',
     secondary: '#D8D8D8',
     tertiary: '#808080',
+    facebook: '#3B5998',
+    gmail: '#F1584D',
   },
 
   fontSizes: {

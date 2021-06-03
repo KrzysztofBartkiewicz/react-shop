@@ -11,6 +11,8 @@ const Button = ({
   menu,
   goBack,
   icon,
+  facebook,
+  gmail,
   className,
   isDisabled = false,
 }) => {
@@ -23,6 +25,8 @@ const Button = ({
       nav={nav}
       menu={menu}
       icon={icon}
+      facebook={facebook}
+      gmail={gmail}
       goBack={goBack}
       disabled={isDisabled}
       type={type}

@@ -19,6 +19,8 @@ import fedexIcon from '../assets/icons/fedex.svg';
 import inpostIcon from '../assets/icons/inpost.svg';
 import dpdIcon from '../assets/icons/dpd.svg';
 import carIcon from '../assets/icons/car.svg';
+import facebookIcon from '../assets/icons/facebook.svg';
+import gmailIcon from '../assets/icons/gmail.svg';
 
 export const iconsTypes = {
   heart: heartIcon,
@@ -42,4 +44,6 @@ export const iconsTypes = {
   inpost: inpostIcon,
   dpd: dpdIcon,
   car: carIcon,
+  facebook: facebookIcon,
+  gmail: gmailIcon,
 };

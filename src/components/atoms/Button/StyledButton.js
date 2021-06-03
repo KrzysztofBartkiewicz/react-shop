@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components';
+import { iconsTypes } from '../../../helpers/iconsTypes';
 
 export const StyledButton = styled.button`
   border: none;
@@ -54,11 +55,30 @@ export const StyledButton = styled.button`
       background-repeat: no-repeat;
     `}
 
-  ${({ goBack, icon, theme }) =>
+  ${({ goBack, icon }) =>
     goBack &&
     css`
       padding: 0;
       background: url(${icon}) left no-repeat;
       padding: 1rem 3rem;
+    `}
+
+  ${({ facebook, theme }) =>
+    facebook &&
+    css`
+      padding: 1.8rem 5.8rem 1.8rem 7.8rem;
+      background: url(${iconsTypes.facebook}) 30% no-repeat
+        ${theme.colors.facebook};
+      color: ${theme.colors.primaryWhite};
+    `}
+
+  ${({ gmail, theme }) =>
+    gmail &&
+    css`
+      padding: 1.8rem 5.8rem 1.8rem 7.8rem;
+      background: url(${iconsTypes.gmail}) 30% no-repeat
+        ${theme.colors.primaryWhite};
+      color: ${theme.colors.primaryBlack};
+      border: 1px solid ${theme.colors.gmail};
     `}
 `;
