@@ -1,8 +1,8 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
-import RootContext from '../../../context/RootContext';
 import { iconsTypes } from '../../../helpers/iconsTypes';
 import { routes } from '../../../helpers/routes';
+import RootContext from '../../../context/RootContext';
 import Button from '../../atoms/Button';
 import Logo from '../../atoms/Logo';
 import NavigationLink from '../../atoms/NavigationLink';
@@ -16,13 +16,13 @@ import {
 } from './StyledNavbar';
 
 const Navbar = () => {
-  const context = useContext(RootContext);
-  const { cartProductsQuantity } = context;
+  const { cartProductsQuantity, isHomeRendered, handleCartModalOpen } =
+    useContext(RootContext);
 
   return (
-    <StyledNavbar>
-      <Logo />
-      <StyledNavList>
+    <StyledNavbar isHomeRendered={isHomeRendered}>
+      <Logo isHomeRendered={isHomeRendered} />
+      <StyledNavList isHomeRendered={isHomeRendered}>
         <StyledNavListItem>
           <NavigationLink to={routes.home}>Home</NavigationLink>
         </StyledNavListItem>
@@ -33,13 +33,14 @@ const Navbar = () => {
           <NavigationLink to={routes.contact}>Contact</NavigationLink>
         </StyledNavListItem>
       </StyledNavList>
-      <StyledNavButtons>
-        <Button nav icon={iconsTypes.search} />
+      <StyledNavButtons isHomeRendered={isHomeRendered}>
+        <Button nav whiteIcon={isHomeRendered} icon={iconsTypes.SearchIcon} />
         <StyledButtonWrapper>
           <Button
             nav
-            icon={iconsTypes.cart}
-            onClickFn={context.handleCartModalOpen}
+            whiteIcon={isHomeRendered}
+            icon={iconsTypes.CartIcon}
+            onClickFn={handleCartModalOpen}
           />
           <StyledNotificationCount
             isVisible={cartProductsQuantity !== 0 && true}
@@ -47,7 +48,7 @@ const Navbar = () => {
           />
         </StyledButtonWrapper>
         <Link to={routes.login}>
-          <Button nav icon={iconsTypes.avatar} />
+          <Button nav whiteIcon={isHomeRendered} icon={iconsTypes.AvatarIcon} />
         </Link>
       </StyledNavButtons>
     </StyledNavbar>

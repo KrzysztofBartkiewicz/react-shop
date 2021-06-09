@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import NotificationCount from '../../atoms/NotificationCount';
 
 export const StyledNavbar = styled.nav`
@@ -6,10 +6,31 @@ export const StyledNavbar = styled.nav`
   align-items: center;
   justify-content: space-between;
   padding: 4.4rem 16rem;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  border-bottom: 1px solid ${({ theme }) => theme.colors.secondary};
+  background-color: ${({ theme }) => theme.colors.primaryWhite};
+  z-index: 10;
+
+  ${({ isHomeRendered }) =>
+    isHomeRendered &&
+    css`
+      background-color: transparent;
+      border: none;
+    `}
 `;
 
 export const StyledNavList = styled.ul`
   display: flex;
+
+  ${({ isHomeRendered, theme }) =>
+    isHomeRendered &&
+    css`
+      & a {
+        color: ${theme.colors.primaryWhite};
+      }
+    `}
 `;
 
 export const StyledNavListItem = styled.li`
@@ -28,7 +49,7 @@ export const StyledButtonWrapper = styled.div`
 
 export const StyledNotificationCount = styled(NotificationCount)`
   position: absolute;
-  right: 0.8rem;
-  bottom: 1rem;
+  right: -0.8rem;
+  bottom: 0rem;
   pointer-events: none;
 `;

@@ -1,10 +1,19 @@
-import React from 'react';
+import React, { useContext, useEffect } from 'react';
+import RootContext from '../../context/RootContext';
+import { StyledHeader, StyledHome } from './StyledHome';
 
 const Home = () => {
+  const { setHomeRenderFlag } = useContext(RootContext);
+
+  useEffect(() => {
+    setHomeRenderFlag(true);
+    return () => setHomeRenderFlag(false);
+  }, []);
+
   return (
-    <div>
-      <h1>Home</h1>
-    </div>
+    <StyledHome>
+      <StyledHeader></StyledHeader>
+    </StyledHome>
   );
 };
 

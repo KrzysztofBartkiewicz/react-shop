@@ -42,8 +42,8 @@ const CartProduct = ({
       <StyledButton
         basic={basic}
         onClickFn={() => deleteProductFromCart(id)}
-        nav
         icon={iconsTypes.cancel}
+        bgIcon
       />
     </StyledCartProduct>
   );

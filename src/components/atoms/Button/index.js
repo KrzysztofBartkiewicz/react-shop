@@ -10,11 +10,13 @@ const Button = ({
   nav,
   menu,
   goBack,
-  icon,
+  icon: Icon,
   facebook,
   gmail,
   className,
   isDisabled = false,
+  whiteIcon,
+  bgIcon,
 }) => {
   return (
     <StyledButton
@@ -24,14 +26,15 @@ const Button = ({
       round={round}
       nav={nav}
       menu={menu}
-      icon={icon}
+      icon={Icon}
       facebook={facebook}
       gmail={gmail}
       goBack={goBack}
       disabled={isDisabled}
       type={type}
+      bgIcon={bgIcon}
     >
-      {children}
+      {nav ? <Icon fill={whiteIcon && 'white'} /> : children}
     </StyledButton>
   );
 };

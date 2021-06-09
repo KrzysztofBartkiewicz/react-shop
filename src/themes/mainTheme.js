@@ -35,6 +35,7 @@ export const mainTheme = {
 
   paddings: {
     primary: '1.2rem 2.5rem',
+    view: '15rem 0',
   },
 
   devices: {

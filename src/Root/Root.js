@@ -21,10 +21,18 @@ const Root = () => {
   const [productNameInput, setProductNameInput] = useState('');
   const [productPriceRange, setProductPriceRange] = useState([0, 0]);
 
-  useEffect(async () => {
+  const [isHomeRendered, setIsHomeRendered] = useState(false);
+
+  const getCMSData = async () => {
     const contentfulData = await getContentfulData();
-    setInitialProducts(contentfulData);
-    setProducts(contentfulData);
+    if (contentfulData) {
+      setInitialProducts([...contentfulData]);
+      setProducts([...contentfulData]);
+    }
+  };
+
+  useEffect(() => {
+    getCMSData();
   }, []);
 
   useEffect(() => {
@@ -36,6 +44,10 @@ const Root = () => {
   useEffect(() => {
     filterProducts();
   }, [productCategory, productNameInput, productPriceRange]);
+
+  const setHomeRenderFlag = (isRendered) => {
+    setIsHomeRendered(isRendered);
+  };
 
   const handleProductCategoryChange = (e) => {
     setProductCategory(e.target.value);
@@ -133,6 +145,8 @@ const Root = () => {
         productCategory,
         productNameInput,
         productPriceRange,
+        isHomeRendered,
+        setHomeRenderFlag,
         handleProductCategoryChange,
         handleProductNameInputChange,
         handleProductPriceChange,
@@ -151,32 +165,3 @@ const Root = () => {
 };
 
 export default Root;
-
-//-------------------------API-----------------------------------------
-
-// useEffect(() => {
-//   fetch('https://fakestoreapi.com/products')
-//     .then((res) => res.json())
-//     .then((data) => processData(data));
-// }, []);
-
-// const processData = (data) => {
-//   const processed = data.map(
-//     ({ category, description, id, image, price, title }) => {
-//       return {
-//         id,
-//         price,
-//         image,
-//         category,
-//         description,
-//         name: title,
-//         productQuantity: 30,
-//         inCartQuantity: 1,
-//       };
-//     }
-//   );
-
-//   setProducts([...processed]);
-// };
-
-//--------------------------------------------------------------------------

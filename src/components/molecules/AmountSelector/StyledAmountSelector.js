@@ -3,7 +3,7 @@ import Paragraph from '../../atoms/Paragraph';
 
 export const StyledAmountSelector = styled.div`
   width: 15rem;
-  padding: ${({ theme }) => theme.paddings.primary};
+  padding: 0.8rem 2rem;
   border-radius: ${({ theme }) => theme.borderRadiuses.primary};
   border: 1px solid ${({ theme }) => theme.colors.secondary};
   display: flex;

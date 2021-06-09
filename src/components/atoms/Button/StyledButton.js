@@ -81,4 +81,10 @@ export const StyledButton = styled.button`
       color: ${theme.colors.primaryBlack};
       border: 1px solid ${theme.colors.gmail};
     `}
+
+  ${({ bgIcon }) =>
+    bgIcon &&
+    css`
+      background-color: transparent;
+    `}
 `;

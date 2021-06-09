@@ -1,10 +1,15 @@
 import React from 'react';
 import { Formik } from 'formik';
+import { iconsTypes } from '../../../../helpers/iconsTypes';
+import { useHistory } from 'react-router';
+import { Link } from 'react-router-dom';
+import { routes } from '../../../../helpers/routes';
 import * as yup from 'yup';
 import Button from '../../../atoms/Button';
 import ShippingInfoWrapper from './Wrappers/ShippingInfoWrapper';
 import DeliveryWrapper from './Wrappers/DeliveryWrapper';
 import PaymentWrapper from './Wrappers/PaymentWrapper';
+import CartWrapper from './Wrappers/CartWrapper';
 import {
   StyledFormWrapper,
   StyledButtonsWrapper,
@@ -15,8 +20,6 @@ import {
   StyledContinueBtn,
   StyledLoginBtn,
 } from './StyledCheckoutForm';
-import CartWrapper from './Wrappers/CartWrapper';
-import { iconsTypes } from '../../../../helpers/iconsTypes';
 
 const validationSchema = yup.object().shape({
   firstName: yup
@@ -41,8 +44,9 @@ const validationSchema = yup.object().shape({
     ),
 });
 
-const CheckoutForm = (props) => {
-  console.log(props);
+const CheckoutForm = () => {
+  const { goBack } = useHistory();
+
   return (
     <StyledFormWrapper>
       <StyledHeading>Shipping and Payment</StyledHeading>
@@ -82,13 +86,15 @@ const CheckoutForm = (props) => {
             <CartWrapper />
 
             <StyledFormFooter>
-              <Button icon={iconsTypes.arrowLeft} goBack>
+              <Button onClickFn={goBack} icon={iconsTypes.arrowLeft} goBack>
                 Back
               </Button>
               <StyledButtonsWrapper>
-                <StyledContinueBtn secondary>
-                  CONTINUE SHOPPING
-                </StyledContinueBtn>
+                <Link to={routes.products}>
+                  <StyledContinueBtn secondary>
+                    CONTINUE SHOPPING
+                  </StyledContinueBtn>
+                </Link>
                 <StyledSubmitBtn type="submit">
                   PROCEED TO PAYMENT
                 </StyledSubmitBtn>

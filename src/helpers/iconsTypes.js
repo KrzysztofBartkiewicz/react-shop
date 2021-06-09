@@ -22,6 +22,10 @@ import carIcon from '../assets/icons/car.svg';
 import facebookIcon from '../assets/icons/facebook.svg';
 import gmailIcon from '../assets/icons/gmail.svg';
 
+import { ReactComponent as CartIcon } from '../assets/icons/cart.svg';
+import { ReactComponent as AvatarIcon } from '../assets/icons/avatar.svg';
+import { ReactComponent as SearchIcon } from '../assets/icons/search.svg';
+
 export const iconsTypes = {
   heart: heartIcon,
   cart: cartIcon,
@@ -46,4 +50,7 @@ export const iconsTypes = {
   car: carIcon,
   facebook: facebookIcon,
   gmail: gmailIcon,
+  CartIcon,
+  AvatarIcon,
+  SearchIcon,
 };

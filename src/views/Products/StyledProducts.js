@@ -4,6 +4,7 @@ import List from '../../components/molecules/List';
 import FIlterMenu from '../../components/organisms/FilterMenu';
 
 export const StyledProducts = styled.div`
+  padding: ${({ theme }) => theme.paddings.view};
   width: 80%;
   margin: 0 auto;
   display: grid;
