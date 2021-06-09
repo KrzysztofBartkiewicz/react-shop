@@ -11,16 +11,17 @@ export const StyledLogo = styled.div`
 `;
 
 export const StyledHeading = styled(Heading)`
+  color: ${({ theme }) => theme.colors.primaryBlack};
   span {
     color: ${({ theme }) => theme.colors.primaryYellow};
   }
 
-  ${({ isHomeRendered }) =>
+  ${({ isHomeRendered, theme }) =>
     isHomeRendered &&
     css`
       &,
-      & span {
-        color: ${({ theme }) => theme.colors.primaryWhite};
+      span {
+        color: ${theme.colors.primaryWhite};
       }
     `}
 `;

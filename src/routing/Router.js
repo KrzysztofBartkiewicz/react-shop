@@ -8,6 +8,7 @@ import Home from '../views/Home';
 import Login from '../views/Login';
 import Products from '../views/Products';
 import Signup from '../views/Signup';
+import SingleProduct from '../views/SingleProduct';
 
 const Router = () => {
   return (
@@ -20,6 +21,7 @@ const Router = () => {
           <Route path={routes.login} component={Login} />
           <Route path={routes.signup} component={Signup} />
           <Route path={routes.checkout} component={Checkout} />
+          <Route path={routes.singleProduct} component={SingleProduct} />
         </Switch>
       </NavigationTemplate>
     </BrowserRouter>

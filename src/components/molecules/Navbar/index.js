@@ -21,7 +21,9 @@ const Navbar = () => {
 
   return (
     <StyledNavbar isHomeRendered={isHomeRendered}>
-      <Logo isHomeRendered={isHomeRendered} />
+      <Link to={routes.home}>
+        <Logo isHomeRendered={isHomeRendered} />
+      </Link>
       <StyledNavList isHomeRendered={isHomeRendered}>
         <StyledNavListItem>
           <NavigationLink to={routes.home}>Home</NavigationLink>

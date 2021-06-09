@@ -1,8 +1,12 @@
 import styled, { css } from 'styled-components';
 
 export const StyledImage = styled.img`
-  width: 250px;
-  height: auto;
+  ${({ listImage }) =>
+    listImage &&
+    css`
+      width: 250px;
+      height: auto;
+    `}
 
   ${({ cartImg }) =>
     cartImg &&

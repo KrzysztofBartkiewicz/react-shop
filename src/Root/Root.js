@@ -146,6 +146,7 @@ const Root = () => {
         productNameInput,
         productPriceRange,
         isHomeRendered,
+        initialProducts,
         setHomeRenderFlag,
         handleProductCategoryChange,
         handleProductNameInputChange,

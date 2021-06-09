@@ -5,4 +5,5 @@ export const routes = {
   login: '/login',
   signup: '/signup',
   checkout: '/checkout',
+  singleProduct: '/:singleProduct',
 };
