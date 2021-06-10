@@ -3,6 +3,7 @@ import { Formik, Form, ErrorMessage } from 'formik';
 import * as yup from 'yup';
 import Heading from '../../../atoms/Heading';
 import FormInput from '../../../molecules/FormInput';
+import Button from '../../../atoms/Button';
 import {
   StyledLoginForm,
   StyledParagraph,
@@ -11,12 +12,30 @@ import {
   StyledBottomWrapper,
   StyledSubmitBtn,
 } from './StyledLoginForm';
-import { auth } from '../../../../firebase/firebaseConfig';
-import Button from '../../../atoms/Button';
+import { auth, provider } from '../../../../firebase/firebaseConfig';
+import { usersCollections } from '../../../../firebase/firestoreUtils';
 
 const validationSchema = yup.object().shape({
   email: yup.string().email().required('Email is a required field'),
 });
+
+const googleSignUp = () => {
+  auth
+    .signInWithPopup(provider)
+    .then((user) => {
+      if (user.additionalUserInfo.isNewUser) {
+        const { email, given_name, family_name } =
+          user.additionalUserInfo.profile;
+        usersCollections.doc(user.user.uid).set({
+          email: email,
+          firstName: given_name,
+          lastName: family_name,
+          orders: [],
+        });
+      }
+    })
+    .catch((error) => console.log(error));
+};
 
 const SignUpForm = () => {
   return (
@@ -69,7 +88,9 @@ const SignUpForm = () => {
             </StyledInnerWrapper>
             <StyledButtonsWrapper>
               <Button facebook>Facebook</Button>
-              <Button gmail>Gmail</Button>
+              <Button onClickFn={googleSignUp} gmail>
+                Gmail
+              </Button>
             </StyledButtonsWrapper>
             <StyledSubmitBtn type="submit">Sign up</StyledSubmitBtn>
             <StyledBottomWrapper>
