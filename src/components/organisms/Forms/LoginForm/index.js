@@ -1,6 +1,6 @@
 import React from 'react';
 import { Formik, Form, ErrorMessage } from 'formik';
-import * as yup from 'yup';
+import loginSchema from '../../../../utils/validation/loginFormSchema';
 import Heading from '../../../atoms/Heading';
 import FormInput from '../../../molecules/FormInput';
 import Button from '../../../atoms/Button';
@@ -14,10 +14,6 @@ import {
   StyledBottomWrapper,
   StyledSubmitBtn,
 } from './StyledLoginForm';
-
-const validationSchema = yup.object().shape({
-  email: yup.string().email().required('Email is a required field'),
-});
 
 const SignUpForm = () => {
   const { signUpWithGoogle, logIn } = useContext(AuthContext);
@@ -41,7 +37,7 @@ const SignUpForm = () => {
           logIn(email, password);
           resetForm();
         }}
-        validationSchema={validationSchema}
+        validationSchema={loginSchema}
       >
         {({ values, handleChange }) => (
           <Form>

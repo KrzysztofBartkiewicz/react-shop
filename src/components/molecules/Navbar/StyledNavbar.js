@@ -1,5 +1,6 @@
 import styled, { css } from 'styled-components';
 import NotificationCount from '../../atoms/NotificationCount';
+import Paragraph from '../../atoms/Paragraph';
 
 export const StyledNavbar = styled.nav`
   display: flex;
@@ -41,6 +42,7 @@ export const StyledNavListItem = styled.li`
 
 export const StyledNavButtons = styled.div`
   display: flex;
+  align-items: flex-start;
 `;
 
 export const StyledButtonWrapper = styled.div`
@@ -52,4 +54,22 @@ export const StyledNotificationCount = styled(NotificationCount)`
   right: -0.8rem;
   bottom: 0rem;
   pointer-events: none;
+`;
+
+export const StyledUserName = styled(Paragraph)`
+  color: inherit;
+`;
+
+export const StyledUserEmail = styled(Paragraph)`
+  margin-top: -0.5rem;
+  color: inherit;
+`;
+
+export const StyledUserWrapper = styled.div`
+  margin-left: 2rem;
+  ${({ isHomeRendered, theme }) =>
+    isHomeRendered &&
+    css`
+      color: ${theme.colors.primaryWhite};
+    `}
 `;

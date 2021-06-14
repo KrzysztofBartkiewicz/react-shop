@@ -1,6 +1,6 @@
 import React from 'react';
 import { Formik, ErrorMessage, Form } from 'formik';
-import * as Yup from 'yup';
+import contactSchema from '../../../../utils/validation/contactFormSchema';
 import FormInput from '../../../molecules/FormInput';
 import Textarea from '../../../atoms/Textarea';
 import Heading from '../../../atoms/Heading';
@@ -10,16 +10,6 @@ import {
   StyledParagraph,
   StyledSubmitBtn,
 } from './StyledContactForm';
-
-const contactValidSchema = Yup.object().shape({
-  nameAndSurname: Yup.string()
-    .required('Enter Name and Surname')
-    .min(6, 'Name and surname must be 6 letters'),
-  email: Yup.string().email('Invalid email!').required('Enter your email'),
-  subject: Yup.string().required('Enter subject'),
-  message: Yup.string().required('Enter message').min(25, 'Message too short'),
-  acceptTerms: Yup.bool().oneOf([true], 'You must accept terms'),
-});
 
 const ContactForm = () => {
   return (
@@ -37,7 +27,7 @@ const ContactForm = () => {
           message: '',
           acceptTerms: false,
         }}
-        validationSchema={contactValidSchema}
+        validationSchema={contactSchema}
         onSubmit={(values, { resetForm }) => {
           emailjs
             .send(
@@ -58,8 +48,7 @@ const ContactForm = () => {
         {({ values, handleChange }) => (
           <Form>
             <FormInput
-              label="Email"
-              type="email"
+              label="Name and surname"
               name="nameAndSurname"
               value={values.nameAndSurname}
               onChangeFn={handleChange}
@@ -77,7 +66,6 @@ const ContactForm = () => {
 
             <FormInput
               label="Subject"
-              type="subject"
               name="subject"
               value={values.subject}
               onChangeFn={handleChange}

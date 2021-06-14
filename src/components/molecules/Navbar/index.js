@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { iconsTypes } from '../../../helpers/iconsTypes';
 import { routes } from '../../../helpers/routes';
 import RootContext from '../../../context/RootContext';
+import AuthContext from '../../../context/AuthContext';
 import Button from '../../atoms/Button';
 import Logo from '../../atoms/Logo';
 import NavigationLink from '../../atoms/NavigationLink';
@@ -13,11 +14,15 @@ import {
   StyledNavList,
   StyledButtonWrapper,
   StyledNotificationCount,
+  StyledUserName,
+  StyledUserEmail,
+  StyledUserWrapper,
 } from './StyledNavbar';
 
 const Navbar = () => {
   const { cartProductsQuantity, isHomeRendered, handleCartModalOpen } =
     useContext(RootContext);
+  const { currentUser } = useContext(AuthContext);
 
   return (
     <StyledNavbar isHomeRendered={isHomeRendered}>
@@ -49,9 +54,22 @@ const Navbar = () => {
             value={cartProductsQuantity}
           />
         </StyledButtonWrapper>
-        <Link to={routes.login}>
-          <Button nav whiteIcon={isHomeRendered} icon={iconsTypes.AvatarIcon} />
-        </Link>
+        {currentUser ? (
+          <StyledUserWrapper isHomeRendered={isHomeRendered}>
+            <StyledUserName>{currentUser.firstName}</StyledUserName>
+            <StyledUserEmail secondary size="xs">
+              {currentUser.email}
+            </StyledUserEmail>
+          </StyledUserWrapper>
+        ) : (
+          <Link to={routes.login}>
+            <Button
+              nav
+              whiteIcon={isHomeRendered}
+              icon={iconsTypes.AvatarIcon}
+            />
+          </Link>
+        )}
       </StyledNavButtons>
     </StyledNavbar>
   );
