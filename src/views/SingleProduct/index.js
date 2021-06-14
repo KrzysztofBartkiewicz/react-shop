@@ -18,18 +18,9 @@ import {
 } from './StyledSingleProduct';
 
 const SingleProduct = ({ location }) => {
-  const { id } = location.state;
-  const {
-    initialProducts,
-    addProductToCart,
-    deleteProductFromCart,
-    changeCartQuantity,
-    cart,
-  } = useContext(RootContext);
-
-  const { image, name, category, price, description } = initialProducts.find(
-    (product) => product.id === id
-  );
+  const { id, image, name, category, price, description } = location.state;
+  const { addProductToCart, deleteProductFromCart, changeCartQuantity, cart } =
+    useContext(RootContext);
 
   const isInCart = cart.some((product) => product.id === id);
 

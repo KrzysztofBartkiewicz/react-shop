@@ -6,7 +6,9 @@ import Image from '../../atoms/Image';
 import Paragraph from '../../atoms/Paragraph';
 import { StyledButton, StyledImgWrapper, StyledProduct } from './StyledProduct';
 
-const Product = ({ id, name, image, price }) => {
+const Product = (props) => {
+  const { id, name, image, price } = props;
+
   const context = useContext(RootContext);
   const { addProductToCart, deleteProductFromCart, cart } = context;
 
@@ -16,7 +18,7 @@ const Product = ({ id, name, image, price }) => {
     <Link
       to={{
         pathname: `/${name.replace(/\s/g, '')}`,
-        state: { id },
+        state: { ...props },
       }}
     >
       <StyledProduct>

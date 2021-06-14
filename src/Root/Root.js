@@ -5,10 +5,13 @@ import Router from '../routing/Router';
 import GlobalStylesTemplate from '../templates/GlobalStylesTemplate';
 import swalAlert from '../utils/sweetalert2';
 import { getContentfulData } from '../utils/contentful';
+import {
+  getProductMaxPrice,
+  getProductMinPrice,
+} from '../utils/getProductPrices';
 
 const Root = () => {
   const [localStorageCart, saveLocalStorageCart] = useLocalStorage();
-
   const [products, setProducts] = useState([]);
   const [initialProducts, setInitialProducts] = useState([]);
   const [cartModalOpen, setCartModalOpen] = useState(false);
@@ -28,6 +31,11 @@ const Root = () => {
     if (contentfulData) {
       setInitialProducts([...contentfulData]);
       setProducts([...contentfulData]);
+
+      setProductPriceRange([
+        getProductMinPrice(contentfulData),
+        getProductMaxPrice(contentfulData),
+      ]);
     }
   };
 

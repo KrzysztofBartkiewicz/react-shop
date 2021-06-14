@@ -66,7 +66,7 @@ export const StyledButton = styled.button`
   ${({ facebook, theme }) =>
     facebook &&
     css`
-      padding: 1.8rem 5.8rem 1.8rem 7.8rem;
+      padding: 1.8rem 5.8rem 1.8rem 9.8rem;
       background: url(${iconsTypes.facebook}) 30% no-repeat
         ${theme.colors.facebook};
       color: ${theme.colors.primaryWhite};
@@ -75,7 +75,7 @@ export const StyledButton = styled.button`
   ${({ gmail, theme }) =>
     gmail &&
     css`
-      padding: 1.8rem 5.8rem 1.8rem 7.8rem;
+      padding: 1.8rem 5.8rem 1.8rem 9.8rem;
       background: url(${iconsTypes.gmail}) 30% no-repeat
         ${theme.colors.primaryWhite};
       color: ${theme.colors.primaryBlack};

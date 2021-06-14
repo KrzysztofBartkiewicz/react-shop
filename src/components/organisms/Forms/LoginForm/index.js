@@ -4,6 +4,8 @@ import * as yup from 'yup';
 import Heading from '../../../atoms/Heading';
 import FormInput from '../../../molecules/FormInput';
 import Button from '../../../atoms/Button';
+import { useContext } from 'react';
+import AuthContext from '../../../../context/AuthContext';
 import {
   StyledLoginForm,
   StyledParagraph,
@@ -12,32 +14,14 @@ import {
   StyledBottomWrapper,
   StyledSubmitBtn,
 } from './StyledLoginForm';
-import { auth, provider } from '../../../../firebase/firebaseConfig';
-import { usersCollections } from '../../../../firebase/firestoreUtils';
 
 const validationSchema = yup.object().shape({
   email: yup.string().email().required('Email is a required field'),
 });
 
-const googleSignUp = () => {
-  auth
-    .signInWithPopup(provider)
-    .then((user) => {
-      if (user.additionalUserInfo.isNewUser) {
-        const { email, given_name, family_name } =
-          user.additionalUserInfo.profile;
-        usersCollections.doc(user.user.uid).set({
-          email: email,
-          firstName: given_name,
-          lastName: family_name,
-          orders: [],
-        });
-      }
-    })
-    .catch((error) => console.log(error));
-};
-
 const SignUpForm = () => {
+  const { signUpWithGoogle, logIn } = useContext(AuthContext);
+
   return (
     <StyledLoginForm>
       <Heading headingType="h5">Log in</Heading>
@@ -53,7 +37,9 @@ const SignUpForm = () => {
           keepSignedin: false,
         }}
         onSubmit={(values, { resetForm }) => {
-          // alert(JSON.stringify(values, null, 2));
+          const { email, password } = values;
+          logIn(email, password);
+          resetForm();
         }}
         validationSchema={validationSchema}
       >
@@ -88,7 +74,7 @@ const SignUpForm = () => {
             </StyledInnerWrapper>
             <StyledButtonsWrapper>
               <Button facebook>Facebook</Button>
-              <Button onClickFn={googleSignUp} gmail>
+              <Button onClickFn={signUpWithGoogle} gmail>
                 Gmail
               </Button>
             </StyledButtonsWrapper>

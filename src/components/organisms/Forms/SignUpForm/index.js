@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Formik, Form, ErrorMessage } from 'formik';
 import * as yup from 'yup';
+import AuthContext from '../../../../context/AuthContext';
 import Heading from '../../../atoms/Heading';
 import FormInput from '../../../molecules/FormInput';
 import {
@@ -8,8 +9,6 @@ import {
   StyledParagraph,
   StyledButton,
 } from './StyledSignUpForm';
-import { auth } from '../../../../firebase/firebaseConfig';
-import { usersCollections } from '../../../../firebase/firestoreUtils';
 
 const validationSchema = yup.object().shape({
   firstName: yup
@@ -37,6 +36,8 @@ const validationSchema = yup.object().shape({
 });
 
 const SignUpForm = () => {
+  const { signUp } = useContext(AuthContext);
+
   return (
     <StyledSignUpForm>
       <Heading headingType="h5">
@@ -58,22 +59,8 @@ const SignUpForm = () => {
           acceptTerms: false,
         }}
         onSubmit={(values, { resetForm }) => {
-          // alert(JSON.stringify(values, null, 2));
           const { firstName, lastName, email, password } = values;
-          auth
-            .createUserWithEmailAndPassword(email, password)
-            .then((user) =>
-              usersCollections.doc(user.user.uid).set({
-                email,
-                firstName,
-                lastName,
-                password,
-                orders: [],
-              })
-            )
-            .then((res) => alert(res))
-            .catch((err) => alert(err));
-
+          signUp(email, password, firstName, lastName);
           resetForm();
         }}
         validationSchema={validationSchema}

@@ -1,5 +1,9 @@
 import React, { useContext } from 'react';
 import RootContext from '../../../../context/RootContext';
+import {
+  getProductMaxPrice,
+  getProductMinPrice,
+} from '../../../../utils/getProductPrices';
 import MaterialRangeInput from '../../../atoms/Input/MaterialRangeInput';
 import {
   StyledFilterWrapper,
@@ -11,13 +15,6 @@ const FilterProductByPrice = () => {
   const { handleProductPriceChange, productPriceRange, initialProducts } =
     context;
 
-  const min = initialProducts
-    ? Math.min(...initialProducts.map((product) => product.price))
-    : 0;
-  const max = initialProducts
-    ? Math.max(...initialProducts.map((product) => product.price))
-    : 3000;
-
   return (
     <StyledFilterWrapper>
       <StyledParagraph weight="bold" size="xxs">
@@ -26,8 +23,8 @@ const FilterProductByPrice = () => {
       <MaterialRangeInput
         value={productPriceRange}
         onChangeFn={handleProductPriceChange}
-        min={min}
-        max={max}
+        min={getProductMinPrice(initialProducts)}
+        max={getProductMaxPrice(initialProducts)}
       />
     </StyledFilterWrapper>
   );
