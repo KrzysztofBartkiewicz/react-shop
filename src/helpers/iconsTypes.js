@@ -1,13 +1,5 @@
 import heartIcon from '../assets/icons/heart.svg';
-import cartIcon from '../assets/icons/cart.svg';
 import logoIcon from '../assets/icons/logo.svg';
-import searchIcon from '../assets/icons/search.svg';
-import avataricon from '../assets/icons/avatar.svg';
-import plusIcon from '../assets/icons/plus.svg';
-import minusIcon from '../assets/icons/remove.svg';
-import cancelIcon from '../assets/icons/cancel.svg';
-import arrowDownIcon from '../assets/icons/arrow-down.svg';
-import arrowLeftIcon from '../assets/icons/arrow-left.svg';
 import paypalIcon from '../assets/icons/payment-icons/029-paypal.svg';
 import visaIcon from '../assets/icons/payment-icons/040-visa.svg';
 import mastercardIcon from '../assets/icons/payment-icons/024-mastercard.svg';
@@ -25,18 +17,15 @@ import gmailIcon from '../assets/icons/gmail.svg';
 import { ReactComponent as CartIcon } from '../assets/icons/cart.svg';
 import { ReactComponent as AvatarIcon } from '../assets/icons/avatar.svg';
 import { ReactComponent as SearchIcon } from '../assets/icons/search.svg';
+import { ReactComponent as ArrowDownIcon } from '../assets/icons/arrow-down.svg';
+import { ReactComponent as PlusIcon } from '../assets/icons/plus.svg';
+import { ReactComponent as MinusIcon } from '../assets/icons/remove.svg';
+import { ReactComponent as ArrowLeftIcon } from '../assets/icons/arrow-left.svg';
+import { ReactComponent as CancelIcon } from '../assets/icons/cancel.svg';
 
 export const iconsTypes = {
   heart: heartIcon,
-  cart: cartIcon,
   logo: logoIcon,
-  search: searchIcon,
-  avatar: avataricon,
-  plus: plusIcon,
-  minus: minusIcon,
-  cancel: cancelIcon,
-  arrowDown: arrowDownIcon,
-  arrowLeft: arrowLeftIcon,
   paypal: paypalIcon,
   visa: visaIcon,
   mastercard: mastercardIcon,
@@ -53,4 +42,10 @@ export const iconsTypes = {
   CartIcon,
   AvatarIcon,
   SearchIcon,
+  ArrowDownIcon,
+  CartIcon,
+  PlusIcon,
+  MinusIcon,
+  ArrowLeftIcon,
+  CancelIcon,
 };

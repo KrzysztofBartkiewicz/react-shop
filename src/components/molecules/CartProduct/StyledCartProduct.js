@@ -1,8 +1,5 @@
 import styled, { css } from 'styled-components';
-import Button from '../../atoms/Button';
 import Image from '../../atoms/Image';
-import Paragraph from '../../atoms/Paragraph';
-import AmountSelector from '../AmountSelector';
 
 export const StyledCartProduct = styled.div`
   display: grid;
@@ -25,33 +22,7 @@ export const StyledImage = styled(Image)`
   ${({ basic }) =>
     basic &&
     css`
-      width: 5rem;
-      height: 5rem;
-    `}
-`;
-
-export const StyledName = styled(Paragraph)``;
-
-export const StyledCategory = styled(Paragraph)`
-  ${({ basic }) =>
-    basic &&
-    css`
-      display: none;
-    `}
-`;
-export const StyledAmountSelector = styled(AmountSelector)`
-  ${({ basic }) =>
-    basic &&
-    css`
-      display: none;
-    `}
-`;
-export const StyledTotalPrice = styled(Paragraph)``;
-
-export const StyledButton = styled(Button)`
-  ${({ basic }) =>
-    basic &&
-    css`
-      display: none;
+      width: 4rem;
+      height: 4rem;
     `}
 `;

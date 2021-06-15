@@ -1,19 +1,23 @@
 import React from 'react';
 import Button from '../../atoms/Button';
 import { iconsTypes } from '../../../helpers/iconsTypes';
-import { StyledAmountSelector, StyledParagraph } from './StyledAmountSelector';
+import {
+  StyledAmountSelector,
+  StyledParagraph,
+  StyledButton,
+} from './StyledAmountSelector';
 
 const AmountSelector = ({ onAddFn, onLessFn, value, className }) => {
   return (
     <StyledAmountSelector className={className}>
-      <Button
+      <StyledButton
         onClickFn={onLessFn}
         menu
-        icon={iconsTypes.minus}
+        icon={iconsTypes.MinusIcon}
         isDisabled={value === 1 && true}
       />
       <StyledParagraph>{value}</StyledParagraph>
-      <Button onClickFn={onAddFn} menu icon={iconsTypes.plus} />
+      <StyledButton onClickFn={onAddFn} menu icon={iconsTypes.PlusIcon} />
     </StyledAmountSelector>
   );
 };

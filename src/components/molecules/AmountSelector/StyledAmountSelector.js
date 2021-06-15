@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import Button from '../../atoms/Button';
 import Paragraph from '../../atoms/Paragraph';
 
 export const StyledAmountSelector = styled.div`
@@ -14,4 +15,11 @@ export const StyledAmountSelector = styled.div`
 export const StyledParagraph = styled(Paragraph)`
   flex-basis: 2rem;
   text-align: center;
+`;
+
+export const StyledButton = styled(Button)`
+  svg {
+    width: 2rem;
+    height: 2rem;
+  }
 `;

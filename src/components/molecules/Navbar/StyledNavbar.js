@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 import NotificationCount from '../../atoms/NotificationCount';
-import Paragraph from '../../atoms/Paragraph';
+import { Link } from 'react-router-dom';
 
 export const StyledNavbar = styled.nav`
   display: flex;
@@ -43,6 +43,10 @@ export const StyledNavListItem = styled.li`
 export const StyledNavButtons = styled.div`
   display: flex;
   align-items: flex-start;
+
+  & > * {
+    margin-right: 3rem;
+  }
 `;
 
 export const StyledButtonWrapper = styled.div`
@@ -56,20 +60,9 @@ export const StyledNotificationCount = styled(NotificationCount)`
   pointer-events: none;
 `;
 
-export const StyledUserName = styled(Paragraph)`
-  color: inherit;
-`;
-
-export const StyledUserEmail = styled(Paragraph)`
-  margin-top: -0.5rem;
-  color: inherit;
-`;
-
-export const StyledUserWrapper = styled.div`
-  margin-left: 2rem;
-  ${({ isHomeRendered, theme }) =>
-    isHomeRendered &&
-    css`
-      color: ${theme.colors.primaryWhite};
-    `}
+export const StyledLink = styled(Link)`
+  svg {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
 `;

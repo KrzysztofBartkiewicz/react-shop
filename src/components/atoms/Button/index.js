@@ -7,8 +7,6 @@ const Button = ({
   onClickFn,
   secondary,
   round,
-  nav,
-  menu,
   goBack,
   icon: Icon,
   facebook,
@@ -24,8 +22,6 @@ const Button = ({
       onClick={onClickFn}
       secondary={secondary}
       round={round}
-      nav={nav}
-      menu={menu}
       icon={Icon}
       facebook={facebook}
       gmail={gmail}
@@ -34,7 +30,7 @@ const Button = ({
       type={type}
       bgIcon={bgIcon}
     >
-      {nav ? <Icon fill={whiteIcon && 'white'} /> : children}
+      {Icon ? <Icon fill={whiteIcon && 'white'} /> : children}
     </StyledButton>
   );
 };

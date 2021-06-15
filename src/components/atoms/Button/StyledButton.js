@@ -10,13 +10,6 @@ export const StyledButton = styled.button`
   background-color: ${({ theme }) => theme.colors.primaryYellow};
   font-weight: ${({ theme }) => theme.fontWeights.bold};
 
-  ${({ theme, secondary }) =>
-    secondary &&
-    css`
-      border: 1px solid ${theme.colors.secondary};
-      background-color: ${theme.colors.primaryWhite};
-    `}
-
   ${({ round }) =>
     round &&
     css`
@@ -26,40 +19,41 @@ export const StyledButton = styled.button`
       border-radius: 50%;
     `}
 
-  ${({ nav }) =>
-    nav &&
-    css`
-      width: 2.2rem;
-      height: 2.2rem;
-      background-color: transparent;
-      background-size: 2rem 2rem;
-      border-radius: 0;
-    `}
-
-  ${({ menu }) =>
-    menu &&
-    css`
-      width: 1rem;
-      height: 1rem;
-      padding: 1rem;
-      background-color: transparent;
-      border-radius: 0;
-      background-size: 1.5rem 1.5rem;
-    `}
-
   ${({ icon }) =>
     icon &&
     css`
-      background-image: url(${icon});
-      background-position: center;
-      background-repeat: no-repeat;
+      padding: 0;
+      background: transparent;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      svg {
+        width: 2.5rem;
+        height: 2.5rem;
+      }
     `}
 
-  ${({ goBack, icon }) =>
+  ${({ icon, round, theme }) =>
+    icon &&
+    round &&
+    css`
+      background: ${theme.colors.primaryYellow};
+      border: none;
+    `}
+
+    ${({ theme, secondary }) =>
+    secondary &&
+    css`
+      border: 1px solid ${theme.colors.secondary};
+      background-color: ${theme.colors.primaryWhite};
+    `}
+
+  ${({ goBack }) =>
     goBack &&
     css`
       padding: 0;
-      background: url(${icon}) left no-repeat;
+      background: transparent;
       padding: 1rem 3rem;
     `}
 

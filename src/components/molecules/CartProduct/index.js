@@ -1,15 +1,10 @@
 import React, { useContext } from 'react';
 import RootContext from '../../../context/RootContext';
+import Paragraph from '../../atoms/Paragraph';
+import AmountSelector from '../AmountSelector';
+import Button from '../../atoms/Button';
 import { iconsTypes } from '../../../helpers/iconsTypes';
-import {
-  StyledAmountSelector,
-  StyledCartProduct,
-  StyledName,
-  StyledCategory,
-  StyledImage,
-  StyledTotalPrice,
-  StyledButton,
-} from './StyledCartProduct';
+import { StyledCartProduct, StyledImage } from './StyledCartProduct';
 
 const CartProduct = ({
   id,
@@ -28,23 +23,26 @@ const CartProduct = ({
   return (
     <StyledCartProduct basic={basic}>
       <StyledImage basic={basic} src={image} alt={name} cartImg />
-      <StyledName basic={basic} weight="bold">
-        {name}
-      </StyledName>
-      <StyledCategory basic={basic}>{category}</StyledCategory>
-      <StyledAmountSelector
-        basic={basic}
-        onAddFn={() => changeCartQuantity(id, inCartQuantity + 1)}
-        onLessFn={() => changeCartQuantity(id, inCartQuantity - 1)}
-        value={inCartQuantity}
-      />
-      <StyledTotalPrice basic={basic}>{totalProductPrice}</StyledTotalPrice>
-      <StyledButton
-        basic={basic}
-        onClickFn={() => deleteProductFromCart(id)}
-        icon={iconsTypes.cancel}
-        bgIcon
-      />
+      <Paragraph weight="bold">{name}</Paragraph>
+      {!basic && (
+        <>
+          <Paragraph>{category}</Paragraph>
+          <AmountSelector
+            onAddFn={() => changeCartQuantity(id, inCartQuantity + 1)}
+            onLessFn={() => changeCartQuantity(id, inCartQuantity - 1)}
+            value={inCartQuantity}
+          />
+        </>
+      )}
+
+      <Paragraph>{totalProductPrice}</Paragraph>
+      {!basic && (
+        <Button
+          onClickFn={() => deleteProductFromCart(id)}
+          icon={iconsTypes.CancelIcon}
+          bgIcon
+        />
+      )}
     </StyledCartProduct>
   );
 };

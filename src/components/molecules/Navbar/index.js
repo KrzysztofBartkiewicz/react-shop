@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { iconsTypes } from '../../../helpers/iconsTypes';
 import { routes } from '../../../helpers/routes';
 import RootContext from '../../../context/RootContext';
@@ -7,6 +7,7 @@ import AuthContext from '../../../context/AuthContext';
 import Button from '../../atoms/Button';
 import Logo from '../../atoms/Logo';
 import NavigationLink from '../../atoms/NavigationLink';
+import UserMenu from '../UserMenu';
 import {
   StyledNavbar,
   StyledNavButtons,
@@ -15,14 +16,15 @@ import {
   StyledButtonWrapper,
   StyledNotificationCount,
   StyledUserName,
-  StyledUserEmail,
+  StyledPopupButton,
   StyledUserWrapper,
+  StyledLink,
 } from './StyledNavbar';
 
 const Navbar = () => {
   const { cartProductsQuantity, isHomeRendered, handleCartModalOpen } =
     useContext(RootContext);
-  const { currentUser } = useContext(AuthContext);
+  const { currentUser, logOut } = useContext(AuthContext);
 
   return (
     <StyledNavbar isHomeRendered={isHomeRendered}>
@@ -40,11 +42,11 @@ const Navbar = () => {
           <NavigationLink to={routes.contact}>Contact</NavigationLink>
         </StyledNavListItem>
       </StyledNavList>
+
       <StyledNavButtons isHomeRendered={isHomeRendered}>
-        <Button nav whiteIcon={isHomeRendered} icon={iconsTypes.SearchIcon} />
+        <Button whiteIcon={isHomeRendered} icon={iconsTypes.SearchIcon} />
         <StyledButtonWrapper>
           <Button
-            nav
             whiteIcon={isHomeRendered}
             icon={iconsTypes.CartIcon}
             onClickFn={handleCartModalOpen}
@@ -55,20 +57,11 @@ const Navbar = () => {
           />
         </StyledButtonWrapper>
         {currentUser ? (
-          <StyledUserWrapper isHomeRendered={isHomeRendered}>
-            <StyledUserName>{currentUser.firstName}</StyledUserName>
-            <StyledUserEmail secondary size="xs">
-              {currentUser.email}
-            </StyledUserEmail>
-          </StyledUserWrapper>
+          <UserMenu />
         ) : (
-          <Link to={routes.login}>
-            <Button
-              nav
-              whiteIcon={isHomeRendered}
-              icon={iconsTypes.AvatarIcon}
-            />
-          </Link>
+          <StyledLink to={routes.login}>
+            <iconsTypes.AvatarIcon fill={isHomeRendered && 'white'} />
+          </StyledLink>
         )}
       </StyledNavButtons>
     </StyledNavbar>
