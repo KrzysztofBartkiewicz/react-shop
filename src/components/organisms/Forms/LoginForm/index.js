@@ -1,5 +1,6 @@
 import React from 'react';
 import { Formik, Form, ErrorMessage } from 'formik';
+import { routes } from '../../../../helpers/routes';
 import loginSchema from '../../../../utils/validation/loginFormSchema';
 import Heading from '../../../atoms/Heading';
 import FormInput from '../../../molecules/FormInput';
@@ -11,7 +12,7 @@ import {
   StyledParagraph,
   StyledInnerWrapper,
   StyledButtonsWrapper,
-  StyledBottomWrapper,
+  StyledSignupLink,
   StyledSubmitBtn,
 } from './StyledLoginForm';
 
@@ -74,11 +75,12 @@ const SignUpForm = () => {
                 Gmail
               </Button>
             </StyledButtonsWrapper>
-            <StyledSubmitBtn type="submit">Sign up</StyledSubmitBtn>
-            <StyledBottomWrapper>
-              <p>Not a member yet?</p>
-              <p>Sign up</p>
-            </StyledBottomWrapper>
+            <StyledSubmitBtn type="submit">Log in</StyledSubmitBtn>
+
+            <StyledSignupLink to={routes.signup}>
+              Not a member yet?
+              <span>Sign up</span>
+            </StyledSignupLink>
           </Form>
         )}
       </Formik>

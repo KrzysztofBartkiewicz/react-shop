@@ -1,5 +1,5 @@
 import React from 'react';
-import Navbar from '../components/molecules/Navbar';
+import Navbar from '../components/organisms/Navbar';
 import Modal from '../components/molecules/Modal';
 
 const NavigationTemplate = ({ children }) => {

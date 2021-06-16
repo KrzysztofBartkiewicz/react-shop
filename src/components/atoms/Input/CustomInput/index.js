@@ -10,6 +10,7 @@ const Input = ({
   name,
   checked,
   className,
+  disabled,
 }) => {
   return (
     <StyledInput
@@ -21,6 +22,7 @@ const Input = ({
       name={name}
       checked={checked}
       className={className}
+      disabled={disabled}
     />
   );
 };

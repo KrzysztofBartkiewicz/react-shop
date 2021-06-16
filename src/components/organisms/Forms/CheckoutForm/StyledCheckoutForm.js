@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import { Form } from 'formik';
 import Heading from '../../../atoms/Heading';
 import Button from '../../../atoms/Button';
+import { Link } from 'react-router-dom';
 
 export const StyledFormWrapper = styled.div`
   margin-top: 4rem;
@@ -36,8 +37,21 @@ export const StyledContinueBtn = styled(Button)`
   margin-right: 3rem;
 `;
 
-export const StyledSubmitBtn = styled(Button)``;
-
-export const StyledLoginBtn = styled(Button)`
+export const StyledLoginLink = styled(Link)`
   margin-right: 2rem;
+  border: none;
+  outline: none;
+  padding: ${({ theme }) => theme.paddings.primary};
+  border-radius: ${({ theme }) => theme.borderRadiuses.primary};
+  color: ${({ theme }) => theme.colors.primaryBlack};
+  background-color: ${({ theme }) => theme.colors.primaryYellow};
+  font-weight: ${({ theme }) => theme.fontWeights.bold};
+  font-size: ${({ theme }) => theme.fontSizes.xs};
 `;
+
+export const StyledSigninLink = styled(StyledLoginLink)`
+  border: 1px solid ${({ theme }) => theme.colors.secondary};
+  background-color: ${({ theme }) => theme.colors.primaryWhite};
+`;
+
+export const StyledSubmitBtn = styled(Button)``;

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import AuthContext from '../context/AuthContext';
 import { auth, provider } from '../firebase/firebaseConfig';
 import { usersCollections } from '../firebase/firestoreUtils';
+import swalAlert from '../utils/sweetalert2';
 
 const AuthContextProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState(null);
@@ -10,26 +11,37 @@ const AuthContextProvider = ({ children }) => {
     auth
       .createUserWithEmailAndPassword(email, password)
       .then((user) =>
-        usersCollections.doc(user.user.uid).set({
-          email,
-          firstName,
-          lastName,
-          password,
-          orders: [],
-        })
+        usersCollections
+          .doc(user.user.uid)
+          .set({
+            email,
+            firstName,
+            lastName,
+            password,
+            orders: [],
+          })
+          .then(() => swalAlert('Firestore', 'Account created'))
+          .catch((err) => console.log('Document writing error: ', err))
       )
-      .catch((err) => console.log(err));
+      .catch((err) => console.log('Create user error: ', err));
   };
 
   const logIn = (email, password) => {
     auth
       .signInWithEmailAndPassword(email, password)
-      .then((user) => console.log(user))
-      .catch((error) => console.log(error));
+      .then((user) =>
+        usersCollections
+          .doc(user.user.uid)
+          .get()
+          .then((doc) =>
+            swalAlert(doc.data().firstName, "You've just logged in")
+          )
+      )
+      .catch(() => swalAlert('Error', 'Wrong email or password', 'error'));
   };
 
   const logOut = () => {
-    auth.signOut();
+    auth.signOut().then(() => swalAlert('Logout', "You've just logged out"));
   };
 
   const signUpWithGoogle = () => {
@@ -39,8 +51,12 @@ const AuthContextProvider = ({ children }) => {
         if (user.additionalUserInfo.isNewUser) {
           addNewUser(user);
         }
+        swalAlert(
+          user.additionalUserInfo.profile.given_name,
+          'Succesfully logged in'
+        );
       })
-      .catch((error) => console.log(error));
+      .catch((err) => console.log('Gmail login error :', err));
   };
 
   const addNewUser = (user) => {

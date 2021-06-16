@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Formik } from 'formik';
 import { iconsTypes } from '../../../../helpers/iconsTypes';
 import { useHistory } from 'react-router';
@@ -10,6 +10,7 @@ import ShippingInfoWrapper from './Wrappers/ShippingInfoWrapper';
 import DeliveryWrapper from './Wrappers/DeliveryWrapper';
 import PaymentWrapper from './Wrappers/PaymentWrapper';
 import CartWrapper from './Wrappers/CartWrapper';
+import AuthContext from '../../../../context/AuthContext';
 import {
   StyledFormWrapper,
   StyledButtonsWrapper,
@@ -18,11 +19,13 @@ import {
   StyledHeading,
   StyledSubmitBtn,
   StyledContinueBtn,
-  StyledLoginBtn,
+  StyledLoginLink,
+  StyledSigninLink,
 } from './StyledCheckoutForm';
 
 const CheckoutForm = () => {
   const { goBack } = useHistory();
+  const { currentUser, logOut } = useContext(AuthContext);
 
   return (
     <StyledFormWrapper>
@@ -47,8 +50,16 @@ const CheckoutForm = () => {
         {({ values, handleChange }) => (
           <StyledForm>
             <StyledButtonsWrapper>
-              <StyledLoginBtn>LOG IN</StyledLoginBtn>
-              <Button secondary>SIGN IN</Button>
+              {currentUser ? (
+                <Button onClickFn={logOut}>LOG OUT</Button>
+              ) : (
+                <>
+                  <StyledLoginLink to={routes.login}>LOG IN</StyledLoginLink>
+                  <StyledSigninLink to={routes.signup}>
+                    SIGN IN
+                  </StyledSigninLink>
+                </>
+              )}
             </StyledButtonsWrapper>
 
             <ShippingInfoWrapper

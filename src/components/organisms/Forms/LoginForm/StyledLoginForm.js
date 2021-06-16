@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 import Paragraph from '../../../atoms/Paragraph';
 import Button from '../../../atoms/Button';
 
@@ -36,4 +37,14 @@ export const StyledBottomWrapper = styled.div`
 export const StyledSubmitBtn = styled(Button)`
   width: 100%;
   margin-bottom: 1.5rem;
+`;
+
+export const StyledSignupLink = styled(Link)`
+  font-size: ${({ theme }) => theme.fontSizes.xs};
+  color: ${({ theme }) => theme.colors.primaryBlack};
+
+  span {
+    margin-left: 2rem;
+    font-weight: ${({ theme }) => theme.fontWeights.bold};
+  }
 `;

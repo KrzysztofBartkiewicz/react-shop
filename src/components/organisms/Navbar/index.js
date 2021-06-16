@@ -7,8 +7,8 @@ import AuthContext from '../../../context/AuthContext';
 import Button from '../../atoms/Button';
 import Logo from '../../atoms/Logo';
 import NavigationLink from '../../atoms/NavigationLink';
-import UserMenu from '../UserMenu';
-import SearchPopup from '../SearchPopup';
+import UserMenu from '../../molecules/UserMenu';
+import SearchPopup from '../../molecules/SearchPopup';
 import {
   StyledNavbar,
   StyledNavButtons,

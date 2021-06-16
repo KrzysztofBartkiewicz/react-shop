@@ -14,6 +14,7 @@ const FormInput = ({
   onChangeFn,
   errorMsg,
   className,
+  disabled,
 }) => {
   return (
     <StyledFormInput className={className} type={type}>
@@ -23,6 +24,7 @@ const FormInput = ({
         type={type}
         value={value}
         onChangeFn={onChangeFn}
+        disabled={disabled}
       />
       <StyledLabel type={type} htmlFor={name} secondary={type !== 'checkbox'}>
         {label}

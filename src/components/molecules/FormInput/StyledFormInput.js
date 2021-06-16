@@ -58,6 +58,15 @@ export const StyledInput = styled(Input)`
       width: auto;
       order: -1;
     `}
+
+  ${({ disabled }) =>
+    disabled &&
+    css`
+      color: ${({ theme }) => theme.colors.primaryBlack};
+      & ~ ${StyledLabel} {
+        display: none;
+      }
+    `}
 `;
 
 export const StyledErrorMsg = styled.div`

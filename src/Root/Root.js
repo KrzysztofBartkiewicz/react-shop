@@ -115,7 +115,7 @@ const Root = () => {
   const addProductToCart = (productId) => {
     const product = products.find((el) => el.id === productId);
     setCart((prev) => [...new Set([...prev, product])]);
-    swalAlert();
+    swalAlert('Cart', 'Product added');
   };
 
   const deleteProductFromCart = (productId) => {
