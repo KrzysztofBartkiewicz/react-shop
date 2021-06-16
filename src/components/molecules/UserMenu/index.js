@@ -1,10 +1,12 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useRef, useState } from 'react';
 import AuthContext from '../../../context/AuthContext';
 import RootContext from '../../../context/RootContext';
 import Button from '../../atoms/Button';
 import Paragraph from '../../atoms/Paragraph';
 import NotificationCount from '../../atoms/NotificationCount';
+import useGlobalClickCoords from '../../../hooks/useGlobalClickCoords';
 import { iconsTypes } from '../../../helpers/iconsTypes';
+import { isClickOutside } from '../../../utils/clickDetection';
 import {
   StyledUserMenu,
   StyledUserName,
@@ -14,10 +16,25 @@ import {
   StyledPopupCart,
 } from './StyledUserMenu';
 
-const UserMenu = ({ isHomeRendered }) => {
+const UserMenu = () => {
   const { currentUser, logOut } = useContext(AuthContext);
-  const { cart } = useContext(RootContext);
+  const { cart, isHomeRendered } = useContext(RootContext);
+
+  const { x, y } = useGlobalClickCoords();
+
+  const popupRef = useRef(null);
+  const buttonRef = useRef(null);
+
   const [isExpanded, setIsExpanded] = useState(false);
+
+  useEffect(() => {
+    if (
+      isClickOutside(x, y, popupRef.current) &&
+      isClickOutside(x, y, buttonRef.current)
+    ) {
+      setIsExpanded(false);
+    }
+  }, [x, y]);
 
   const handleExpand = () => {
     setIsExpanded((prev) => !prev);
@@ -25,13 +42,16 @@ const UserMenu = ({ isHomeRendered }) => {
 
   return (
     <StyledUserMenu>
-      <StyledUserName>{currentUser.firstName}</StyledUserName>
+      <StyledUserName isHomeRendered={isHomeRendered}>
+        {currentUser.firstName}
+      </StyledUserName>
       <StyledPopupButton
+        ref={buttonRef}
         whiteIcon={isHomeRendered}
-        icon={iconsTypes.ArrowDownIcon}
+        icon={isExpanded ? iconsTypes.ArrowUpIcon : iconsTypes.ArrowDownIcon}
         onClickFn={handleExpand}
       />
-      <StyledPopupWrapper isExpanded={isExpanded}>
+      <StyledPopupWrapper ref={popupRef} isExpanded={isExpanded}>
         <StyledPopupItem>{currentUser.email}</StyledPopupItem>
         <StyledPopupCart>
           <Paragraph>Your cart</Paragraph>

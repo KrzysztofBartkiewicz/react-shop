@@ -12,6 +12,7 @@ import {
 
 const Root = () => {
   const [localStorageCart, saveLocalStorageCart] = useLocalStorage();
+
   const [products, setProducts] = useState([]);
   const [initialProducts, setInitialProducts] = useState([]);
   const [cartModalOpen, setCartModalOpen] = useState(false);
@@ -26,19 +27,6 @@ const Root = () => {
 
   const [isHomeRendered, setIsHomeRendered] = useState(false);
 
-  const getCMSData = async () => {
-    const contentfulData = await getContentfulData();
-    if (contentfulData) {
-      setInitialProducts([...contentfulData]);
-      setProducts([...contentfulData]);
-
-      setProductPriceRange([
-        getProductMinPrice(contentfulData),
-        getProductMaxPrice(contentfulData),
-      ]);
-    }
-  };
-
   useEffect(() => {
     getCMSData();
   }, []);
@@ -52,6 +40,19 @@ const Root = () => {
   useEffect(() => {
     filterProducts();
   }, [productCategory, productNameInput, productPriceRange]);
+
+  const getCMSData = async () => {
+    const contentfulData = await getContentfulData();
+    if (contentfulData) {
+      setInitialProducts([...contentfulData]);
+      setProducts([...contentfulData]);
+
+      setProductPriceRange([
+        getProductMinPrice(contentfulData),
+        getProductMaxPrice(contentfulData),
+      ]);
+    }
+  };
 
   const setHomeRenderFlag = (isRendered) => {
     setIsHomeRendered(isRendered);

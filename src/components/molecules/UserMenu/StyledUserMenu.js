@@ -10,6 +10,12 @@ export const StyledUserMenu = styled.div`
 
 export const StyledUserName = styled(Paragraph)`
   margin-right: 1rem;
+
+  ${({ isHomeRendered }) =>
+    isHomeRendered &&
+    css`
+      color: white;
+    `}
 `;
 
 export const StyledPopupButton = styled(Button)`
@@ -28,6 +34,7 @@ export const StyledPopupWrapper = styled.div`
   border: 1px solid ${({ theme }) => theme.colors.secondary};
   font-size: ${({ theme }) => theme.fontSizes.s};
   background: ${({ theme }) => theme.colors.primaryWhite};
+  box-shadow: ${({ theme }) => theme.boxShadows.modal};
 
   ${({ isExpanded }) =>
     isExpanded &&

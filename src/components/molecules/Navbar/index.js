@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { iconsTypes } from '../../../helpers/iconsTypes';
 import { routes } from '../../../helpers/routes';
 import RootContext from '../../../context/RootContext';
@@ -8,6 +8,7 @@ import Button from '../../atoms/Button';
 import Logo from '../../atoms/Logo';
 import NavigationLink from '../../atoms/NavigationLink';
 import UserMenu from '../UserMenu';
+import SearchPopup from '../SearchPopup';
 import {
   StyledNavbar,
   StyledNavButtons,
@@ -15,22 +16,20 @@ import {
   StyledNavList,
   StyledButtonWrapper,
   StyledNotificationCount,
-  StyledUserName,
-  StyledPopupButton,
-  StyledUserWrapper,
   StyledLink,
 } from './StyledNavbar';
 
 const Navbar = () => {
   const { cartProductsQuantity, isHomeRendered, handleCartModalOpen } =
     useContext(RootContext);
-  const { currentUser, logOut } = useContext(AuthContext);
+  const { currentUser } = useContext(AuthContext);
 
   return (
     <StyledNavbar isHomeRendered={isHomeRendered}>
       <Link to={routes.home}>
         <Logo isHomeRendered={isHomeRendered} />
       </Link>
+
       <StyledNavList isHomeRendered={isHomeRendered}>
         <StyledNavListItem>
           <NavigationLink to={routes.home}>Home</NavigationLink>
@@ -44,7 +43,7 @@ const Navbar = () => {
       </StyledNavList>
 
       <StyledNavButtons isHomeRendered={isHomeRendered}>
-        <Button whiteIcon={isHomeRendered} icon={iconsTypes.SearchIcon} />
+        <SearchPopup />
         <StyledButtonWrapper>
           <Button
             whiteIcon={isHomeRendered}

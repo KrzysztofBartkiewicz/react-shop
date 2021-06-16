@@ -18,6 +18,7 @@ import { ReactComponent as CartIcon } from '../assets/icons/cart.svg';
 import { ReactComponent as AvatarIcon } from '../assets/icons/avatar.svg';
 import { ReactComponent as SearchIcon } from '../assets/icons/search.svg';
 import { ReactComponent as ArrowDownIcon } from '../assets/icons/arrow-down.svg';
+import { ReactComponent as ArrowUpIcon } from '../assets/icons/arrow-up.svg';
 import { ReactComponent as PlusIcon } from '../assets/icons/plus.svg';
 import { ReactComponent as MinusIcon } from '../assets/icons/remove.svg';
 import { ReactComponent as ArrowLeftIcon } from '../assets/icons/arrow-left.svg';
@@ -43,9 +44,9 @@ export const iconsTypes = {
   AvatarIcon,
   SearchIcon,
   ArrowDownIcon,
-  CartIcon,
   PlusIcon,
   MinusIcon,
   ArrowLeftIcon,
   CancelIcon,
+  ArrowUpIcon,
 };
