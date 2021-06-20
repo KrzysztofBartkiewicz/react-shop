@@ -2,6 +2,8 @@ import React, { useContext, useEffect } from 'react';
 import { routes } from '../../helpers/routes';
 import RootContext from '../../context/RootContext';
 import Paragraph from '../../components/atoms/Paragraph';
+import Heading from '../../components/atoms/Heading';
+import Button from '../../components/atoms/Button';
 import { iconsTypes } from '../../helpers/iconsTypes';
 import {
   StyledHeader,
@@ -9,13 +11,13 @@ import {
   StyledHeading,
   StyledHome,
   StyledInfoCard,
-  StyledInfoHeading,
   StyledInfoWrapper,
   StyledIconWrapper,
   StyledHeadingWrapper,
   StyledLink,
   StyledLinkIcon,
   StyledLinkParagraph,
+  StyledButtonsWrapper,
 } from './StyledHome';
 
 const Home = () => {
@@ -37,7 +39,7 @@ const Home = () => {
           </StyledHeading>
           <StyledLink to={routes.products}>
             <StyledLinkIcon>
-              <iconsTypes.ArrowRightIcon />
+              <iconsTypes.ArrowRightIcon fill="white" />
             </StyledLinkIcon>
             <StyledLinkParagraph>SHOP NOW</StyledLinkParagraph>
           </StyledLink>
@@ -50,9 +52,7 @@ const Home = () => {
                 <iconsTypes.Car2Icon />
               </StyledIconWrapper>
               <div>
-                <StyledInfoHeading headingType="h6">
-                  Free Shipping
-                </StyledInfoHeading>
+                <Heading headingType="h6">Free Shipping</Heading>
                 <Paragraph secondary>On purchases over $399</Paragraph>
               </div>
             </StyledInfoCard>
@@ -61,9 +61,7 @@ const Home = () => {
                 <iconsTypes.HappyIcon />
               </StyledIconWrapper>
               <div>
-                <StyledInfoHeading headingType="h6">
-                  99% Satisfied Customers
-                </StyledInfoHeading>
+                <Heading headingType="h6">99% Satisfied Customers</Heading>
                 <Paragraph secondary>
                   Our clients' opinions
                   <br />
@@ -76,9 +74,7 @@ const Home = () => {
                 <iconsTypes.GuaranteeIcon />
               </StyledIconWrapper>
               <div>
-                <StyledInfoHeading headingType="h6">
-                  Originality Guaranteed
-                </StyledInfoHeading>
+                <Heading headingType="h6">Originality Guaranteed</Heading>
                 <Paragraph secondary>
                   2 years warranty for each
                   <br />
@@ -87,6 +83,10 @@ const Home = () => {
               </div>
             </StyledInfoCard>
           </StyledInfoWrapper>
+          <StyledButtonsWrapper>
+            <Button square isDisabled={true} icon={iconsTypes.ArrowLeftIcon} />
+            <Button square icon={iconsTypes.ArrowRightIcon} />
+          </StyledButtonsWrapper>
         </StyledHeaderBootomWrapper>
       </StyledHeader>
     </StyledHome>

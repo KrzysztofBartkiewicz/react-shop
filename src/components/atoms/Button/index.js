@@ -17,6 +17,7 @@ const Button = React.forwardRef(
       isDisabled = false,
       whiteIcon,
       bgIcon,
+      square,
     },
     ref
   ) => {
@@ -34,6 +35,7 @@ const Button = React.forwardRef(
         disabled={isDisabled}
         type={type}
         bgIcon={bgIcon}
+        square={square}
       >
         {Icon ? <Icon fill={whiteIcon ? 'white' : ''} /> : children}
       </StyledButton>

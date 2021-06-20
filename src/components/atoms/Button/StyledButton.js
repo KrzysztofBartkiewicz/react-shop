@@ -81,4 +81,18 @@ export const StyledButton = styled.button`
     css`
       background-color: transparent;
     `}
+
+  ${({ square, disabled }) =>
+    square &&
+    css`
+      width: 7.2rem;
+      height: 7.2rem;
+      background: rgba(255, 255, 255, ${disabled ? '0.1' : '1'});
+      border-radius: 0;
+      cursor: ${disabled ? 'default' : 'pointer'};
+
+      svg {
+        fill: ${disabled && 'white'};
+      }
+    `}
 `;

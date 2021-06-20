@@ -1,6 +1,6 @@
-import styled, { css } from 'styled-components';
-import Heading from '../../components/atoms/Heading';
+import styled from 'styled-components';
 import Paragraph from '../../components/atoms/Paragraph';
+import Heading from '../../components/atoms/Heading';
 import bgImage1 from '../../assets/images/bg-image-1.jpg';
 import { Link } from 'react-router-dom';
 
@@ -49,6 +49,8 @@ export const StyledHeaderBootomWrapper = styled.div`
   left: 0;
   bottom: 0;
   width: 100vw;
+  display: flex;
+  justify-content: flex-end;
 `;
 
 export const StyledInfoWrapper = styled.div`
@@ -59,6 +61,7 @@ export const StyledInfoWrapper = styled.div`
   align-items: flex-start;
   border-radius: 0 9rem 0 0;
   background: ${({ theme }) => theme.colors.primaryWhite};
+  flex-grow: 3;
 `;
 
 export const StyledInfoCard = styled.div`
@@ -83,6 +86,13 @@ export const StyledIconWrapper = styled.div`
   }
 `;
 
-export const StyledButtonsWrapper = styled.div``;
+export const StyledButtonsWrapper = styled.div`
+  padding-left: 5.8rem;
+  flex-grow: 1;
+  display: flex;
+  align-items: flex-start;
 
-export const StyledInfoHeading = styled(Heading)``;
+  button:first-child {
+    margin-right: 1rem;
+  }
+`;
