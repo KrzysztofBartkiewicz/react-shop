@@ -59,7 +59,7 @@ const Navbar = () => {
           <UserMenu />
         ) : (
           <StyledLink to={routes.login}>
-            <iconsTypes.AvatarIcon fill={isHomeRendered && 'white'} />
+            <iconsTypes.AvatarIcon fill={isHomeRendered ? 'white' : ''} />
           </StyledLink>
         )}
       </StyledNavButtons>

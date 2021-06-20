@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Formik, ErrorMessage, Form } from 'formik';
+import AuthContext from '../../../../context/AuthContext';
 import contactSchema from '../../../../utils/validation/contactFormSchema';
 import FormInput from '../../../molecules/FormInput';
 import Textarea from '../../../atoms/Textarea';
@@ -12,6 +13,9 @@ import {
 } from './StyledContactForm';
 
 const ContactForm = () => {
+  const { currentUser } = useContext(AuthContext);
+  console.log(currentUser);
+
   return (
     <StyledContactForm>
       <Heading headingType="h5">Contact</Heading>
@@ -50,18 +54,24 @@ const ContactForm = () => {
             <FormInput
               label="Name and surname"
               name="nameAndSurname"
-              value={values.nameAndSurname}
+              value={
+                currentUser
+                  ? `${currentUser.firstName} ${currentUser.lastName}`
+                  : values.nameAndSurname
+              }
               onChangeFn={handleChange}
-              errorMsg={<ErrorMessage name="nameAndSurname" />}
+              errorMsg={!currentUser && <ErrorMessage name="nameAndSurname" />}
+              disabled={currentUser}
             />
 
             <FormInput
               label="Email"
               type="email"
               name="email"
-              value={values.email}
+              value={currentUser ? currentUser.email : values.email}
               onChangeFn={handleChange}
-              errorMsg={<ErrorMessage name="email" />}
+              errorMsg={!currentUser && <ErrorMessage name="email" />}
+              disabled={currentUser}
             />
 
             <FormInput

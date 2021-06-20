@@ -3,6 +3,8 @@ export const mainTheme = {
     primaryBlack: '#000000',
     primaryWhite: '#fff',
     primaryYellow: '#FBB03B',
+    blue: '#1A6EFF',
+    lightBlue: '#E1ECFF',
     secondary: '#D8D8D8',
     tertiary: '#808080',
     facebook: '#3B5998',
@@ -39,8 +41,13 @@ export const mainTheme = {
   },
 
   devices: {
-    mobileXs: '320px',
-    moblie: '420px',
+    mobileS: '320px',
+    mobileM: '375px',
+    mobileL: '425px',
+    tablet: '768px',
+    laptop: '1024px',
+    laptopL: '1440px',
+    desktop: '2560px',
   },
 
   boxShadows: {

@@ -7,7 +7,9 @@ const Select = ({ optionArray, onChangeFn, selectValue, name, className }) => {
     <StyledSelectWrapper className={className}>
       <StyledSelect name={name} value={selectValue} onChange={onChangeFn}>
         {optionArray.map((option) => (
-          <SelectOption optionValue={option}>{option}</SelectOption>
+          <SelectOption key={option} optionValue={option}>
+            {option}
+          </SelectOption>
         ))}
       </StyledSelect>
     </StyledSelectWrapper>

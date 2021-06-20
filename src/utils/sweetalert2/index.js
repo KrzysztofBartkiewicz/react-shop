@@ -4,13 +4,16 @@ import styles from './sweetalert2.module.css';
 
 const MySwal = withReactContent(Swal);
 
+const withStyles = MySwal.mixin({
+  customClass: {
+    title: styles.title,
+    htmlContainer: styles.text,
+    confirmButton: styles.confirmBtn,
+  },
+});
+
 const swalAlert = (title, text, icon = 'success') => {
-  MySwal.fire({
-    customClass: {
-      title: styles.title,
-      htmlContainer: styles.text,
-      confirmButton: styles.confirmBtn,
-    },
+  withStyles.fire({
     title,
     text,
     confirmButtonText: 'OK',

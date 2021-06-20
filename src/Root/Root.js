@@ -146,7 +146,6 @@ const Root = () => {
     <RootContext.Provider
       value={{
         products,
-        initialProducts,
         cartModalOpen,
         cart,
         cartProductsQuantity,

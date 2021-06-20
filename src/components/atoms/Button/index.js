@@ -35,7 +35,7 @@ const Button = React.forwardRef(
         type={type}
         bgIcon={bgIcon}
       >
-        {Icon ? <Icon fill={whiteIcon && 'white'} /> : children}
+        {Icon ? <Icon fill={whiteIcon ? 'white' : ''} /> : children}
       </StyledButton>
     );
   }

@@ -5,8 +5,10 @@ import Button from '../../atoms/Button';
 import RootContext from '../../../context/RootContext';
 import { StyledSearchProduct } from './StyledSearchProduct';
 import { iconsTypes } from '../../../helpers/iconsTypes';
+import { StyledLinkInner, StyledLink } from './StyledSearchProduct';
 
-const SearchProduct = ({ id, name, image, searchedPhrase }) => {
+const SearchProduct = (props) => {
+  const { id, name, image, searchedPhrase } = props;
   const { cart, addProductToCart, deleteProductFromCart } =
     useContext(RootContext);
   const phraseArr = [...searchedPhrase.toLowerCase()];
@@ -15,12 +17,25 @@ const SearchProduct = ({ id, name, image, searchedPhrase }) => {
 
   return (
     <StyledSearchProduct>
-      <Image src={image} alt={name} cartImg />
-      <Paragraph>
-        {[...name].map((letter) =>
-          phraseArr.includes(letter.toLowerCase()) ? <b>{letter}</b> : letter
-        )}
-      </Paragraph>
+      <StyledLink
+        to={{
+          pathname: `/${name.replace(/\s/g, '')}`,
+          state: { ...props },
+        }}
+      >
+        <StyledLinkInner>
+          <Image src={image} alt={name} cartImg />
+          <Paragraph>
+            {[...name].map((letter, index) =>
+              phraseArr.includes(letter.toLowerCase()) ? (
+                <b key={index}>{letter}</b>
+              ) : (
+                letter
+              )
+            )}
+          </Paragraph>
+        </StyledLinkInner>
+      </StyledLink>
       <Button
         icon={iconsTypes.CartIcon}
         round

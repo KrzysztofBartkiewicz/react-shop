@@ -23,6 +23,10 @@ import { ReactComponent as PlusIcon } from '../assets/icons/plus.svg';
 import { ReactComponent as MinusIcon } from '../assets/icons/remove.svg';
 import { ReactComponent as ArrowLeftIcon } from '../assets/icons/arrow-left.svg';
 import { ReactComponent as CancelIcon } from '../assets/icons/cancel.svg';
+import { ReactComponent as Car2Icon } from '../assets/icons/car2.svg';
+import { ReactComponent as GuaranteeIcon } from '../assets/icons/guarantee.svg';
+import { ReactComponent as HappyIcon } from '../assets/icons/happy.svg';
+import { ReactComponent as ArrowRightIcon } from '../assets/icons/arrow-right.svg';
 
 export const iconsTypes = {
   heart: heartIcon,
@@ -49,4 +53,8 @@ export const iconsTypes = {
   ArrowLeftIcon,
   CancelIcon,
   ArrowUpIcon,
+  Car2Icon,
+  GuaranteeIcon,
+  HappyIcon,
+  ArrowRightIcon,
 };
