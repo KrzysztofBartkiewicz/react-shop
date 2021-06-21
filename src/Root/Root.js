@@ -26,6 +26,7 @@ const Root = () => {
   const [productPriceRange, setProductPriceRange] = useState([0, 0]);
 
   const [isHomeRendered, setIsHomeRendered] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   useEffect(() => {
     getCMSData();
@@ -52,6 +53,10 @@ const Root = () => {
         getProductMaxPrice(contentfulData),
       ]);
     }
+  };
+
+  const toggleMenuOpen = () => {
+    setIsMenuOpen((prev) => !prev);
   };
 
   const setHomeRenderFlag = (isRendered) => {
@@ -155,6 +160,8 @@ const Root = () => {
         productPriceRange,
         isHomeRendered,
         initialProducts,
+        isMenuOpen,
+        toggleMenuOpen,
         setHomeRenderFlag,
         handleProductCategoryChange,
         handleProductNameInputChange,

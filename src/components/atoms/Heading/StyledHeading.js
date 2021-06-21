@@ -51,7 +51,7 @@ export const StyledHeadingH5 = styled.h5`
 `;
 
 export const StyledHeadingH6 = styled.h6`
-  font-size: ${({ theme }) => theme.fontSizes.l};
+  font-size: ${({ theme }) => theme.fontSizes.s};
 
   ${({ secondary, theme }) =>
     secondary &&

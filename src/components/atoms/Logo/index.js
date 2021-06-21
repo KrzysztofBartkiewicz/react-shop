@@ -17,7 +17,7 @@ const Logo = ({ isHomeRendered }) => {
           fill={isHomeRendered ? 'white' : ''}
         />
       </svg>
-      <StyledHeading isHomeRendered={isHomeRendered} headingType="h6">
+      <StyledHeading isHomeRendered={isHomeRendered} headingType="h5">
         <span>E-</span>Shop
       </StyledHeading>
     </StyledLogo>

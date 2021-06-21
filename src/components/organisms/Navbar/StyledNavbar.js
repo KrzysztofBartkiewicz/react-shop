@@ -20,6 +20,10 @@ export const StyledNavbar = styled.nav`
       background-color: transparent;
       border: none;
     `}
+
+  ${({ theme }) => theme.mq.tablet} {
+    padding: 4.4rem 3.5rem;
+  }
 `;
 
 export const StyledNavList = styled.ul`
@@ -32,6 +36,10 @@ export const StyledNavList = styled.ul`
         color: ${theme.colors.primaryWhite};
       }
     `}
+
+  ${({ theme }) => theme.mq.mobile} {
+    display: none;
+  }
 `;
 
 export const StyledNavListItem = styled.li`

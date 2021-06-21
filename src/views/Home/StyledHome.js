@@ -17,6 +17,10 @@ export const StyledHeader = styled.header`
 export const StyledHeadingWrapper = styled.div`
   margin: 24.2rem 0 0 36.2rem;
   color: ${({ theme }) => theme.colors.primaryWhite};
+
+  ${({ theme }) => theme.mq.tablet} {
+    margin: 24.2rem 0 0 3.5rem;
+  }
 `;
 
 export const StyledHeading = styled(Heading)`
@@ -51,10 +55,14 @@ export const StyledHeaderBootomWrapper = styled.div`
   width: 100vw;
   display: flex;
   justify-content: flex-end;
+
+  ${({ theme }) => theme.mq.tablet} {
+    display: none;
+  }
 `;
 
 export const StyledInfoWrapper = styled.div`
-  padding: 4rem 3rem 4rem 0;
+  padding: 3rem 3rem 3rem 0;
   max-width: 80%;
   display: flex;
   justify-content: flex-end;

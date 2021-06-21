@@ -40,14 +40,9 @@ export const mainTheme = {
     view: '15rem 0',
   },
 
-  devices: {
-    mobileS: '320px',
-    mobileM: '375px',
-    mobileL: '425px',
-    tablet: '768px',
-    laptop: '1024px',
-    laptopL: '1440px',
-    desktop: '2560px',
+  mq: {
+    tablet: '@media screen and (max-width: 1065px)',
+    mobile: '@media screen and (max-width: 800px)',
   },
 
   boxShadows: {

@@ -53,7 +53,9 @@ const Home = () => {
               </StyledIconWrapper>
               <div>
                 <Heading headingType="h6">Free Shipping</Heading>
-                <Paragraph secondary>On purchases over $399</Paragraph>
+                <Paragraph size="xs" secondary>
+                  On purchases over $399
+                </Paragraph>
               </div>
             </StyledInfoCard>
             <StyledInfoCard>
@@ -62,7 +64,7 @@ const Home = () => {
               </StyledIconWrapper>
               <div>
                 <Heading headingType="h6">99% Satisfied Customers</Heading>
-                <Paragraph secondary>
+                <Paragraph size="xs" secondary>
                   Our clients' opinions
                   <br />
                   speak for themselves
@@ -75,7 +77,7 @@ const Home = () => {
               </StyledIconWrapper>
               <div>
                 <Heading headingType="h6">Originality Guaranteed</Heading>
-                <Paragraph secondary>
+                <Paragraph size="xs" secondary>
                   2 years warranty for each
                   <br />
                   product from our store

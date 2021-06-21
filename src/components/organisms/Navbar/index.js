@@ -9,6 +9,7 @@ import Logo from '../../atoms/Logo';
 import NavigationLink from '../../atoms/NavigationLink';
 import UserMenu from '../../molecules/UserMenu';
 import SearchPopup from '../../molecules/SearchPopup';
+import Hamburger from '../../atoms/Hamburger';
 import {
   StyledNavbar,
   StyledNavButtons,
@@ -20,8 +21,13 @@ import {
 } from './StyledNavbar';
 
 const Navbar = () => {
-  const { cartProductsQuantity, isHomeRendered, handleCartModalOpen } =
-    useContext(RootContext);
+  const {
+    cartProductsQuantity,
+    isHomeRendered,
+    handleCartModalOpen,
+    isMenuOpen,
+    toggleMenuOpen,
+  } = useContext(RootContext);
   const { currentUser } = useContext(AuthContext);
 
   return (
@@ -55,13 +61,20 @@ const Navbar = () => {
             value={cartProductsQuantity}
           />
         </StyledButtonWrapper>
-        {currentUser ? (
-          <UserMenu />
-        ) : (
-          <StyledLink to={routes.login}>
-            <iconsTypes.AvatarIcon fill={isHomeRendered ? 'white' : ''} />
-          </StyledLink>
-        )}
+        <>
+          {currentUser ? (
+            <UserMenu />
+          ) : (
+            <StyledLink to={routes.login}>
+              <iconsTypes.AvatarIcon fill={isHomeRendered ? 'white' : ''} />
+            </StyledLink>
+          )}
+          <Hamburger
+            isOpen={isMenuOpen}
+            onClickFn={toggleMenuOpen}
+            isHomeRendered={isHomeRendered}
+          />
+        </>
       </StyledNavButtons>
     </StyledNavbar>
   );
