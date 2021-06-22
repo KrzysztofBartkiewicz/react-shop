@@ -10,6 +10,7 @@ import NavigationLink from '../../atoms/NavigationLink';
 import UserMenu from '../../molecules/UserMenu';
 import SearchPopup from '../../molecules/SearchPopup';
 import Hamburger from '../../atoms/Hamburger';
+import DrawerMenu from '../DrawerMenu';
 import {
   StyledNavbar,
   StyledNavButtons,
@@ -18,6 +19,7 @@ import {
   StyledButtonWrapper,
   StyledNotificationCount,
   StyledLink,
+  StyledUserMenuWrapper,
 } from './StyledNavbar';
 
 const Navbar = () => {
@@ -61,7 +63,7 @@ const Navbar = () => {
             value={cartProductsQuantity}
           />
         </StyledButtonWrapper>
-        <>
+        <StyledUserMenuWrapper>
           {currentUser ? (
             <UserMenu />
           ) : (
@@ -69,13 +71,14 @@ const Navbar = () => {
               <iconsTypes.AvatarIcon fill={isHomeRendered ? 'white' : ''} />
             </StyledLink>
           )}
-          <Hamburger
-            isOpen={isMenuOpen}
-            onClickFn={toggleMenuOpen}
-            isHomeRendered={isHomeRendered}
-          />
-        </>
+        </StyledUserMenuWrapper>
+        <Hamburger
+          isOpen={isMenuOpen}
+          onClickFn={toggleMenuOpen}
+          isHomeRendered={isHomeRendered}
+        />
       </StyledNavButtons>
+      <DrawerMenu isOpen={isMenuOpen} />
     </StyledNavbar>
   );
 };

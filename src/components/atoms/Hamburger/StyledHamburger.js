@@ -2,15 +2,19 @@ import styled, { css } from 'styled-components';
 
 export const StyledHamburger = styled.button`
   padding: 1rem;
-  display: inline-block;
   background-color: transparent;
   border: none;
+  display: none;
+
+  ${({ theme }) => theme.mq.mobile} {
+    display: block;
+  }
 `;
 
 export const StyledHamburgerBox = styled.span`
-  width: 4rem;
+  width: 3.5rem;
   height: 2.4rem;
-  display: inline-block;
+  display: block;
   position: relative;
 `;
 
@@ -27,13 +31,13 @@ export const StyledHamburgerInner = styled.span`
   ${hamburgerLine}
   top: 50%;
   transform: translateY(-50%);
-  transition: background-color 0.1s 0.2s ease-in-out;
+  transition: background-color 0.1s 0.1s ease-in-out;
 
   &::before,
   &::after {
     ${hamburgerLine}
     content: '';
-    transition: transform 0.2s 0.2s ease-in-out;
+    transition: transform 0.2s 0.1s ease-in-out;
   }
 
   &::before {

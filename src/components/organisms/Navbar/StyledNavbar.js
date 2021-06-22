@@ -50,9 +50,9 @@ export const StyledNavListItem = styled.li`
 
 export const StyledNavButtons = styled.div`
   display: flex;
-  align-items: flex-start;
+  align-items: center;
 
-  & > * {
+  & > *:not(:last-child) {
     margin-right: 3rem;
   }
 `;
@@ -72,5 +72,11 @@ export const StyledLink = styled(Link)`
   svg {
     width: 2.5rem;
     height: 2.5rem;
+  }
+`;
+
+export const StyledUserMenuWrapper = styled.div`
+  ${({ theme }) => theme.mq.mobile} {
+    display: none;
   }
 `;

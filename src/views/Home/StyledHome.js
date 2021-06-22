@@ -10,8 +10,7 @@ export const StyledHeader = styled.header`
   padding: ${({ theme }) => theme.paddings.view};
   min-height: 100vh;
   background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
-    url(${bgImage1}) center / cover no-repeat fixed;
-  position: relative;
+    url(${bgImage1}) center / cover no-repeat;
 `;
 
 export const StyledHeadingWrapper = styled.div`
