@@ -6,7 +6,7 @@ export const StyledContactForm = styled.div`
   margin-top: 4rem;
   max-width: 44.8rem;
   text-align: center;
-
+  padding: 0 1rem;
   padding-bottom: 10rem;
 `;
 

@@ -13,7 +13,7 @@ export const StyledPaper = styled.div`
   padding: 1rem;
   background-color: ${({ theme }) => theme.colors.primaryWhite};
   width: 70vw;
-  height: 85vh;
+  max-height: 80vh;
   outline: none;
   overflow-y: auto;
   &::-webkit-scrollbar {
@@ -24,6 +24,10 @@ export const StyledPaper = styled.div`
     border-radius: 1rem;
     border: 0.3rem solid transparent;
     background-clip: content-box;
+  }
+
+  ${({ theme }) => theme.mq.mobile} {
+    width: 80vw;
   }
 `;
 
@@ -41,6 +45,10 @@ export const StyledCartHead = styled.div`
   & > *:first-child {
     justify-self: start;
     margin-left: 6rem;
+  }
+
+  ${({ theme }) => theme.mq.mobile} {
+    display: none;
   }
 `;
 

@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 
 export const StyledFormWrapper = styled.div`
   margin-top: 4rem;
+  padding: 0 1rem;
 `;
 
 export const StyledHeading = styled(Heading)`
