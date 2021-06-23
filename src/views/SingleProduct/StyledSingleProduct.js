@@ -10,12 +10,24 @@ export const StyledSingleProduct = styled.div`
   max-width: 80vw;
   display: flex;
   justify-content: space-around;
+
+  ${({ theme }) => theme.mq.tablet} {
+    flex-direction: column;
+  }
 `;
 
-export const StyledImage = styled(Image)``;
+export const StyledImage = styled(Image)`
+  ${({ theme }) => theme.mq.tablet} {
+    max-width: 100%;
+  }
+`;
 
 export const StyledImageWrapper = styled.div`
   margin-right: 10rem;
+
+  ${({ theme }) => theme.mq.tablet} {
+    margin: 0;
+  }
 `;
 
 export const StyledDetailsWrapper = styled.div`
