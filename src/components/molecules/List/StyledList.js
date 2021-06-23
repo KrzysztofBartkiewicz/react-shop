@@ -2,7 +2,7 @@ import styled, { css } from 'styled-components';
 import { listTypes } from '../../../helpers/listTypes';
 
 export const StyledList = styled.ul`
-  max-width: 140rem;
+  max-width: 100%;
 
   ${({ listType }) =>
     listType === listTypes.productsList &&
@@ -10,6 +10,10 @@ export const StyledList = styled.ul`
       display: flex;
       justify-content: space-around;
       flex-wrap: wrap;
+
+      ${({ theme }) => theme.mq.tablet} {
+        width: 100vw;
+      }
     `}
 `;
 

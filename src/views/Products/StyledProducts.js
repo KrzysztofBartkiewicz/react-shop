@@ -10,6 +10,12 @@ export const StyledProducts = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fill, 10rem);
   grid-template-rows: min-content minmax(30rem, auto) min-content;
+
+  ${({ theme }) => theme.mq.tablet} {
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+  }
 `;
 
 export const StyledProductsHeading = styled(Heading)`
@@ -21,9 +27,17 @@ export const StyledProductsHeading = styled(Heading)`
 export const StyledFilterMenu = styled(FIlterMenu)`
   grid-column: 1 / span 3;
   grid-row: 2;
+
+  ${({ theme }) => theme.mq.tablet} {
+    display: none;
+  }
 `;
 
 export const StyledList = styled(List)`
   grid-column: 4 / -1;
   grid-row: 2 / -1;
+
+  ${({ theme }) => theme.mq.tablet} {
+    grid-column: 1 / -1;
+  }
 `;

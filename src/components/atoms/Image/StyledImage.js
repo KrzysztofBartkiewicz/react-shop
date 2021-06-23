@@ -4,8 +4,12 @@ export const StyledImage = styled.img`
   ${({ listImage }) =>
     listImage &&
     css`
-      width: 250px;
+      width: 25rem;
       height: auto;
+
+      ${({ theme }) => theme.mq.tablet} {
+        width: 15rem;
+      }
     `}
 
   ${({ cartImg }) =>
