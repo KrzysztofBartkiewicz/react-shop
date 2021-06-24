@@ -13,4 +13,8 @@ export const StyledDeliveryWrapper = styled.div`
 
   grid-column: 6 / span 3;
   grid-row: 4 / span 3;
+
+  ${({ theme }) => theme.mq.tablet} {
+    margin-bottom: 3rem;
+  }
 `;

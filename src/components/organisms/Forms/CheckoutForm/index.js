@@ -21,6 +21,7 @@ import {
   StyledContinueBtn,
   StyledLoginLink,
   StyledSigninLink,
+  StyledUserButtonsWrapper,
 } from './StyledCheckoutForm';
 
 const CheckoutForm = () => {
@@ -49,7 +50,7 @@ const CheckoutForm = () => {
       >
         {({ values, handleChange }) => (
           <StyledForm>
-            <StyledButtonsWrapper>
+            <StyledUserButtonsWrapper>
               {currentUser ? (
                 <Button onClickFn={logOut}>LOG OUT</Button>
               ) : (
@@ -60,7 +61,7 @@ const CheckoutForm = () => {
                   </StyledSigninLink>
                 </>
               )}
-            </StyledButtonsWrapper>
+            </StyledUserButtonsWrapper>
 
             <ShippingInfoWrapper
               values={values}
