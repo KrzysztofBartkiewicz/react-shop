@@ -15,7 +15,6 @@ const Root = () => {
 
   const [products, setProducts] = useState([]);
   const [initialProducts, setInitialProducts] = useState([]);
-  const [cartModalOpen, setCartModalOpen] = useState(false);
   const [cart, setCart] = useState(localStorageCart || []);
   const [cartProductsQuantity, setCartProductsQuantity] = useState(0);
   const [cartTotalPrice, setCartTotalPrice] = useState(0);
@@ -27,6 +26,8 @@ const Root = () => {
 
   const [isHomeRendered, setIsHomeRendered] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const [isCartOpen, setIsCartOpen] = useState(false);
 
   useEffect(() => {
     getCMSData();
@@ -53,6 +54,14 @@ const Root = () => {
         getProductMaxPrice(contentfulData),
       ]);
     }
+  };
+
+  const handleSearchOpen = (value) => {
+    setIsSearchOpen(value);
+  };
+
+  const handleCartOpen = (value) => {
+    setIsCartOpen(value);
   };
 
   const toggleMenuOpen = () => {
@@ -109,14 +118,6 @@ const Root = () => {
     setCartTotalPrice(total);
   };
 
-  const handleCartModalOpen = () => {
-    setCartModalOpen(true);
-  };
-
-  const handleCartModalClose = () => {
-    setCartModalOpen(false);
-  };
-
   const addProductToCart = (productId) => {
     const product = products.find((el) => el.id === productId);
     setCart((prev) => [...new Set([...prev, product])]);
@@ -151,7 +152,6 @@ const Root = () => {
     <RootContext.Provider
       value={{
         products,
-        cartModalOpen,
         cart,
         cartProductsQuantity,
         cartTotalPrice,
@@ -161,6 +161,10 @@ const Root = () => {
         isHomeRendered,
         initialProducts,
         isMenuOpen,
+        isSearchOpen,
+        isCartOpen,
+        handleCartOpen,
+        handleSearchOpen,
         toggleMenuOpen,
         setHomeRenderFlag,
         handleProductCategoryChange,
@@ -168,8 +172,6 @@ const Root = () => {
         handleProductPriceChange,
         addProductToCart,
         deleteProductFromCart,
-        handleCartModalOpen,
-        handleCartModalClose,
         changeCartQuantity,
       }}
     >

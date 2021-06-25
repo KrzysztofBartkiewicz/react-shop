@@ -26,7 +26,7 @@ const Navbar = () => {
   const {
     cartProductsQuantity,
     isHomeRendered,
-    handleCartModalOpen,
+    handleCartOpen,
     isMenuOpen,
     toggleMenuOpen,
   } = useContext(RootContext);
@@ -56,7 +56,7 @@ const Navbar = () => {
           <Button
             whiteIcon={isHomeRendered}
             icon={iconsTypes.CartIcon}
-            onClickFn={handleCartModalOpen}
+            onClickFn={() => handleCartOpen(true)}
           />
           <StyledNotificationCount
             isVisible={cartProductsQuantity !== 0 && true}

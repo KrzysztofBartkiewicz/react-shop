@@ -1,12 +1,17 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import MaterialModal from '../components/modals/MaterialModal';
 import Navbar from '../components/organisms/Navbar';
-import Modal from '../components/molecules/Modal';
+import Cart from '../components/organisms/Cart';
+import RootContext from '../context/RootContext';
 
 const NavigationTemplate = ({ children }) => {
+  const { isCartOpen, handleCartOpen } = useContext(RootContext);
   return (
     <>
       <Navbar />
-      <Modal />
+      <MaterialModal isOpen={isCartOpen} toggleOpenFn={handleCartOpen}>
+        <Cart />
+      </MaterialModal>
       {children}
       {/* footer */}
     </>

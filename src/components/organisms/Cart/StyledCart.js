@@ -1,15 +1,8 @@
 import styled from 'styled-components';
-import Modal from '@material-ui/core/Modal';
-import Heading from '../../atoms/Heading';
 import Paragraph from '../../atoms/Paragraph';
+import Heading from '../../atoms/Heading';
 
-export const StyledModal = styled(Modal)`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-`;
-
-export const StyledPaper = styled.div`
+export const StyledCart = styled.div`
   padding: 1rem;
   background-color: ${({ theme }) => theme.colors.primaryWhite};
   width: 70vw;
