@@ -1,15 +1,12 @@
-import React, { useContext, useState, useEffect, useRef } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import RootContext from '../../../context/RootContext';
-import List from '../List';
-import SearchProduct from '../SearchProduct';
-import Button from '../../atoms/Button';
+import List from '../../molecules/List';
+import SearchProduct from '../../molecules/SearchProduct';
 import { listTypes } from '../../../helpers/listTypes';
-import { iconsTypes } from '../../../helpers/iconsTypes';
 import { StyledSearchWrapper, StyledInput } from './StyledSearchPopup';
 
 const SearchBox = () => {
-  const { initialProducts, handleSearchOpen, isHomeRendered } =
-    useContext(RootContext);
+  const { initialProducts } = useContext(RootContext);
 
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [inputValue, setInputValue] = useState('');
@@ -46,12 +43,7 @@ const SearchBox = () => {
       <List
         array={filteredProducts}
         listType={listTypes.cartList}
-        listComponent={
-          <SearchProduct
-            onClickFn={() => handleSearchOpen(false)}
-            searchedPhrase={inputValue}
-          />
-        }
+        listComponent={<SearchProduct searchedPhrase={inputValue} />}
       />
     </StyledSearchWrapper>
   );

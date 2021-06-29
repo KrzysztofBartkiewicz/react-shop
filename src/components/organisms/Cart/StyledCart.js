@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import Paragraph from '../../atoms/Paragraph';
 import Heading from '../../atoms/Heading';
 
@@ -19,8 +19,23 @@ export const StyledCart = styled.div`
     background-clip: content-box;
   }
 
+  ${({ autoWidth }) =>
+    autoWidth &&
+    css`
+      width: auto;
+    `}
+
   ${({ theme }) => theme.mq.mobile} {
     width: 80vw;
+  }
+`;
+
+export const StyledEmptyCartInfo = styled(Heading)`
+  padding: 3rem 10rem 0 10rem;
+
+  span {
+    display: block;
+    text-align: center;
   }
 `;
 

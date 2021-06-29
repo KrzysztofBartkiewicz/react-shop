@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import CustomModal from '../components/modals/CustomModal';
-import SearchBox from '../components/molecules/SearchBox';
+import SearchBox from '../components/organisms/SearchBox';
 import Cart from '../components/organisms/Cart';
 import Navbar from '../components/organisms/Navbar';
 import RootContext from '../context/RootContext';

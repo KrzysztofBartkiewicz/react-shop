@@ -57,7 +57,6 @@ const Root = () => {
   };
 
   const setSearchVisibility = (value) => {
-    console.log('aaa');
     setIsSearchOpen(value);
   };
 
