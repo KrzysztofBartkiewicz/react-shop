@@ -1,17 +1,23 @@
 import React, { useContext } from 'react';
-import MaterialModal from '../components/modals/MaterialModal';
-import Navbar from '../components/organisms/Navbar';
+import CustomModal from '../components/modals/CustomModal';
+import SearchBox from '../components/molecules/SearchBox';
 import Cart from '../components/organisms/Cart';
+import Navbar from '../components/organisms/Navbar';
 import RootContext from '../context/RootContext';
 
 const NavigationTemplate = ({ children }) => {
-  const { isCartOpen, handleCartOpen } = useContext(RootContext);
+  const { isCartOpen, setCartVisibility, isSearchOpen, setSearchVisibility } =
+    useContext(RootContext);
+
   return (
     <>
       <Navbar />
-      <MaterialModal isOpen={isCartOpen} toggleOpenFn={handleCartOpen}>
+      <CustomModal isOpen={isCartOpen} onCloseFn={setCartVisibility}>
         <Cart />
-      </MaterialModal>
+      </CustomModal>
+      <CustomModal isOpen={isSearchOpen} onCloseFn={setSearchVisibility}>
+        <SearchBox />
+      </CustomModal>
       {children}
       {/* footer */}
     </>

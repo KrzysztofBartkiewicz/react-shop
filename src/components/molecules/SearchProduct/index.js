@@ -8,7 +8,7 @@ import { iconsTypes } from '../../../helpers/iconsTypes';
 import { StyledLinkInner, StyledLink } from './StyledSearchProduct';
 
 const SearchProduct = (props) => {
-  const { id, name, image, searchedPhrase } = props;
+  const { id, name, image, searchedPhrase, onClickFn } = props;
   const { cart, addProductToCart, deleteProductFromCart } =
     useContext(RootContext);
   const phraseArr = [...searchedPhrase.toLowerCase()];
@@ -22,6 +22,7 @@ const SearchProduct = (props) => {
           pathname: `/${name.replace(/\s/g, '')}`,
           state: { ...props },
         }}
+        onClick={onClickFn}
       >
         <StyledLinkInner>
           <Image src={image} alt={name} cartImg />

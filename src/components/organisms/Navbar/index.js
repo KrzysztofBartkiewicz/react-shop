@@ -8,7 +8,6 @@ import Button from '../../atoms/Button';
 import Logo from '../../atoms/Logo';
 import NavigationLink from '../../atoms/NavigationLink';
 import UserMenu from '../../molecules/UserMenu';
-import SearchPopup from '../../molecules/SearchPopup';
 import Hamburger from '../../atoms/Hamburger';
 import DrawerMenu from '../DrawerMenu';
 import {
@@ -26,9 +25,10 @@ const Navbar = () => {
   const {
     cartProductsQuantity,
     isHomeRendered,
-    handleCartOpen,
     isMenuOpen,
     toggleMenuOpen,
+    setSearchVisibility,
+    setCartVisibility,
   } = useContext(RootContext);
   const { currentUser } = useContext(AuthContext);
 
@@ -51,13 +51,18 @@ const Navbar = () => {
       </StyledNavList>
 
       <StyledNavButtons isHomeRendered={isHomeRendered}>
-        <SearchPopup />
+        <Button
+          whiteIcon={isHomeRendered}
+          icon={iconsTypes.SearchIcon}
+          onClickFn={() => setSearchVisibility(true)}
+        />
         <StyledButtonWrapper>
           <Button
             whiteIcon={isHomeRendered}
             icon={iconsTypes.CartIcon}
-            onClickFn={() => handleCartOpen(true)}
+            onClickFn={() => setCartVisibility(true)}
           />
+
           <StyledNotificationCount
             isVisible={cartProductsQuantity !== 0 && true}
             value={cartProductsQuantity}

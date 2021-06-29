@@ -16,7 +16,7 @@ import {
 } from './StyledCart';
 
 const Cart = () => {
-  const { handleCartOpen, cart, cartTotalPrice } = useContext(RootContext);
+  const { setCartVisibility, cart, cartTotalPrice } = useContext(RootContext);
 
   const renderCheckout = () => (
     <>
@@ -25,7 +25,7 @@ const Cart = () => {
         {cartTotalPrice}$
       </StyledParagraph>
       <Link to={routes.checkout}>
-        <Button onClickFn={() => handleCartOpen(false)}>CHECKOUT</Button>
+        <Button onClickFn={() => setCartVisibility(false)}>CHECKOUT</Button>
       </Link>
     </>
   );

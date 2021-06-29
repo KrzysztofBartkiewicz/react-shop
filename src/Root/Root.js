@@ -56,11 +56,12 @@ const Root = () => {
     }
   };
 
-  const handleSearchOpen = (value) => {
+  const setSearchVisibility = (value) => {
+    console.log('aaa');
     setIsSearchOpen(value);
   };
 
-  const handleCartOpen = (value) => {
+  const setCartVisibility = (value) => {
     setIsCartOpen(value);
   };
 
@@ -163,8 +164,8 @@ const Root = () => {
         isMenuOpen,
         isSearchOpen,
         isCartOpen,
-        handleCartOpen,
-        handleSearchOpen,
+        setCartVisibility,
+        setSearchVisibility,
         toggleMenuOpen,
         setHomeRenderFlag,
         handleProductCategoryChange,
