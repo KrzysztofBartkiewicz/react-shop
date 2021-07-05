@@ -2,7 +2,11 @@ import React from 'react';
 import Heading from '../../../../../atoms/Heading';
 import RadioButton from '../../../../../atoms/RadioButton';
 import { iconsTypes } from '../../../../../../helpers/iconsTypes';
-import { StyledDeliveryWrapper } from './StyledDeliverWrapper';
+import {
+  StyledDeliveryWrapper,
+  StyledErrorMessage,
+} from './StyledDeliverWrapper';
+import { ErrorMessage } from 'formik';
 
 const DeliveryWrapper = ({ handleChangeFn }) => {
   return (
@@ -40,6 +44,10 @@ const DeliveryWrapper = ({ handleChangeFn }) => {
       >
         $10.00
       </RadioButton>
+
+      <StyledErrorMessage>
+        <ErrorMessage name="delivery" />
+      </StyledErrorMessage>
     </StyledDeliveryWrapper>
   );
 };

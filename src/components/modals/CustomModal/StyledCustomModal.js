@@ -6,7 +6,7 @@ export const StyledBackdrop = styled.div`
   height: 100vh;
   background-color: rgba(0, 0, 0, 0.5);
   display: none;
-  z-index: 100;
+  z-index: 500;
 
   ${({ open }) =>
     open &&

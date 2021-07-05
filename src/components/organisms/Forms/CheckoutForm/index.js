@@ -1,8 +1,8 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Formik } from 'formik';
 import { iconsTypes } from '../../../../helpers/iconsTypes';
 import { useHistory } from 'react-router';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import { routes } from '../../../../helpers/routes';
 import checkoutSchema from '../../../../utils/validation/checkoutFormSchema';
 import Button from '../../../atoms/Button';
@@ -27,6 +27,7 @@ import {
 const CheckoutForm = () => {
   const { goBack } = useHistory();
   const { currentUser, logOut } = useContext(AuthContext);
+  const [redirectToPayment, setRedirectToPayment] = useState(false);
 
   return (
     <StyledFormWrapper>
@@ -34,22 +35,30 @@ const CheckoutForm = () => {
 
       <Formik
         initialValues={{
-          email: '',
+          email: currentUser ? currentUser.email : '',
           address: '',
-          firstName: '',
+          firstName: currentUser ? currentUser.firstName : '',
           city: '',
-          lastName: '',
+          lastName: currentUser ? currentUser.lastName : '',
           postalCode: '',
           phoneNumber: '',
           country: 'Poland',
           payment: '',
           delivery: '',
         }}
+        enableReinitialize
         validationSchema={checkoutSchema}
-        onSubmit={(values) => console.log(values)}
+        onSubmit={() => {
+          setRedirectToPayment(true);
+        }}
       >
         {({ values, handleChange }) => (
           <StyledForm>
+            {redirectToPayment && (
+              <Redirect
+                to={{ pathname: routes.payment, state: { ...values } }}
+              />
+            )}
             <StyledUserButtonsWrapper>
               {currentUser ? (
                 <Button onClickFn={logOut}>LOG OUT</Button>

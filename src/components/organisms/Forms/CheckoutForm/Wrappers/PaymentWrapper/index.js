@@ -1,8 +1,12 @@
 import React from 'react';
+import { ErrorMessage } from 'formik';
 import Heading from '../../../../../atoms/Heading';
 import RadioButton from '../../../../../atoms/RadioButton';
 import { iconsTypes } from '../../../../../../helpers/iconsTypes';
-import { StyledPaymentWrapper } from './StyledPaymentWrapper';
+import {
+  StyledPaymentWrapper,
+  StyledErrorMessage,
+} from './StyledPaymentWrapper';
 
 const PaymentWrapper = ({ handleChangeFn }) => {
   return (
@@ -44,6 +48,9 @@ const PaymentWrapper = ({ handleChangeFn }) => {
         icon={iconsTypes.ideal}
         onChangeFn={handleChangeFn}
       />
+      <StyledErrorMessage>
+        <ErrorMessage name="payment" />
+      </StyledErrorMessage>
     </StyledPaymentWrapper>
   );
 };

@@ -7,7 +7,6 @@ import RootContext from '../../../context/RootContext';
 import Paragraph from '../../atoms/Paragraph';
 import List from '../../molecules/List';
 import CartProduct from '../../molecules/CartProduct';
-import Heading from '../../atoms/Heading';
 import {
   StyledCart,
   StyledParagraph,

@@ -15,3 +15,7 @@ export const StyledPaymentWrapper = styled.div`
   grid-column: 6 / span 3;
   grid-row: 1 / span 3;
 `;
+
+export const StyledErrorMessage = styled.div`
+  color: red;
+`;

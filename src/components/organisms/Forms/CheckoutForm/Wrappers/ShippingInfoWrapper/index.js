@@ -1,7 +1,6 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect } from 'react';
 import { ErrorMessage } from 'formik';
 import { url } from '../../../../../../helpers/urls';
-import AuthContext from '../../../../../../context/AuthContext';
 import useAxiosRequest from '../../../../../../hooks/api/useAxiosRequest';
 import Heading from '../../../../../atoms/Heading';
 import Select from '../../../../../molecules/Select';
@@ -12,7 +11,6 @@ import {
 
 const ShippingInfoWrapper = ({ values, handleChangeFn }) => {
   const [countries, setCountries] = useState([]);
-  const { currentUser } = useContext(AuthContext);
   const { data } = useAxiosRequest(url.countries);
 
   useEffect(() => {
@@ -29,10 +27,9 @@ const ShippingInfoWrapper = ({ values, handleChangeFn }) => {
         label="Email"
         type="email"
         name="email"
-        value={currentUser ? currentUser.email : values.email}
+        value={values.email}
         onChangeFn={handleChangeFn}
-        errorMsg={!currentUser && <ErrorMessage name="email" />}
-        disabled={currentUser}
+        errorMsg={<ErrorMessage name="email" />}
       />
       <StyledFormInput
         label="Address"
@@ -44,10 +41,9 @@ const ShippingInfoWrapper = ({ values, handleChangeFn }) => {
       <StyledFormInput
         label="First Name"
         name="firstName"
-        value={currentUser ? currentUser.firstName : values.firstName}
+        value={values.firstName}
         onChangeFn={handleChangeFn}
-        errorMsg={!currentUser && <ErrorMessage name="firstName" />}
-        disabled={currentUser}
+        errorMsg={<ErrorMessage name="firstName" />}
       />
       <StyledFormInput
         label="City"
@@ -59,10 +55,9 @@ const ShippingInfoWrapper = ({ values, handleChangeFn }) => {
       <StyledFormInput
         label="Last Name"
         name="lastName"
-        value={currentUser ? currentUser.lastName : values.lastName}
+        value={values.lastName}
         onChangeFn={handleChangeFn}
-        errorMsg={!currentUser && <ErrorMessage name="lastName" />}
-        disabled={currentUser}
+        errorMsg={<ErrorMessage name="lastName" />}
       />
       <StyledFormInput
         label="Postal Code"

@@ -12,7 +12,6 @@ const MaterialRangeInput = ({ min, max, value, onChangeFn }) => {
         max={max}
         onChange={(event, value) => onChangeFn(value)}
         valueLabelDisplay="auto"
-        aria-label="pretto slider"
       />
     </div>
   );

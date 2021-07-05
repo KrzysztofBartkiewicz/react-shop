@@ -14,7 +14,6 @@ import {
 
 const ContactForm = () => {
   const { currentUser } = useContext(AuthContext);
-  console.log(currentUser);
 
   return (
     <StyledContactForm>
@@ -25,12 +24,15 @@ const ContactForm = () => {
       </StyledParagraph>
       <Formik
         initialValues={{
-          nameAndSurname: '',
-          email: '',
+          nameAndSurname: currentUser
+            ? `${currentUser.firstName} ${currentUser.lastName}`
+            : '',
+          email: currentUser ? currentUser.email : '',
           subject: '',
           message: '',
           acceptTerms: false,
         }}
+        enableReinitialize
         validationSchema={contactSchema}
         onSubmit={(values, { resetForm }) => {
           emailjs
@@ -54,24 +56,18 @@ const ContactForm = () => {
             <FormInput
               label="Name and surname"
               name="nameAndSurname"
-              value={
-                currentUser
-                  ? `${currentUser.firstName} ${currentUser.lastName}`
-                  : values.nameAndSurname
-              }
+              value={values.nameAndSurname}
               onChangeFn={handleChange}
-              errorMsg={!currentUser && <ErrorMessage name="nameAndSurname" />}
-              disabled={currentUser}
+              errorMsg={<ErrorMessage name="nameAndSurname" />}
             />
 
             <FormInput
               label="Email"
               type="email"
               name="email"
-              value={currentUser ? currentUser.email : values.email}
+              value={values.email}
               onChangeFn={handleChange}
-              errorMsg={!currentUser && <ErrorMessage name="email" />}
-              disabled={currentUser}
+              errorMsg={<ErrorMessage name="email" />}
             />
 
             <FormInput

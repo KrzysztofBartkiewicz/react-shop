@@ -18,3 +18,7 @@ export const StyledDeliveryWrapper = styled.div`
     margin-bottom: 3rem;
   }
 `;
+
+export const StyledErrorMessage = styled.div`
+  color: red;
+`;

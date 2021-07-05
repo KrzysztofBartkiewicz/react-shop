@@ -7,6 +7,7 @@ import Checkout from '../views/Checkout';
 import Contact from '../views/Contact';
 import Home from '../views/Home';
 import Login from '../views/Login';
+import Payment from '../views/Payment';
 import Products from '../views/Products';
 import Signup from '../views/Signup';
 import SingleProduct from '../views/SingleProduct';
@@ -29,6 +30,7 @@ const Router = () => {
             {currentUser ? <Redirect to={routes.products} /> : <Signup />}
           </Route>
 
+          <Route path={routes.payment} component={Payment} />
           <Route path={routes.checkout} component={Checkout} />
           <Route path={routes.singleProduct} component={SingleProduct} />
         </Switch>
