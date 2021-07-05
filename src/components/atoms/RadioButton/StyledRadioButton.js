@@ -19,7 +19,7 @@ export const StyledLabel = styled.label`
     children &&
     icon &&
     css`
-      min-width: ${`${children.length + 10}rem`};
+      min-width: ${`${children.length + 13}rem`};
       padding: 0 1.5rem;
       background: url(${icon}) 1rem / 7rem no-repeat;
       font-size: ${theme.fontSizes.s};

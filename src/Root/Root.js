@@ -4,7 +4,10 @@ import useLocalStorage from '../hooks/useLocalStorage';
 import Router from '../routing/Router';
 import GlobalStylesTemplate from '../templates/GlobalStylesTemplate';
 import swalAlert from '../utils/sweetalert2';
-import { getContentfulData } from '../utils/contentful';
+import {
+  getContentfulData,
+  getContentfulDeliveryMethods,
+} from '../utils/contentful';
 import {
   getProductMaxPrice,
   getProductMinPrice,
@@ -15,6 +18,7 @@ const Root = () => {
 
   const [products, setProducts] = useState([]);
   const [initialProducts, setInitialProducts] = useState([]);
+  const [deliveryMethods, setDeliveryMethods] = useState([]);
   const [cart, setCart] = useState(localStorageCart || []);
   const [cartProductsQuantity, setCartProductsQuantity] = useState(0);
   const [cartTotalPrice, setCartTotalPrice] = useState(0);
@@ -45,6 +49,7 @@ const Root = () => {
 
   const getCMSData = async () => {
     const contentfulData = await getContentfulData();
+
     if (contentfulData) {
       setInitialProducts([...contentfulData]);
       setProducts([...contentfulData]);
@@ -54,6 +59,9 @@ const Root = () => {
         getProductMaxPrice(contentfulData),
       ]);
     }
+
+    const deliveryMethods = await getContentfulDeliveryMethods();
+    setDeliveryMethods([...deliveryMethods]);
   };
 
   const setSearchVisibility = (value) => {
@@ -163,6 +171,7 @@ const Root = () => {
         isMenuOpen,
         isSearchOpen,
         isCartOpen,
+        deliveryMethods,
         setCartVisibility,
         setSearchVisibility,
         toggleMenuOpen,

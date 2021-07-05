@@ -19,3 +19,23 @@ export const getContentfulData = () => {
     )
     .catch((err) => console.log(err));
 };
+
+export const getContentfulDeliveryMethods = () => {
+  return client
+    .getEntries({
+      content_type: 'delivery',
+    })
+    .then((res) =>
+      res.items.map((item) => {
+        const id = item.sys.id;
+        const icon = item.fields.icon.fields.file.url;
+
+        return {
+          ...item.fields,
+          id,
+          icon,
+        };
+      })
+    )
+    .catch((err) => console.log(err));
+};

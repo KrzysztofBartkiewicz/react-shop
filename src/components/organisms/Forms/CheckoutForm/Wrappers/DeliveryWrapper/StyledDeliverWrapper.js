@@ -1,12 +1,14 @@
 import styled from 'styled-components';
 
 export const StyledDeliveryWrapper = styled.div`
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: repeat(2, min-content);
-  grid-gap: 0.8rem 0.6rem;
+  ul {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, min-content);
+    grid-gap: 0.8rem 0.6rem;
+  }
 
-  & > h6 {
+  h6 {
     grid-column: span 2;
     margin-bottom: 1.5rem;
   }
