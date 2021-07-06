@@ -75,7 +75,7 @@ const AuthContextProvider = ({ children }) => {
         const userDoc = usersCollections.doc(user.uid);
         userDoc.get().then((doc) => {
           if (doc.exists) {
-            setCurrentUser(doc.data());
+            setCurrentUser({ ...doc.data(), id: user.uid });
           }
         });
       } else {

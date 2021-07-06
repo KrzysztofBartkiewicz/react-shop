@@ -148,6 +148,10 @@ const Root = () => {
     setCart([...newCart]);
   };
 
+  const deleteAllItemsFromCart = () => {
+    setCart([]);
+  };
+
   const changeCartQuantity = (productId, value) => {
     const mappedCart = cart.map((product) => {
       return product.id === productId
@@ -189,6 +193,7 @@ const Root = () => {
         addProductToCart,
         deleteProductFromCart,
         changeCartQuantity,
+        deleteAllItemsFromCart,
       }}
     >
       <GlobalStylesTemplate>

@@ -3,7 +3,13 @@ import ReactDOM from 'react-dom';
 import Heading from '../../components/atoms/Heading';
 import Paragraph from '../../components/atoms/Paragraph';
 import CartWrapper from '../../components/organisms/Forms/CheckoutForm/Wrappers/CartWrapper';
+import AuthContext from '../../context/AuthContext';
 import RootContext from '../../context/RootContext';
+import {
+  usersCollections,
+  allOrdersCollection,
+} from '../../firebase/firestoreUtils';
+import swalAlert from '../../utils/sweetalert2';
 import {
   StyledAddress,
   StyledDelivery,
@@ -29,7 +35,9 @@ const Payment = ({ location }) => {
     postalCode,
   } = location.state;
 
-  const { cartTotalPrice, cart } = useContext(RootContext);
+  const { cartTotalPrice, cart, deleteAllItemsFromCart } =
+    useContext(RootContext);
+  const { currentUser } = useContext(AuthContext);
 
   const createOrder = (data, actions) => {
     return actions.order.create({
@@ -44,9 +52,54 @@ const Payment = ({ location }) => {
   };
 
   const onApprove = (data, actions) => {
-    console.log(data);
-    console.log(actions.order.capture());
-    return actions.order.capture();
+    actions.order.capture().then((res) => {
+      if (currentUser) {
+        usersCollections
+          .doc(currentUser.id)
+          .get()
+          .then((doc) => {
+            const userData = doc.data();
+
+            const newOrder = {
+              createTime: res.create_time,
+              id: res.id,
+              status: res.status,
+              items: cart,
+              price: cartTotalPrice,
+            };
+
+            const upadatedUserData = {
+              ...userData,
+              orders: [...userData.orders, newOrder],
+            };
+
+            usersCollections
+              .doc(currentUser.id)
+              .set(upadatedUserData)
+              .catch((err) => console.log(err));
+          })
+          .catch((err) => console.log(err));
+      }
+
+      allOrdersCollection
+        .doc(res.id)
+        .set(
+          {
+            email,
+            firstName,
+            lastName,
+            createTime: res.create_time,
+            status: res.status,
+            items: cart,
+            price: cartTotalPrice,
+          },
+          { merge: true }
+        )
+        .catch((err) => console.log(err));
+
+      swalAlert('Payment', 'Success!');
+      deleteAllItemsFromCart();
+    });
   };
 
   return (
