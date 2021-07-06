@@ -48,6 +48,7 @@ const AuthContextProvider = ({ children }) => {
     auth
       .signInWithPopup(provider)
       .then((user) => {
+        console.log(user);
         if (user.additionalUserInfo.isNewUser) {
           addNewUser(user);
         }
@@ -64,7 +65,7 @@ const AuthContextProvider = ({ children }) => {
     usersCollections.doc(user.user.uid).set({
       email: email,
       firstName: given_name,
-      lastName: family_name,
+      lastName: family_name ? family_name : '',
       orders: [],
     });
   };

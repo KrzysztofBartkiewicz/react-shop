@@ -10,6 +10,7 @@ import {
   allOrdersCollection,
 } from '../../firebase/firestoreUtils';
 import swalAlert from '../../utils/sweetalert2';
+import emailjs from 'emailjs-com';
 import {
   StyledAddress,
   StyledDelivery,
@@ -94,6 +95,24 @@ const Payment = ({ location }) => {
             price: cartTotalPrice,
           },
           { merge: true }
+        )
+        .catch((err) => console.log(err));
+
+      const emailDetails = {
+        email,
+        details: cart.reduce((acc, curr, index) => {
+          acc = acc.concat(`${index + 1}. ${curr.name} ${curr.price}<br />`);
+          return acc;
+        }, ''),
+        totalPrice: `${cartTotalPrice}$`,
+      };
+
+      emailjs
+        .send(
+          process.env.REACT_APP_SERVICE_ID,
+          process.env.REACT_APP_EMAIL_CONFIRMATION_TEMPLATE_ID,
+          emailDetails,
+          process.env.REACT_APP_USER_ID
         )
         .catch((err) => console.log(err));
 

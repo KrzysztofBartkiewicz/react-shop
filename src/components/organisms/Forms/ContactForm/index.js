@@ -6,6 +6,7 @@ import FormInput from '../../../molecules/FormInput';
 import Textarea from '../../../atoms/Textarea';
 import Heading from '../../../atoms/Heading';
 import emailjs from 'emailjs-com';
+import swalAlert from '../../../../utils/sweetalert2';
 import {
   StyledContactForm,
   StyledParagraph,
@@ -42,9 +43,8 @@ const ContactForm = () => {
               values,
               process.env.REACT_APP_USER_ID
             )
-            .then((res) => {
-              console.log(res);
-              alert('EMAIL SENT');
+            .then(() => {
+              swalAlert('Email', 'Email has been sent');
             })
             .catch((err) => console.log(err));
 
