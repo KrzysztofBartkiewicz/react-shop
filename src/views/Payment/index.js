@@ -1,4 +1,5 @@
-import React, { useRef, useEffect, useContext } from 'react';
+import React, { useContext } from 'react';
+import ReactDOM from 'react-dom';
 import Heading from '../../components/atoms/Heading';
 import Paragraph from '../../components/atoms/Paragraph';
 import CartWrapper from '../../components/organisms/Forms/CheckoutForm/Wrappers/CartWrapper';
@@ -11,6 +12,8 @@ import {
   StyledCart,
   StyledPaymentWrapper,
 } from './StyledPayment';
+
+const PayPalButton = window.paypal.Buttons.driver('react', { React, ReactDOM });
 
 const Payment = ({ location }) => {
   const {
@@ -25,28 +28,26 @@ const Payment = ({ location }) => {
     phoneNumber,
     postalCode,
   } = location.state;
-  const paymentRef = useRef();
-  const { cartTotalPrice } = useContext(RootContext);
-  console.log(cartTotalPrice);
 
-  useEffect(() => {
-    window.paypal
-      .Buttons({
-        createOrder: (data, actions) => {
-          // This function sets up the details of the transaction, including the amount and line item details.
-          return actions.order.create({
-            purchase_units: [
-              {
-                amount: {
-                  value: `${cartTotalPrice}`,
-                },
-              },
-            ],
-          });
+  const { cartTotalPrice, cart } = useContext(RootContext);
+
+  const createOrder = (data, actions) => {
+    return actions.order.create({
+      purchase_units: [
+        {
+          amount: {
+            value: cartTotalPrice,
+          },
         },
-      })
-      .render(paymentRef.current);
-  }, []);
+      ],
+    });
+  };
+
+  const onApprove = (data, actions) => {
+    console.log(data);
+    console.log(actions.order.capture());
+    return actions.order.capture();
+  };
 
   return (
     <StyledPayment>
@@ -67,7 +68,14 @@ const Payment = ({ location }) => {
         <StyledCart>
           <CartWrapper />
         </StyledCart>
-        <StyledPaymentWrapper ref={paymentRef}></StyledPaymentWrapper>
+        <StyledPaymentWrapper>
+          {cart.length !== 0 && (
+            <PayPalButton
+              createOrder={(data, actions) => createOrder(data, actions)}
+              onApprove={(data, actions) => onApprove(data, actions)}
+            />
+          )}
+        </StyledPaymentWrapper>
       </StyledSummaryWrapper>
     </StyledPayment>
   );

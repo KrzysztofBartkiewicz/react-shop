@@ -22,6 +22,7 @@ const Root = () => {
   const [cart, setCart] = useState(localStorageCart || []);
   const [cartProductsQuantity, setCartProductsQuantity] = useState(0);
   const [cartTotalPrice, setCartTotalPrice] = useState(0);
+  const [deliveryPrice, setDeliveryPrice] = useState(0);
 
   //filters states:
   const [productCategory, setProductCategory] = useState('all');
@@ -126,6 +127,10 @@ const Root = () => {
     setCartTotalPrice(total);
   };
 
+  const handleSetDeliveryPrice = (price) => {
+    setDeliveryPrice(price);
+  };
+
   const addProductToCart = (productId) => {
     const product = products.find((el) => el.id === productId);
     setCart((prev) => [...new Set([...prev, product])]);
@@ -172,6 +177,8 @@ const Root = () => {
         isSearchOpen,
         isCartOpen,
         deliveryMethods,
+        deliveryPrice,
+        handleSetDeliveryPrice,
         setCartVisibility,
         setSearchVisibility,
         toggleMenuOpen,
