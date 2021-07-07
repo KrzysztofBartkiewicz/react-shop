@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import ReactDOM from 'react-dom';
+import moment from 'moment';
 import Heading from '../../components/atoms/Heading';
 import Paragraph from '../../components/atoms/Paragraph';
 import CartWrapper from '../../components/organisms/Forms/CheckoutForm/Wrappers/CartWrapper';
@@ -54,6 +55,10 @@ const Payment = ({ location }) => {
 
   const onApprove = (data, actions) => {
     actions.order.capture().then((res) => {
+      const formattedTime = moment(res.create_time).format(
+        'MM/DD/YYYY h:mm:ss'
+      );
+
       if (currentUser) {
         usersCollections
           .doc(currentUser.id)
@@ -62,21 +67,21 @@ const Payment = ({ location }) => {
             const userData = doc.data();
 
             const newOrder = {
-              createTime: res.create_time,
+              createTime: formattedTime,
               id: res.id,
               status: res.status,
               items: cart,
               price: cartTotalPrice,
             };
 
-            const upadatedUserData = {
+            const updatedUserData = {
               ...userData,
               orders: [...userData.orders, newOrder],
             };
 
             usersCollections
               .doc(currentUser.id)
-              .set(upadatedUserData)
+              .set(updatedUserData)
               .catch((err) => console.log(err));
           })
           .catch((err) => console.log(err));
@@ -89,7 +94,7 @@ const Payment = ({ location }) => {
             email,
             firstName,
             lastName,
-            createTime: res.create_time,
+            createTime: formattedTime,
             status: res.status,
             items: cart,
             price: cartTotalPrice,
