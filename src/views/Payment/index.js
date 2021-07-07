@@ -53,6 +53,14 @@ const Payment = ({ location }) => {
     });
   };
 
+  const onCancel = () => {
+    swalAlert('Payment', 'Payment canceled', 'warning');
+  };
+
+  const onError = () => {
+    swalAlert('Paument', 'Some error occured', 'error');
+  };
+
   const onApprove = (data, actions) => {
     actions.order.capture().then((res) => {
       const formattedTime = moment(res.create_time).format(
@@ -150,6 +158,8 @@ const Payment = ({ location }) => {
             <PayPalButton
               createOrder={(data, actions) => createOrder(data, actions)}
               onApprove={(data, actions) => onApprove(data, actions)}
+              onCancel={onCancel}
+              onError={onError}
             />
           )}
         </StyledPaymentWrapper>
