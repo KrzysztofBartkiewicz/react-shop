@@ -64,7 +64,7 @@ const Cart = () => {
         listComponent={CartProduct}
       />
       <StyledSummaryWrapper>
-        {cartTotalPrice !== 0 ? renderCheckout() : null}
+        {cart.length !== 0 ? renderCheckout() : null}
       </StyledSummaryWrapper>
     </StyledCart>
   );

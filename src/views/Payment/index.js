@@ -99,6 +99,7 @@ const Payment = ({ location }) => {
         .doc(res.id)
         .set(
           {
+            id: res.id,
             email,
             firstName,
             lastName,
