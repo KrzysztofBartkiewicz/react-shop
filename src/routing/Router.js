@@ -22,14 +22,8 @@ const Router = () => {
           <Route exact path={routes.home} component={Home} />
           <Route path={routes.products} component={Products} />
           <Route path={routes.contact} component={Contact} />
-
-          <Route path={routes.login}>
-            {currentUser ? <Redirect to={routes.products} /> : <Login />}
-          </Route>
-          <Route path={routes.signup}>
-            {currentUser ? <Redirect to={routes.products} /> : <Signup />}
-          </Route>
-
+          <Route path={routes.login} component={Login} />
+          <Route path={routes.signup} component={Signup} />
           <Route path={routes.payment} component={Payment} />
           <Route path={routes.checkout} component={Checkout} />
           <Route path={routes.singleProduct} component={SingleProduct} />

@@ -58,14 +58,15 @@ const Payment = ({ location }) => {
   };
 
   const onError = () => {
-    swalAlert('Paument', 'Some error occured', 'error');
+    swalAlert('Payment', 'Some error occured', 'error');
   };
 
   const onApprove = (data, actions) => {
     actions.order.capture().then((res) => {
-      const formattedTime = moment(res.create_time).format(
-        'MM/DD/YYYY h:mm:ss'
-      );
+      const createTime = moment(res.create_time).format('MM/DD/YYYY h:mm:ss');
+      const deliveryDate = moment(res.create_time)
+        .add(1, 'w')
+        .format('MM/DD/YYYY h:mm:ss');
 
       if (currentUser) {
         usersCollections
@@ -75,7 +76,8 @@ const Payment = ({ location }) => {
             const userData = doc.data();
 
             const newOrder = {
-              createTime: formattedTime,
+              createTime,
+              deliveryDate,
               id: res.id,
               status: res.status,
               items: cart,
@@ -103,7 +105,8 @@ const Payment = ({ location }) => {
             email,
             firstName,
             lastName,
-            createTime: formattedTime,
+            createTime,
+            deliveryDate,
             status: res.status,
             items: cart,
             price: cartTotalPrice,

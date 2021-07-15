@@ -133,6 +133,7 @@ const Root = () => {
 
   const addProductToCart = (productId) => {
     const product = products.find((el) => el.id === productId);
+    product.inCartQuantity = 1;
     setCart((prev) => [...new Set([...prev, product])]);
     swalAlert('Cart', 'Product added');
   };
