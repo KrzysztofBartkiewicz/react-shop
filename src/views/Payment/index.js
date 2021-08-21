@@ -22,6 +22,7 @@ import {
 } from './StyledPayment';
 
 const PayPalButton = window.paypal.Buttons.driver('react', { React, ReactDOM });
+const ZULU = 'YYYY-MM-DDTHH:mm:ss.SSS';
 
 const Payment = ({ location }) => {
   const {
@@ -63,10 +64,10 @@ const Payment = ({ location }) => {
 
   const onApprove = (data, actions) => {
     actions.order.capture().then((res) => {
-      const createTime = moment(res.create_time).format('MM/DD/YYYY h:mm:ss');
-      const deliveryDate = moment(res.create_time)
+      const createTime = moment(res.create_time, ZULU).format('DD-MM-YYYY');
+      const deliveryDate = moment(res.create_time, ZULU)
         .add(1, 'w')
-        .format('MM/DD/YYYY h:mm:ss');
+        .format('DD-MM-YYYY');
 
       if (currentUser) {
         usersCollections

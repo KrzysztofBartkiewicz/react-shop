@@ -44,14 +44,23 @@ const AuthContextProvider = ({ children }) => {
     auth.signOut().then(() => swalAlert('Logout', "You've just logged out"));
   };
 
+  const checkIfNewUser = (user) => {
+    usersCollections
+      .where('email', '==', user.user.email)
+      .get()
+      .then((doc) => {
+        if (doc.empty) {
+          addNewUser(user);
+        }
+      });
+  };
+
   const signUpWithGoogle = () => {
     auth
       .signInWithPopup(provider)
       .then((user) => {
-        console.log(user);
-        if (user.additionalUserInfo.isNewUser) {
-          addNewUser(user);
-        }
+        checkIfNewUser(user);
+
         swalAlert(
           user.additionalUserInfo.profile.given_name,
           'Succesfully logged in'
