@@ -28,6 +28,12 @@ import { ReactComponent as GuaranteeIcon } from '../assets/icons/guarantee.svg';
 import { ReactComponent as HappyIcon } from '../assets/icons/happy.svg';
 import { ReactComponent as ArrowRightIcon } from '../assets/icons/arrow-right.svg';
 
+import { ReactComponent as FBIcon } from '../assets/icons/socials/facebook.svg';
+import { ReactComponent as InstagramIcon } from '../assets/icons/socials/instagram.svg';
+import { ReactComponent as LinkedInIcon } from '../assets/icons/socials/linkedin.svg';
+import { ReactComponent as TwitterIcon } from '../assets/icons/socials/twitter.svg';
+import { ReactComponent as YTIcon } from '../assets/icons/socials/youtube.svg';
+
 export const iconsTypes = {
   heart: heartIcon,
   logo: logoIcon,
@@ -57,4 +63,9 @@ export const iconsTypes = {
   GuaranteeIcon,
   HappyIcon,
   ArrowRightIcon,
+  FBIcon,
+  InstagramIcon,
+  TwitterIcon,
+  YTIcon,
+  LinkedInIcon,
 };

@@ -4,6 +4,7 @@ import SearchBox from '../components/organisms/SearchBox';
 import Cart from '../components/organisms/Cart';
 import Navbar from '../components/organisms/Navbar';
 import RootContext from '../context/RootContext';
+import Footer from '../components/organisms/Footer';
 
 const NavigationTemplate = ({ children }) => {
   const { isCartOpen, setCartVisibility, isSearchOpen, setSearchVisibility } =
@@ -19,7 +20,7 @@ const NavigationTemplate = ({ children }) => {
         <SearchBox />
       </CustomModal>
       {children}
-      {/* footer */}
+      <Footer />
     </>
   );
 };
