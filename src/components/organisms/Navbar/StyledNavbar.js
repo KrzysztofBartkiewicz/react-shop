@@ -7,7 +7,7 @@ export const StyledNavbar = styled.nav`
   align-items: center;
   justify-content: space-between;
   padding: 4.4rem 16rem;
-  width: 100%;
+  width: 100vw;
   position: fixed;
   top: 0;
   border-bottom: 1px solid ${({ theme }) => theme.colors.secondary};
