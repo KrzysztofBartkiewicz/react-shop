@@ -14,10 +14,10 @@ export const StyledNavbar = styled.nav`
   background-color: ${({ theme }) => theme.colors.primaryWhite};
   z-index: 10;
 
-  ${({ isHomeRendered }) =>
+  ${({ isHomeRendered, theme }) =>
     isHomeRendered &&
     css`
-      background-color: transparent;
+      background-color: rgba(216, 216, 216, 0.6);
       border: none;
     `}
 
