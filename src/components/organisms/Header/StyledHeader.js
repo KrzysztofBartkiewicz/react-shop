@@ -31,6 +31,10 @@ export const StyledHeadingWrapper = styled.div`
 
 export const StyledHeading = styled(Heading)`
   font-size: ${({ theme }) => theme.fontSizes.xl4};
+
+  ${({ theme }) => theme.mq.mobile} {
+    font-size: ${({ theme }) => theme.fontSizes.xl3};
+  }
 `;
 
 export const StyledLink = styled(Link)`
@@ -78,6 +82,10 @@ export const StyledInfoWrapper = styled.div`
   position: absolute;
   bottom: 0;
   border-bottom: 1px solid ${({ theme }) => theme.colors.secondary};
+
+  ${({ theme }) => theme.mq.mobile} {
+    display: none;
+  }
 `;
 
 export const StyledInfoCard = styled.div`

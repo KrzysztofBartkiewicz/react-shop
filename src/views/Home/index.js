@@ -3,8 +3,16 @@ import Header from '../../components/organisms/Header';
 import List from '../../components/molecules/List';
 import Product from '../../components/molecules/Product';
 import RootContext from '../../context/RootContext';
-import { StyledHome, StyledSelected } from './StyledHome';
+import ServiceInfo from '../../components/molecules/ServiceInfo';
+import {
+  StyledHome,
+  StyledSelected,
+  StyledServices,
+  StyledServicesHeading,
+  StyledServicesWrapper,
+} from './StyledHome';
 import { listTypes } from '../../helpers/listTypes';
+import { iconsTypes } from '../../helpers/iconsTypes';
 import { getUniqueRandoms } from '../../utils';
 import { StyledSelectedHeading } from './StyledHome';
 
@@ -25,6 +33,35 @@ const Home = () => {
     }
   }, [initialProducts]);
 
+  const renderServices = () => (
+    <StyledServices>
+      <StyledServicesHeading>Why should You choose us?</StyledServicesHeading>
+      <StyledServicesWrapper>
+        <ServiceInfo icon={iconsTypes.Car2Icon} heading="Free Shipping">
+          All purchases over $399 are eligible for free shipping via UPS Pack
+          and Ship.
+        </ServiceInfo>
+
+        <ServiceInfo icon={iconsTypes.EasyIcon} heading="Easy Payments">
+          All payments are processed instantly over a secure payment protocol.
+        </ServiceInfo>
+
+        <ServiceInfo
+          icon={iconsTypes.GuaranteeIcon}
+          heading="Money-Back Guarantee"
+        >
+          If an item arrived damaged or you've changed your mind, you can send
+          it back for a full refund.
+        </ServiceInfo>
+
+        <ServiceInfo icon={iconsTypes.FinestIcon} heading="Finest Quality">
+          Designed to last, each of our products has been crafted with the
+          finest materials.
+        </ServiceInfo>
+      </StyledServicesWrapper>
+    </StyledServices>
+  );
+
   return (
     <StyledHome>
       <Header />
@@ -40,6 +77,7 @@ const Home = () => {
           />
         )}
       </StyledSelected>
+      {renderServices()}
     </StyledHome>
   );
 };

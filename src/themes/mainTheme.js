@@ -20,8 +20,8 @@ export const mainTheme = {
     l: '2rem',
     xl: '2.4rem',
     xxl: '3.4rem',
-    xl2: '2.5rem',
-    xl3: '3rem',
+    xl2: '4.5rem',
+    xl3: '5rem',
     xl4: '6.6rem',
   },
 

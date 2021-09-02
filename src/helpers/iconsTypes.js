@@ -27,6 +27,8 @@ import { ReactComponent as Car2Icon } from '../assets/icons/car2.svg';
 import { ReactComponent as GuaranteeIcon } from '../assets/icons/guarantee.svg';
 import { ReactComponent as HappyIcon } from '../assets/icons/happy.svg';
 import { ReactComponent as ArrowRightIcon } from '../assets/icons/arrow-right.svg';
+import { ReactComponent as FinestIcon } from '../assets/icons/finest.svg';
+import { ReactComponent as EasyIcon } from '../assets/icons/easy.svg';
 
 import { ReactComponent as FBIcon } from '../assets/icons/socials/facebook.svg';
 import { ReactComponent as InstagramIcon } from '../assets/icons/socials/instagram.svg';
@@ -68,4 +70,6 @@ export const iconsTypes = {
   TwitterIcon,
   YTIcon,
   LinkedInIcon,
+  FinestIcon,
+  EasyIcon,
 };
