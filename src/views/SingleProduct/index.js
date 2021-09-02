@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import RootContext from '../../context/RootContext';
 import Button from '../../components/atoms/Button';
 import AmountSelector from '../../components/molecules/AmountSelector';
-import { capitalize } from '../../utils/stringUtils';
+import { capitalize } from '../../utils';
 import {
   StyledDetailsWrapper,
   StyledImage,

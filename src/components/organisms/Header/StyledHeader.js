@@ -10,6 +10,7 @@ import bgImage4 from '../../../assets/images/bg-image-4.jpg';
 export const StyledHeader = styled.header`
   padding: ${({ theme }) => theme.paddings.view};
   height: 100vh;
+
   ${({ background }) => {
     const bgsArr = [bgImage1, bgImage2, bgImage3, bgImage4];
     return css`
@@ -76,6 +77,7 @@ export const StyledInfoWrapper = styled.div`
   background: ${({ theme }) => theme.colors.primaryWhite};
   position: absolute;
   bottom: 0;
+  border-bottom: 1px solid ${({ theme }) => theme.colors.secondary};
 `;
 
 export const StyledInfoCard = styled.div`
