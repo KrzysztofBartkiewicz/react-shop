@@ -5,6 +5,7 @@ export const StyledFooter = styled.footer`
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
+  border-top: 1px solid ${({ theme }) => theme.colors.secondary};
 
   ${({ theme }) => theme.mq.tablet} {
     flex-direction: column;
@@ -70,5 +71,6 @@ export const StyledAmount = styled.div`
 export const StyledSocials = styled.div`
   width: 30rem;
   display: flex;
+  align-items: center;
   justify-content: space-between;
 `;

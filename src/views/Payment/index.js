@@ -1,6 +1,5 @@
 import React, { useContext } from 'react';
 import ReactDOM from 'react-dom';
-import moment from 'moment';
 import Heading from '../../components/atoms/Heading';
 import Paragraph from '../../components/atoms/Paragraph';
 import CartWrapper from '../../components/organisms/Forms/CheckoutForm/Wrappers/CartWrapper';
@@ -11,18 +10,14 @@ import {
   allOrdersCollection,
 } from '../../firebase/firestoreUtils';
 import swalAlert from '../../utils/sweetalert2';
-import emailjs from 'emailjs-com';
 import {
-  StyledAddress,
-  StyledDelivery,
   StyledPayment,
   StyledSummaryWrapper,
-  StyledCart,
   StyledPaymentWrapper,
 } from './StyledPayment';
+import { proceedPayment } from './utils';
 
 const PayPalButton = window.paypal.Buttons.driver('react', { React, ReactDOM });
-const ZULU = 'YYYY-MM-DDTHH:mm:ss.SSS';
 
 const Payment = ({ location }) => {
   const {
@@ -42,7 +37,7 @@ const Payment = ({ location }) => {
     useContext(RootContext);
   const { currentUser } = useContext(AuthContext);
 
-  const createOrder = (data, actions) => {
+  const createOrder = (undefined, actions) => {
     return actions.order.create({
       purchase_units: [
         {
@@ -63,79 +58,17 @@ const Payment = ({ location }) => {
   };
 
   const onApprove = (data, actions) => {
-    actions.order.capture().then((res) => {
-      const createTime = moment(res.create_time, ZULU).format('DD-MM-YYYY');
-      const deliveryDate = moment(res.create_time, ZULU)
-        .add(1, 'w')
-        .format('DD-MM-YYYY');
-
-      if (currentUser) {
-        usersCollections
-          .doc(currentUser.id)
-          .get()
-          .then((doc) => {
-            const userData = doc.data();
-
-            const newOrder = {
-              createTime,
-              deliveryDate,
-              id: res.id,
-              status: res.status,
-              items: cart,
-              price: cartTotalPrice,
-            };
-
-            const updatedUserData = {
-              ...userData,
-              orders: [...userData.orders, newOrder],
-            };
-
-            usersCollections
-              .doc(currentUser.id)
-              .set(updatedUserData)
-              .catch((err) => console.log(err));
-          })
-          .catch((err) => console.log(err));
-      }
-
-      allOrdersCollection
-        .doc(res.id)
-        .set(
-          {
-            id: res.id,
-            email,
-            firstName,
-            lastName,
-            createTime,
-            deliveryDate,
-            status: res.status,
-            items: cart,
-            price: cartTotalPrice,
-          },
-          { merge: true }
-        )
-        .catch((err) => console.log(err));
-
-      const emailDetails = {
-        email,
-        details: cart.reduce((acc, curr, index) => {
-          acc = acc.concat(`${index + 1}. ${curr.name} ${curr.price}<br />`);
-          return acc;
-        }, ''),
-        totalPrice: `${cartTotalPrice}$`,
-      };
-
-      emailjs
-        .send(
-          process.env.REACT_APP_SERVICE_ID,
-          process.env.REACT_APP_EMAIL_CONFIRMATION_TEMPLATE_ID,
-          emailDetails,
-          process.env.REACT_APP_USER_ID
-        )
-        .catch((err) => console.log(err));
-
-      swalAlert('Payment', 'Success!');
-      deleteAllItemsFromCart();
+    proceedPayment({
+      actions,
+      currentUser,
+      usersCollections,
+      cart,
+      cartTotalPrice,
+      allOrdersCollection,
+      email,
+      firstName,
+      deleteAllItemsFromCart,
+      lastName,
     });
   };
 
@@ -143,7 +76,7 @@ const Payment = ({ location }) => {
     <StyledPayment>
       <Heading headingType="h5">Summary</Heading>
       <StyledSummaryWrapper>
-        <StyledAddress>
+        <div>
           <Heading headingType="h6">Delivery address:</Heading>
           <Paragraph>{`${firstName} ${lastName}`}</Paragraph>
           <Paragraph>{`${address}, ${city}`}</Paragraph>
@@ -151,22 +84,23 @@ const Payment = ({ location }) => {
           <Paragraph>{country}</Paragraph>
           <Paragraph>{phoneNumber}</Paragraph>
           <Paragraph>{email}</Paragraph>
-        </StyledAddress>
-        <StyledDelivery>
-          <Heading headingType="h6">{delivery}</Heading>
-        </StyledDelivery>
-        <StyledCart>
+        </div>
+
+        <div>
+          <Heading headingType="h6">Delivery method</Heading>
+        </div>
+
+        <div>
           <CartWrapper />
-        </StyledCart>
+        </div>
+
         <StyledPaymentWrapper>
-          {cart.length !== 0 && (
-            <PayPalButton
-              createOrder={(data, actions) => createOrder(data, actions)}
-              onApprove={(data, actions) => onApprove(data, actions)}
-              onCancel={onCancel}
-              onError={onError}
-            />
-          )}
+          <PayPalButton
+            createOrder={(data, actions) => createOrder(data, actions)}
+            onApprove={(data, actions) => onApprove(data, actions)}
+            onCancel={onCancel}
+            onError={onError}
+          />
         </StyledPaymentWrapper>
       </StyledSummaryWrapper>
     </StyledPayment>

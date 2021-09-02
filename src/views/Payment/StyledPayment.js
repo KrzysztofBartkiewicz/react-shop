@@ -7,6 +7,10 @@ export const StyledPayment = styled.div`
   & > h5 {
     margin-left: 3rem;
   }
+
+  ${({ theme }) => theme.mq.mobile} {
+    margin-bottom: 15rem;
+  }
 `;
 
 export const StyledSummaryWrapper = styled.div`
@@ -14,15 +18,13 @@ export const StyledSummaryWrapper = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-row-gap: 4rem;
+
+  ${({ theme }) => theme.mq.mobile} {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+  }
 `;
-
-export const StyledAddress = styled.div``;
-
-export const StyledDelivery = styled.div`
-  justify-self: start;
-`;
-
-export const StyledCart = styled.div``;
 
 export const StyledPaymentWrapper = styled.div`
   grid-column: 1 / -1;
