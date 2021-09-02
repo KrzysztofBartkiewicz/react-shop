@@ -31,7 +31,7 @@ export const StyledServicesHeading = styled(Heading)`
 
 export const StyledServicesWrapper = styled.div`
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
 
   & > *:not(:last-child) {
@@ -40,6 +40,7 @@ export const StyledServicesWrapper = styled.div`
 
   ${({ theme }) => theme.mq.tablet} {
     flex-direction: column;
+    align-items: center;
 
     & > *:not(:last-child) {
       margin-right: 0rem;

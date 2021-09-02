@@ -35,7 +35,9 @@ const Home = () => {
 
   const renderServices = () => (
     <StyledServices>
-      <StyledServicesHeading>Why should You choose us?</StyledServicesHeading>
+      <StyledServicesHeading headingType="h5">
+        Why should You choose us?
+      </StyledServicesHeading>
       <StyledServicesWrapper>
         <ServiceInfo icon={iconsTypes.Car2Icon} heading="Free Shipping">
           All purchases over $399 are eligible for free shipping via UPS Pack
