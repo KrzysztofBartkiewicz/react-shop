@@ -72,7 +72,7 @@ export const StyledHeaderBootomWrapper = styled.div`
 `;
 
 export const StyledInfoWrapper = styled.div`
-  padding: 3rem;
+  padding: 3rem 3rem 3rem 40rem;
   max-width: 80%;
   display: flex;
   justify-content: flex-end;
