@@ -32,11 +32,15 @@ const Navbar = () => {
     setCartVisibility,
   } = useContext(RootContext);
   const { currentUser } = useContext(AuthContext);
+  const scrollEvent = useScrollEvent();
 
   const [whiteColor, setWhiteColor] = useState(true);
   const [small, setSmall] = useState(false);
+  const [hidden, setHidden] = useState(true);
 
-  const scrollEvent = useScrollEvent();
+  useEffect(() => {
+    setTimeout(() => setHidden(false), 100);
+  }, []);
 
   useEffect(() => {
     const scrollPosition = document.scrollingElement.scrollTop;
@@ -101,7 +105,7 @@ const Navbar = () => {
     </StyledUserMenuWrapper>
   );
 
-  return (
+  const renderNavBar = () => (
     <StyledNavbar small={small} transparent={whiteColor}>
       <Link to={routes.home}>
         <Logo whiteIcon={whiteColor} />
@@ -122,6 +126,8 @@ const Navbar = () => {
       <DrawerMenu isOpen={isMenuOpen} />
     </StyledNavbar>
   );
+
+  return <> {!hidden && renderNavBar()} </>;
 };
 
 export default Navbar;

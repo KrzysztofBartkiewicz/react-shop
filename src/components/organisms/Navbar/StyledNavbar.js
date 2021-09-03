@@ -15,7 +15,7 @@ export const StyledNavbar = styled.nav`
   z-index: 10;
   transition: padding 0.5s ease-in-out, background-color 0.5s ease-in-out;
 
-  ${({ transparent, theme }) =>
+  ${({ transparent }) =>
     transparent &&
     css`
       background-color: transparent;
