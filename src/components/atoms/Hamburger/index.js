@@ -5,11 +5,11 @@ import {
   StyledHamburgerInner,
 } from './StyledHamburger';
 
-const Hamburger = ({ isOpen, onClickFn, isHomeRendered }) => {
+const Hamburger = ({ isOpen, onClickFn, whiteIcon }) => {
   return (
     <StyledHamburger isOpen={isOpen} onClick={onClickFn}>
       <StyledHamburgerBox>
-        <StyledHamburgerInner isOpen={isOpen} isHomeRendered={isHomeRendered} />
+        <StyledHamburgerInner isOpen={isOpen} whiteIcon={whiteIcon} />
       </StyledHamburgerBox>
     </StyledHamburger>
   );

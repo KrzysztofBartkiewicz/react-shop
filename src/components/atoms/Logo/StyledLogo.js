@@ -16,8 +16,8 @@ export const StyledHeading = styled(Heading)`
     color: ${({ theme }) => theme.colors.primaryYellow};
   }
 
-  ${({ isHomeRendered, theme }) =>
-    isHomeRendered &&
+  ${({ whiteIcon, theme }) =>
+    whiteIcon &&
     css`
       &,
       span {

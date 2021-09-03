@@ -16,9 +16,9 @@ import {
   StyledPopupCart,
 } from './StyledUserMenu';
 
-const UserMenu = () => {
+const UserMenu = ({ white }) => {
   const { currentUser, logOut } = useContext(AuthContext);
-  const { cart, isHomeRendered } = useContext(RootContext);
+  const { cart } = useContext(RootContext);
 
   const { x, y } = useGlobalClickCoords();
 
@@ -42,12 +42,10 @@ const UserMenu = () => {
 
   return (
     <StyledUserMenu>
-      <StyledUserName isHomeRendered={isHomeRendered}>
-        {currentUser.firstName}
-      </StyledUserName>
+      <StyledUserName white={white}>{currentUser.firstName}</StyledUserName>
       <StyledPopupButton
         ref={buttonRef}
-        whiteIcon={isHomeRendered}
+        whiteIcon={white}
         icon={isExpanded ? iconsTypes.ArrowUpIcon : iconsTypes.ArrowDownIcon}
         onClickFn={handleExpand}
       />

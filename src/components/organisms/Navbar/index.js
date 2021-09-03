@@ -1,7 +1,8 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { iconsTypes } from '../../../helpers/iconsTypes';
 import { routes } from '../../../helpers/routes';
+import useScrollEvent from '../../../hooks/useScrollEvent';
 import RootContext from '../../../context/RootContext';
 import AuthContext from '../../../context/AuthContext';
 import Button from '../../atoms/Button';
@@ -32,13 +33,33 @@ const Navbar = () => {
   } = useContext(RootContext);
   const { currentUser } = useContext(AuthContext);
 
+  const [whiteColor, setWhiteColor] = useState(true);
+  const [small, setSmall] = useState(false);
+
+  const scrollEvent = useScrollEvent();
+
+  useEffect(() => {
+    const scrollPosition = document.scrollingElement.scrollTop;
+
+    if (scrollPosition === 0 && isHomeRendered) {
+      setWhiteColor(true);
+      setSmall(false);
+    } else if (scrollPosition === 0 && !isHomeRendered) {
+      setWhiteColor(false);
+      setSmall(false);
+    } else {
+      setWhiteColor(false);
+      setSmall(true);
+    }
+  }, [scrollEvent, isHomeRendered]);
+
   return (
-    <StyledNavbar isHomeRendered={isHomeRendered}>
+    <StyledNavbar small={small} transparent={whiteColor}>
       <Link to={routes.home}>
-        <Logo isHomeRendered={isHomeRendered} />
+        <Logo whiteIcon={whiteColor} />
       </Link>
 
-      <StyledNavList isHomeRendered={isHomeRendered}>
+      <StyledNavList white={whiteColor}>
         <StyledNavListItem>
           <NavigationLink to={routes.home}>Home</NavigationLink>
         </StyledNavListItem>
@@ -50,37 +71,37 @@ const Navbar = () => {
         </StyledNavListItem>
       </StyledNavList>
 
-      <StyledNavButtons isHomeRendered={isHomeRendered}>
+      <StyledNavButtons>
         <Button
-          whiteIcon={isHomeRendered}
+          whiteIcon={whiteColor}
           icon={iconsTypes.SearchIcon}
           onClickFn={() => setSearchVisibility(true)}
         />
         <StyledButtonWrapper>
           <Button
-            whiteIcon={isHomeRendered}
+            whiteIcon={whiteColor}
             icon={iconsTypes.CartIcon}
             onClickFn={() => setCartVisibility(true)}
           />
 
           <StyledNotificationCount
-            isVisible={cartProductsQuantity !== 0 && true}
+            isVisible={cartProductsQuantity !== 0}
             value={cartProductsQuantity}
           />
         </StyledButtonWrapper>
         <StyledUserMenuWrapper>
           {currentUser ? (
-            <UserMenu />
+            <UserMenu white={whiteColor} />
           ) : (
             <StyledLink to={routes.login}>
-              <iconsTypes.AvatarIcon fill={isHomeRendered ? 'white' : ''} />
+              <iconsTypes.AvatarIcon fill={whiteColor ? 'white' : ''} />
             </StyledLink>
           )}
         </StyledUserMenuWrapper>
         <Hamburger
           isOpen={isMenuOpen}
           onClickFn={toggleMenuOpen}
-          isHomeRendered={isHomeRendered}
+          whiteIcon={whiteColor}
         />
       </StyledNavButtons>
       <DrawerMenu isOpen={isMenuOpen} />

@@ -11,8 +11,8 @@ export const StyledUserMenu = styled.div`
 export const StyledUserName = styled(Paragraph)`
   margin-right: 1rem;
 
-  ${({ isHomeRendered }) =>
-    isHomeRendered &&
+  ${({ white }) =>
+    white &&
     css`
       color: white;
     `}

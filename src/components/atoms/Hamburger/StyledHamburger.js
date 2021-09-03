@@ -48,8 +48,8 @@ export const StyledHamburgerInner = styled.span`
     top: 1rem;
   }
 
-  ${({ isHomeRendered, theme }) =>
-    isHomeRendered &&
+  ${({ whiteIcon, theme }) =>
+    whiteIcon &&
     css`
       &,
       &::before,

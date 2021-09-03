@@ -13,12 +13,20 @@ export const StyledNavbar = styled.nav`
   border-bottom: 1px solid ${({ theme }) => theme.colors.secondary};
   background-color: ${({ theme }) => theme.colors.primaryWhite};
   z-index: 10;
+  transition: all 0.5s ease-in-out;
 
-  ${({ isHomeRendered, theme }) =>
-    isHomeRendered &&
+  ${({ transparent, theme }) =>
+    transparent &&
     css`
-      background-color: rgba(216, 216, 216, 0.6);
+      background-color: transparent;
       border: none;
+    `}
+
+  ${({ theme, small }) =>
+    small &&
+    css`
+      padding: 2rem 16rem;
+      background-color: ${theme.colors.primaryWhite};
     `}
 
   ${({ theme }) => theme.mq.tablet} {
@@ -29,8 +37,8 @@ export const StyledNavbar = styled.nav`
 export const StyledNavList = styled.ul`
   display: flex;
 
-  ${({ isHomeRendered, theme }) =>
-    isHomeRendered &&
+  ${({ white, theme }) =>
+    white &&
     css`
       & a {
         color: ${theme.colors.primaryWhite};
