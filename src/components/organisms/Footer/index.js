@@ -5,6 +5,7 @@ import Paragraph from '../../atoms/Paragraph';
 import NavigationLink from '../../atoms/NavigationLink';
 import AmountInfo from '../../atoms/NotificationCount';
 import { iconsTypes } from '../../../helpers/iconsTypes';
+import { routes } from '../../../helpers/routes';
 import {
   StyledWrapper,
   StyledFooter,
@@ -38,13 +39,13 @@ const Footer = () => {
   const renderLinksWrapper = () => (
     <StyledWrapper>
       <Paragraph weight="bold">Shop</Paragraph>
-      <NavigationLink size="s" weight="regular">
+      <NavigationLink to={routes.home} size="s" weight="regular">
         Home
       </NavigationLink>
-      <NavigationLink size="s" weight="regular">
+      <NavigationLink to={routes.products} size="s" weight="regular">
         Products
       </NavigationLink>
-      <NavigationLink size="s" weight="regular">
+      <NavigationLink to={routes.contact} size="s" weight="regular">
         Contact
       </NavigationLink>
     </StyledWrapper>

@@ -1,6 +1,5 @@
-import React, { useContext } from 'react';
-import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
-import AuthContext from '../context/AuthContext';
+import React from 'react';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import { routes } from '../helpers/routes';
 import NavigationTemplate from '../templates/NavigationTemplate';
 import Checkout from '../views/Checkout';
@@ -13,8 +12,6 @@ import Signup from '../views/Signup';
 import SingleProduct from '../views/SingleProduct';
 
 const Router = () => {
-  const { currentUser } = useContext(AuthContext);
-
   return (
     <BrowserRouter>
       <NavigationTemplate>

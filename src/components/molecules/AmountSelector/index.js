@@ -1,5 +1,4 @@
 import React from 'react';
-import Button from '../../atoms/Button';
 import { iconsTypes } from '../../../helpers/iconsTypes';
 import {
   StyledAmountSelector,

@@ -24,11 +24,9 @@ const Payment = ({ location }) => {
     address,
     city,
     country,
-    delivery,
     email,
     firstName,
     lastName,
-    payment,
     phoneNumber,
     postalCode,
   } = location.state;
@@ -37,7 +35,7 @@ const Payment = ({ location }) => {
     useContext(RootContext);
   const { currentUser } = useContext(AuthContext);
 
-  const createOrder = (undefined, actions) => {
+  const createOrder = (data, actions) => {
     return actions.order.create({
       purchase_units: [
         {
