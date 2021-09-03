@@ -15,18 +15,3 @@ const FIlterMenu = ({ className }) => {
 };
 
 export default FIlterMenu;
-
-// Input types:
-// {
-/* <input type="text" />
-<input type="search" />
-<input type="number" />
-<input type="password" />
-<input type="email" />
-<input type="range" />
-<input type="date" />
-<input type="checkbox" />
-<input type="file" />
-<input type="radio" />
-<input type="button" /> */
-// }

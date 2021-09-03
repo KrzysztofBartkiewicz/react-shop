@@ -53,51 +53,66 @@ const Navbar = () => {
     }
   }, [scrollEvent, isHomeRendered]);
 
+  const renderNavList = () => (
+    <StyledNavList white={whiteColor}>
+      <StyledNavListItem>
+        <NavigationLink to={routes.home}>Home</NavigationLink>
+      </StyledNavListItem>
+      <StyledNavListItem>
+        <NavigationLink to={routes.products}>Products</NavigationLink>
+      </StyledNavListItem>
+      <StyledNavListItem>
+        <NavigationLink to={routes.contact}>Contact</NavigationLink>
+      </StyledNavListItem>
+    </StyledNavList>
+  );
+
+  const renderNavButtons = () => (
+    <>
+      <Button
+        whiteIcon={whiteColor}
+        icon={iconsTypes.SearchIcon}
+        onClickFn={() => setSearchVisibility(true)}
+      />
+      <StyledButtonWrapper>
+        <Button
+          whiteIcon={whiteColor}
+          icon={iconsTypes.CartIcon}
+          onClickFn={() => setCartVisibility(true)}
+        />
+
+        <StyledNotificationCount
+          isVisible={cartProductsQuantity !== 0}
+          value={cartProductsQuantity}
+        />
+      </StyledButtonWrapper>
+    </>
+  );
+
+  const renderUserMenu = () => (
+    <StyledUserMenuWrapper>
+      {currentUser ? (
+        <UserMenu white={whiteColor} />
+      ) : (
+        <StyledLink to={routes.login}>
+          <iconsTypes.AvatarIcon fill={whiteColor ? 'white' : ''} />
+        </StyledLink>
+      )}
+    </StyledUserMenuWrapper>
+  );
+
   return (
     <StyledNavbar small={small} transparent={whiteColor}>
       <Link to={routes.home}>
         <Logo whiteIcon={whiteColor} />
       </Link>
 
-      <StyledNavList white={whiteColor}>
-        <StyledNavListItem>
-          <NavigationLink to={routes.home}>Home</NavigationLink>
-        </StyledNavListItem>
-        <StyledNavListItem>
-          <NavigationLink to={routes.products}>Products</NavigationLink>
-        </StyledNavListItem>
-        <StyledNavListItem>
-          <NavigationLink to={routes.contact}>Contact</NavigationLink>
-        </StyledNavListItem>
-      </StyledNavList>
+      {renderNavList()}
 
       <StyledNavButtons>
-        <Button
-          whiteIcon={whiteColor}
-          icon={iconsTypes.SearchIcon}
-          onClickFn={() => setSearchVisibility(true)}
-        />
-        <StyledButtonWrapper>
-          <Button
-            whiteIcon={whiteColor}
-            icon={iconsTypes.CartIcon}
-            onClickFn={() => setCartVisibility(true)}
-          />
+        {renderNavButtons()}
+        {renderUserMenu()}
 
-          <StyledNotificationCount
-            isVisible={cartProductsQuantity !== 0}
-            value={cartProductsQuantity}
-          />
-        </StyledButtonWrapper>
-        <StyledUserMenuWrapper>
-          {currentUser ? (
-            <UserMenu white={whiteColor} />
-          ) : (
-            <StyledLink to={routes.login}>
-              <iconsTypes.AvatarIcon fill={whiteColor ? 'white' : ''} />
-            </StyledLink>
-          )}
-        </StyledUserMenuWrapper>
         <Hamburger
           isOpen={isMenuOpen}
           onClickFn={toggleMenuOpen}
