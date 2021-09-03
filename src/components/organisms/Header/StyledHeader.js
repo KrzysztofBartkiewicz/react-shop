@@ -73,8 +73,8 @@ export const StyledHeaderBootomWrapper = styled.div`
 `;
 
 export const StyledInfoWrapper = styled.div`
-  padding: 3rem 3rem 3rem 40rem;
-  max-width: 80%;
+  padding: 3rem;
+  width: 70vw;
   display: flex;
   justify-content: flex-end;
   align-items: flex-start;
@@ -83,6 +83,10 @@ export const StyledInfoWrapper = styled.div`
   position: absolute;
   bottom: 0;
   border-bottom: 1px solid ${({ theme }) => theme.colors.secondary};
+
+  ${({ theme }) => theme.mq.tablet} {
+    padding-right: 0;
+  }
 
   ${({ theme }) => theme.mq.mobile} {
     display: none;
@@ -93,6 +97,10 @@ export const StyledInfoCard = styled.div`
   margin-right: 7rem;
   display: flex;
   align-items: flex-start;
+
+  ${({ theme }) => theme.mq.tablet} {
+    margin-right: 3rem;
+  }
 `;
 
 export const StyledIconWrapper = styled.div`
@@ -117,7 +125,7 @@ export const StyledButtonsWrapper = styled.div`
   align-items: flex-start;
   position: absolute;
   bottom: 3rem;
-  right: 18rem;
+  right: 5%;
 
   button:first-child {
     margin-right: 1rem;

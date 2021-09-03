@@ -13,7 +13,7 @@ export const StyledNavbar = styled.nav`
   border-bottom: 1px solid ${({ theme }) => theme.colors.secondary};
   background-color: ${({ theme }) => theme.colors.primaryWhite};
   z-index: 10;
-  transition: all 0.5s ease-in-out;
+  transition: padding 0.5s ease-in-out, background-color 0.5s ease-in-out;
 
   ${({ transparent, theme }) =>
     transparent &&

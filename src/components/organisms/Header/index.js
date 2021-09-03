@@ -52,7 +52,7 @@ const Header = () => {
         </StyledIconWrapper>
         <div>
           <Heading headingType="h6">Free Shipping</Heading>
-          <Paragraph size="xs" secondary>
+          <Paragraph size="xxs" secondary>
             On purchases over $399
           </Paragraph>
         </div>
@@ -64,7 +64,7 @@ const Header = () => {
         </StyledIconWrapper>
         <div>
           <Heading headingType="h6">99% Satisfied Customers</Heading>
-          <Paragraph size="xs" secondary>
+          <Paragraph size="xxs" secondary>
             Our clients' opinions
             <br />
             speak for themselves
@@ -78,7 +78,7 @@ const Header = () => {
         </StyledIconWrapper>
         <div>
           <Heading headingType="h6">Originality Guaranteed</Heading>
-          <Paragraph size="xs" secondary>
+          <Paragraph size="xxs" secondary>
             2 years warranty for each
             <br />
             product from our store
