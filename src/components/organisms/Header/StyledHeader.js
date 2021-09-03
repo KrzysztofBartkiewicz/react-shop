@@ -10,6 +10,7 @@ import bgImage4 from '../../../assets/images/bg-image-4.jpg';
 export const StyledHeader = styled.header`
   padding: ${({ theme }) => theme.paddings.view};
   height: 100vh;
+  position: relative;
 
   ${({ background }) => {
     const bgsArr = [bgImage1, bgImage2, bgImage3, bgImage4];
@@ -112,9 +113,11 @@ export const StyledIconWrapper = styled.div`
 
 export const StyledButtonsWrapper = styled.div`
   padding-left: 5.8rem;
-  flex-grow: 1;
   display: flex;
   align-items: flex-start;
+  position: absolute;
+  bottom: 3rem;
+  right: 18rem;
 
   button:first-child {
     margin-right: 1rem;
