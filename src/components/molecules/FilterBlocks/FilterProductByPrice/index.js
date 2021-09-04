@@ -18,7 +18,7 @@ const FilterProductByPrice = () => {
   return (
     <StyledFilterWrapper>
       <StyledParagraph weight="bold" size="xxs">
-        Name
+        PRICE
       </StyledParagraph>
       <MaterialRangeInput
         value={productPriceRange}

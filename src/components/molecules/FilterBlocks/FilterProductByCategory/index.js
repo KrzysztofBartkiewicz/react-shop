@@ -20,7 +20,7 @@ const FilterProductByCategory = () => {
   return (
     <StyledFilterWrapper>
       <StyledParagraph weight="bold" size="xxs">
-        Name
+        CATEGORY
       </StyledParagraph>
       <Select
         optionArray={productCategories}
