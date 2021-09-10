@@ -16,8 +16,8 @@
 > :star: Contentful CMS  
 > :star: Moment  
 > :star: Axios  
-> :star: Material UI 
-> ⭐ Paypal SDK   
+> :star: Material UI  
+> ⭐ Paypal SDK  
 > ⭐ EmailJS  
 > ⭐ RWD  
 ## How to use
